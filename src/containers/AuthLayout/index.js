@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './styles.module.scss';
 import {Button, Form} from "semantic-ui-react";
-import AuthService from './AuthService';
+import AuthService from '../../services/AuthService';
 
 const authService = new AuthService();
 
@@ -9,7 +9,7 @@ class AuthLayout extends Component {
 
     constructor(props){
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
+
         };
 
     handleCreate(){
@@ -26,10 +26,35 @@ class AuthLayout extends Component {
             console.log(error);
         });
     }
+    handleSubmit(event){
+        const { match : { params } } =  this.props;
+        this.handleCreate()
+        event.preventDefault()
+    }
+
     render (){
         return (
-            <Form.input label='username' type='password' ref='username'/>
+            <Form onSubmit={this.handleSubmit}>
+                <Form.Field>
+                <label>Username</label>
+                <input placeholder='username' ref='username'/>
+                </Form.Field>
+                <Form.Field>
+                <label>Email</label>
+                <input placeholder='Email' ref='email'/>
+                </Form.Field>
+                <Form.Field>
+                <label>Password</label>
+                <input placeholder='Password' ref='password1'/>
+                </Form.Field>
+                <Form.Field>
+                <label>Retype Password</label>
+                <input placeholder='Retype Password' ref='password2'/>
+                </Form.Field>
+                <Button type='submit'>Submit</Button>
+            </Form>
         )
+
     }
 
 
