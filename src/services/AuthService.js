@@ -7,7 +7,7 @@ export default class AuthService {
     constructor (){}
 
     postReg(creds) {
-        const url = `${API_URL}/auth/login`
+        const url = `${API_URL}/auth/registration/`
         axios.post(url, creds)
     };
 }

@@ -9,27 +9,16 @@ class AuthLayout extends Component {
 
     constructor(props){
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this)
-        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+        }
 
-    handleCreate(){
-        authService.postReg(
-            {
-                'username': this.refs.username.value,
-                'email': this.refs.email.value,
-                'password1': this.refs.password1.value,
-                'password2': this.refs.password2.value
-            }
-        ).then(function (response){
-            console.log(response);
-        }).catch(function (error){
-            console.log(error);
-        });
-    }
-    handleSubmit(event){
-        const { match : { params } } =  this.props;
-        this.handleCreate()
-        event.preventDefault()
+    handleSubmit(){
+        authService.postReg({
+            username: this.refs.username.value,
+            email: this.refs.email.value,
+            password1: this.refs.password1.value,
+            password2: this.refs.password2.value
+            });
     }
 
     render (){

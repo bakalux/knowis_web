@@ -3,8 +3,17 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
 import App from './containers/App';
-import AuthLayout from './containers/AuthLayout'
+import AuthLayout from './containers/AuthLayout';
+import {Provider} from 'mobx-react';
+import QuestionStore from './stores/QuestionStore';
 
+const StoreCheck = (
+    <Provider QuestionStore={QuestionStore}>
+        <App/>
+    </Provider>
+)
+
+// ReactDOM.render(StoreCheck, document.getElementById('store-check'))
 ReactDOM.render(<AuthLayout/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
