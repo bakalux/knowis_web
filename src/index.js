@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
 import App from './containers/App';
+import AuthLayout from './containers/AuthLayout'
 
-ReactDOM.render(<p>Ivan petuh</p>, document.getElementById('root'));
+ReactDOM.render(<AuthLayout/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
