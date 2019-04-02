@@ -11,14 +11,13 @@ class App extends Component {
     const question = this.question.value;
     this.props.QuestionStore.addQuestion(question);
     this.question.value = '';
-  }
+  };
 
   render() {
     const {QuestionStore} = this.props;
 
     return (
         <div className='App'>
-          <h2>You have {QuestionStore.questionCount} questions.</h2>
 
           <form onSubmit={e => this.handleSubmit(e)}>
             <input type="text" placeholder="Enter Question" ref={input => this.question = input}/>
