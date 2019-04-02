@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
 import styles from './styles.module.scss';
 import {Button, Form} from "semantic-ui-react";
+import {inject, observer} from 'mobx-react'
 import AuthService from '../../services/AuthService';
 
 const authService = new AuthService();
-
+@inject('AuthStore')
+@observer
 class AuthLayout extends Component {
 
     constructor(props){
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {
+            user : [],
         }
+    }
+
+    componentDidMount() {
+        const self = this;
+        authService.postReg().then(result => {
+            console.log(result)
+            self.setState({user: result.data})
+        })
+    }
 
     handleSubmit(){
         authService.postReg({
@@ -22,6 +35,7 @@ class AuthLayout extends Component {
     }
 
     render (){
+        const {AuthStore} = this.props;
         return (
             <Form onSubmit={this.handleSubmit}>
                 <Form.Field>

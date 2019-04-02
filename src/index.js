@@ -6,15 +6,21 @@ import App from './containers/App';
 import AuthLayout from './containers/AuthLayout';
 import {Provider} from 'mobx-react';
 import QuestionStore from './stores/QuestionStore';
+import AuthStore from './stores/AuthStore';
 
 const StoreCheck = (
     <Provider QuestionStore={QuestionStore}>
         <App/>
     </Provider>
-)
+);
 
+const Auth = (
+    <Provider AuthStore={AuthStore}>
+        <AuthLayout/>
+    </Provider>
+);
 // ReactDOM.render(StoreCheck, document.getElementById('store-check'))
-ReactDOM.render(<AuthLayout/>, document.getElementById('root'));
+ReactDOM.render(Auth, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
