@@ -9,7 +9,7 @@ const API_URL = 'https://peaceful-ocean-66963.herokuapp.com';
 
 @inject('AuthStore')
 @observer
-class AuthLayout extends Component {
+class LoginPage extends Component {
 
     constructor(props){
         super(props);
@@ -65,4 +65,4 @@ class AuthLayout extends Component {
 }
 
 
-export default AuthLayout;
+export default LoginPage;
