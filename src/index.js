@@ -19,7 +19,7 @@ const Auth = (
         <AuthLayout/>
     </Provider>
 );
-ReactDOM.render(StoreCheck, document.getElementById('store-check'))
+// ReactDOM.render(StoreCheck, document.getElementById('store-check'))
 ReactDOM.render(Auth, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
