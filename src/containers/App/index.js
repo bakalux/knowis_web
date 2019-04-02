@@ -1,38 +1,18 @@
-import React, { Component } from 'react';
-import {inject, observer} from 'mobx-react'
-import styles from './styles.module.scss';
+import React from 'react';
+import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
+import  LoginPage from "../LoginPage"
+import {Provider} from 'mobx-react';
+import AuthStore from '../../stores/AuthStore';
 
-@inject('QuestionStore')
-@observer
-class App extends Component {
-
-  handleSubmit = (e) =>{
-    e.preventDefault();
-    const question = this.question.value;
-    this.props.QuestionStore.addQuestion(question);
-    this.question.value = '';
-  };
-
-  render() {
-    const {QuestionStore} = this.props;
-
-    return (
-        <div className='App'>
-
-          <form onSubmit={e => this.handleSubmit(e)}>
-            <input type="text" placeholder="Enter Question" ref={input => this.question = input}/>
-            <button>Add question</button>
-          </form>
-          <ul>
-            {QuestionStore.questions.map(question => (
-                <li>
-                  {question}
-                </li>
-            ))}
-          </ul>
-        </div>
-    );
-  }
-}
+const App = () => (
+  <BrowserRouter>
+      <Provider AuthStore={AuthStore}>
+      <Switch>
+          <Route path='/login' component={LoginPage} />
+          <Redirect from='/' to='/login'/>
+      </Switch>
+      </Provider>
+  </BrowserRouter>
+);
 
 export default App;

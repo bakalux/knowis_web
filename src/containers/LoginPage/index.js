@@ -23,7 +23,7 @@ class LoginPage extends Component {
             username: username,
             password: password
             }).then(result => {
-            this.props.AuthStore.addUser(result.data)
+            this.props.AuthStore.addUser(result.data.token)
         }).catch(error => {
             console.log(error.response)
         })
