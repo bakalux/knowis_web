@@ -4,7 +4,7 @@ import {inject, observer} from 'mobx-react';
 const API_URL = 'https://peaceful-ocean-66963.herokuapp.com';
 
 
-class AuthService {
+export default @inject('AuthStore') @observer class AuthService {
 
     constructor (){}
 
@@ -14,7 +14,10 @@ class AuthService {
                 console.log(result)
         }).catch(error => {
             console.log(error.response)
+        }).then(result => {
+            this.props.AuthStore.addUser(result.data)
+        }).catch(error => {
+            console.log(error.response)
         })
     };
 }
-export default AuthService;
