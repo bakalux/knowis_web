@@ -14,17 +14,16 @@ class LoginPage extends Component {
     constructor(props){
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.username = React.createRef()
-        this.password = React.createRef()
     }
 
     authReg() {
-        const url = `${API_URL}/auth/login/`
+        const {username, password} = this;
+        const url = `${API_URL}/auth/login/`;
         axios.post(url, {
-            username: this.name.username.value,
-            password: this.name.password.value,
+            username: username,
+            password: password
             }).then(result => {
-            this.props.AuthStore.addUser(result.data)
+            this.props.AuthStore.addUser(result.data.token)
         }).catch(error => {
             console.log(error.response)
         })
@@ -35,13 +34,26 @@ class LoginPage extends Component {
         e.preventDefault();
     };
 
-    render (){
+    onChange = e =>{
+        const {name, value} = e.target;
+        this[name] = value;
+    };
 
+    render (){
+        const {username, password} = this;
         return (
             <Segment>
                 <Grid columns={2} relaxed='very' stackable>
                     <Grid.Column>
                         <Form onSubmit={e => this.handleSubmit(e)}>
+                            <Form.Input
+                                name='username' onChange={this.onChange} value={username}
+                                icon='user' iconPosition='left' label='Username' placeholder='Username'
+                            />
+                            <Form.Input
+                                name='password' onChange={this.onChange} value={password}
+                                icon='lock' iconPosition='left' label='Password' type='password' placeholder='Password'
+                            />
                             <Button content='Login' primary/>
                         </Form>
                     </Grid.Column>
