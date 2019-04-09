@@ -6,7 +6,7 @@ class AuthStore {
         this.userinfo.push(user)
     };
     @computed get userToken() {
-        return this.userinfo[0]
+        return this.userinfo[-1]
     };
 }
 
