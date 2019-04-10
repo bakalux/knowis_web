@@ -20,7 +20,7 @@ class LoginPage extends Component {
         authService.postLogin({
             username: username,
             password: password
-        }).then(result => this.props.AuthStore.addUser(result.data.token))
+        }).then(result => this.props.AuthStore.getToken(result.data.token))
             .catch(error=> console.log(error));
         e.preventDefault();
     };

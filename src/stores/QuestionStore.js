@@ -5,6 +5,7 @@ class QuestionStore {
     @action addQuestion = (question) => {
         this.questions.push(question);
     };
+
     @computed get questionCount() {
         return this.questions.length;
     }
