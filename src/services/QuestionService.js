@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios/index';
 
 const API_URL = 'https://peaceful-ocean-66963.herokuapp.com';
 
@@ -11,7 +11,7 @@ export default class QuestionService {
 
 
   getQuestions = () => {
-    const url = `${API_URL}/api/questions`
-    return axios.get(url).then(response => response.data)
+    const url = `${API_URL}/api/questions`;
+    return axios.get(url).then(response => response.data);
   }
 }

@@ -3,9 +3,8 @@ import styles from './styles.module.scss';
 import {inject, observer} from 'mobx-react';
 import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
 import AuthService from '../../services/AuthService';
-import axios from 'axios/index';
 
-const API_URL = 'https://peaceful-ocean-66963.herokuapp.com';
+const authService = new AuthService();
 
 @inject('AuthStore')
 @observer
@@ -16,21 +15,13 @@ class LoginPage extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    authReg() {
+    handleSubmit = (e) => {
         const {username, password} = this;
-        const url = `${API_URL}/auth/login/`;
-        axios.post(url, {
+        authService.postLogin({
             username: username,
             password: password
-            }).then(result => {
-            this.props.AuthStore.addUser(result.data.token)
-        }).catch(error => {
-            console.log(error.response)
-        })
-    }
-
-    handleSubmit = (e) => {
-        this.authReg();
+        }).then(result => this.props.AuthStore.addUser(result.data.token))
+            .catch(error=> console.log(error));
         e.preventDefault();
     };
 
