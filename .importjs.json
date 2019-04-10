@@ -1,1 +1,6 @@
-generate: "rc-autocomplete"
+{
+  "lookupPaths": [
+    "node_modules/react/components/**/*.js",
+    "app/src/components"
+  ]
+}

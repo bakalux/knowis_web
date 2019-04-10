@@ -65,7 +65,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "generate": "rc-autocomplete"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -139,6 +140,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-standard": "^4.0.0",
     "prettier": "^1.16.4",
     "react-autocomplete-cli": "0.0.3",
     "ws": "3.3.2"

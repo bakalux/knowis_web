@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-import QuestionService from '../../services/AuthService';
+import QuestionService from '../../services/QuestionService';
 
 const questionService = new QuestionService();
 
+@inject('QuestionStore')
+@observer
 class QuestionPage extends Component {
     constructor(props){
         super(props);
-    };
-
-    componentDidMount() {
-
     }
 
-    // componentDidMount() {
-    //     questionService.getQuestions().then(result => console.log(result.data))
-    // }
+    componentDidMount() {
+        questionService.getQuestions()
+            .then(result => this.props.QuestionStore.addQuestion(result))
+    }
     render(){
         return 1
     }
