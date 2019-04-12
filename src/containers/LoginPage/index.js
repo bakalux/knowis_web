@@ -25,7 +25,7 @@ class LoginPage extends Component {
         e.preventDefault();
     };
 
-    onChange = e =>{
+    onChange = (e) =>{
         const {name, value} = e.target;
         this[name] = value;
     };
