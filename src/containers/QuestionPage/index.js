@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import QuestionService from '../../services/QuestionService';
-import {Container, Header} from 'semantic-ui-react'
+import {Container, Header, Segment, Button, Divider, Label} from 'semantic-ui-react'
+import styles from './styles.module.scss';
+
 
 const questionService = new QuestionService();
 
@@ -23,10 +25,25 @@ class QuestionPage extends Component {
         return (
                 QuestionStore.questions.map(question => (
                     question.results.map(item => (
-                        <Container fluid>
-                            <Header as='h2'>{item.title}</Header>
-                            <p>{item.content}</p>
-                        </Container>
+                        <Segment className={styles.box} vertical>
+                            <Container text>
+                                <Header as='h3' className={styles.headerTitle}>{item.title}</Header>
+                                <p className={styles.content}>{item.content}</p>
+                                <Button as='a' color='yellow' size='mini'>Больше</Button>
+                            </Container>
+                            <Divider className='header' horizontal>
+                                <p>{item.get_tags.map(
+                                    tag => (
+                                        <a href={tag}>
+                                            <Label as='a' color='blue'>
+                                                {tag}
+                                            </Label>
+                                        </a>
+                                    )
+                                )}</p>
+
+                            </Divider>
+                        </Segment>
                     ))
                 ))
         );
