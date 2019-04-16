@@ -57,7 +57,7 @@ class LoginPage extends Component {
                 <Grid.Column>
                     <div className={styles.googleButton}>
                     <Button color='google plus'>
-                        <Icon name='google plus' /> Увійти за допомогою Google
+                        <Icon name='google plus' /> Увійти за допомогою Google &nbsp; &nbsp; &nbsp;
                     </Button>
                     </div>
                     <div className={styles.facebookButton}>
