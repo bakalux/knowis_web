@@ -1,39 +1,8 @@
-import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
-import QuestionService from '../../services/QuestionService';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import {Container, Header, Segment, Button, Divider, Label} from 'semantic-ui-react'
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
+import {Button, Container, Header, Label, Segment} from "semantic-ui-react";
+import React from "react";
 
-
-const questionService = new QuestionService();
-
-@inject('QuestionStore')
-@observer
-class QuestionPage extends Component {
-    constructor(props) {
-        super(props);
-        this.nextPage = this.nextPage.bind(this)
-    }
-
-    componentDidMount() {
-        questionService.getQuestions()
-            .then(result => this.props.QuestionStore.addQuestion(result))
-            .catch(err => console.log(err));
-    };
-
-    nextPage() {
-        this.props.QuestionStore.questions.map(question => (
-            this.props.QuestionStore.addNextPageURL(question.next)));
-        questionService.getQuestionsByURL(this.props.QuestionStore.pageUrl)
-            .then(result => this.props.QuestionStore.addQuestion(result))
-            .catch(err => console.log(err));
-    };
-
-    render() {
-        const {QuestionStore} = this.props;
-        return (
-            <div>
+<div>
             <div>
                 {QuestionStore.questions.map(question => (
                     question.results.map(item => (
@@ -63,7 +32,3 @@ class QuestionPage extends Component {
             </div>
                 <Button onClick={this.nextPage}>Ще</Button>
             </div>
-        );
-    }
-}
-export default QuestionPage;

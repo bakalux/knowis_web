@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './styles.module.scss';
 import {inject, observer} from 'mobx-react';
-import {Button, Icon, Container, Divider, Form, Grid, Header, Image, Segment} from 'semantic-ui-react'
+import {Button, Icon, Container, Divider, Form, Grid, Header, Image, Segment, Message} from 'semantic-ui-react'
 import AuthService from '../../services/AuthService';
 
 const authService = new AuthService();
@@ -35,11 +35,13 @@ class LoginPage extends Component {
         return (
             <div className='login-form'>
                 <Container>
+                    <Message attached>
                     <Header as ='h2' color='orange' textAlign='center'>
                         <Image src='https://i1.wp.com/frenky.id/wp-content/uploads/2018/02/doge-icon.png?ssl=1'/>
                         Увійти до аккаунту
                     </Header>
-                    <Segment>
+                    </Message>
+                    <Segment attached>
             <Grid columns = {2} textAlign='center' verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450}}>
                     <Form onSubmit={e => this.handleSubmit(e)}>
