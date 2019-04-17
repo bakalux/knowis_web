@@ -23,11 +23,9 @@ class QuestionPage extends Component {
         const {QuestionStore} = this.props;
 
         return (
-            <div>
-                <div>
-                {QuestionStore.questions.map(question => (
+                QuestionStore.questions.map(question => (
                     question.results.map(item => (
-                        <Segment className={styles.box}  >
+                        <Segment className={styles.box} raised>
                             <Container text>
                                 <Header as='h3' className={styles.headerTitle}>{item.title}</Header>
                                 <p className={styles.content}>{item.content}</p>
@@ -46,12 +44,7 @@ class QuestionPage extends Component {
                             </Divider>
                         </Segment>
                     ))
-                ))}
-                </div>
-                <div>
-                    <Button>Hello</Button>
-                </div>
-            </div>
+                ))
         );
     }
 }
