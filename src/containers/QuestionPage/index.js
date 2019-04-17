@@ -29,13 +29,6 @@ class QuestionPage extends Component {
             .catch(err => console.log(err));
     };
 
-    handleScroll = (e) => {
-        const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
-        if (bottom) {
-            this.nextPage()
-        }
-    };
-
     render() {
         const {QuestionStore} = this.props;
         return (
@@ -67,7 +60,9 @@ class QuestionPage extends Component {
                 ))
                 }
             </div>
-                <div onScroll={this.handleScroll}></div>
+                <Segment textAlign='center'>
+                <Button color='olive' onClick={this.nextPage}>Завантажити наступні 10 питань...</Button>
+                </Segment>
             </div>
         );
     }
