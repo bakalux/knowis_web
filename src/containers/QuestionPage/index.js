@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import QuestionService from '../../services/QuestionService';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import {Container, Header, Segment, Button, Divider, Label} from 'semantic-ui-react'
 import styles from './styles.module.scss';
 
@@ -13,7 +12,7 @@ const questionService = new QuestionService();
 class QuestionPage extends Component {
     constructor(props) {
         super(props);
-        this.nextPage = this.nextPage.bind(this)
+        this.nextPage = this.nextPage.bind(this);
     }
 
     componentDidMount() {
@@ -28,6 +27,13 @@ class QuestionPage extends Component {
         questionService.getQuestionsByURL(this.props.QuestionStore.pageUrl)
             .then(result => this.props.QuestionStore.addQuestion(result))
             .catch(err => console.log(err));
+    };
+
+    handleScroll = (e) => {
+        const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+        if (bottom) {
+            this.nextPage()
+        }
     };
 
     render() {
@@ -61,7 +67,7 @@ class QuestionPage extends Component {
                 ))
                 }
             </div>
-                <Button onClick={this.nextPage}>Ще</Button>
+                <div onScroll={this.handleScroll}></div>
             </div>
         );
     }
