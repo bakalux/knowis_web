@@ -1,0 +1,22 @@
+body {
+  background-image: url('');
+	>div {
+		height: 50%;
+		>div {
+			height: 50%;
+			>div.login-form {
+				height: 50%;
+			}
+		}
+	}
+}
+
+
+.facebookButton {
+  padding-top: 10px;
+  padding-left: 100px;
+}
+
+.googleButton {
+  padding-left: 100px;
+}

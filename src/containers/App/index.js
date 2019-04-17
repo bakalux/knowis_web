@@ -1,13 +1,16 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
+import {BrowserRouter, Route, Switch, Redirect, Link} from "react-router-dom";
 import  LoginPage from "../LoginPage"
 import QuestionPage from "../QuestionPage"
 import {Provider} from 'mobx-react';
 import AuthStore from '../../stores/AuthStore';
 import QuestionStore from '../../stores/QuestionStore';
+import nav from '../../components/common/nav';
+
 
 const App = () => (
   <BrowserRouter>
+      <div>{nav()}</div>
       <Provider AuthStore={AuthStore}>
       <Switch>
           <Route path='/login' component={LoginPage} />

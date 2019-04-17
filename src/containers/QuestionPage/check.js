@@ -1,51 +1,34 @@
-import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
-import QuestionService from '../../services/QuestionService';
-import {Container, Header, Segment, Button, Divider, Label} from 'semantic-ui-react'
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
+import {Button, Container, Header, Label, Segment} from "semantic-ui-react";
+import React from "react";
 
-
-const questionService = new QuestionService();
-
-@inject('QuestionStore')
-@observer
-class QuestionPage extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount() {
-        questionService.getQuestions()
-            .then(result => this.props.QuestionStore.addQuestion(result))
-    }
-
-    render() {
-        const {QuestionStore} = this.props;
-
-        return (
-                QuestionStore.questions.map(question => (
+<div>
+            <div>
+                {QuestionStore.questions.map(question => (
                     question.results.map(item => (
-                        <Segment className={styles.box} raised>
+                        <div className={styles.box} vertical>
                             <Container text>
+                                <Segment>
                                 <Header as='h3' className={styles.headerTitle}>{item.title}</Header>
                                 <p className={styles.content}>{item.content}</p>
                                 <Button as='a' color='yellow' size='mini'>Перейти до питання</Button>
-                            </Container>
-                            <Divider className='header' horizontal>
-                                <p>{item.get_tags.map(
+                                <div className={styles.tags}>{item.get_tags.map(
                                     tag => (
                                         <a href={tag}>
-                                            <Label as='a' color='blue'>
+                                            <Label as='a' color='brown' image>
+                                                <img src='https://static.thenounproject.com/png/99472-200.png' />
                                                 {tag}
                                             </Label>
+                                            <span>&nbsp;</span>
                                         </a>
                                     )
-                                )}</p>
-                            </Divider>
-                        </Segment>
+                                )}</div>
+                                </Segment>
+                                </Container>
+                        </div>
                     ))
                 ))
-        );
-    }
-}
-export default QuestionPage;
+                }
+            </div>
+                <Button onClick={this.nextPage}>Ще</Button>
+            </div>
