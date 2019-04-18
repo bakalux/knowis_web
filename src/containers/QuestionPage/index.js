@@ -41,9 +41,10 @@ class QuestionPage extends Component {
                                 <Segment>
                                     <Grid celled='internally' columns='equal'>
                                         <Grid.Row>
-                                            <Grid.Column width={4}>
+                                            <Grid.Column width={5} >
                                                 <Image src={item.image}/>
                                                 <div className={styles.tags}>
+                                                    Теги:
                                                     {item.get_tags.map(
                                                         tag => (
                                                             <div className={styles.innerTags}>
@@ -62,9 +63,8 @@ class QuestionPage extends Component {
                                                 <p className={styles.content}>{item.content}</p>
                                             </Grid.Column>
                                         </Grid.Row>
-                                        <Grid.Row>
-                                            <Grid.Column width={10}>
-                                                <div className={styles.button}>
+                                        <Grid.Row >
+                                            <Grid.Column width={5} >
                                                 <Button as='div' labelPosition='left' size='mini'>
                                                         <Label as='a' basic color='red'>
                                                             2048
@@ -81,7 +81,11 @@ class QuestionPage extends Component {
                                                         <Icon name='comment' />
                                                     </Button>
                                                 </Button>
-                                                </div>
+                                                    <Button size='mini' color='green' content='green' >Перейти до питання</Button>
+                                            </Grid.Column>
+                                            <Grid.Column width={10}>
+                                                Автор: {item.username}
+                                                Дата: {item.create_date}
                                             </Grid.Column>
                                         </Grid.Row>
                                     </Grid>
