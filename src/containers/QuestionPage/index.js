@@ -29,12 +29,7 @@ class QuestionPage extends Component {
             .catch(err => console.log(err));
     };
 
-    handleScroll = (e) => {
-        const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
-        if (bottom) {
-            this.nextPage()
-        }
-    };
+
 
     render() {
         const {QuestionStore} = this.props;
