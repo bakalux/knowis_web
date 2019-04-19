@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import QuestionService from '../../services/QuestionService';
-import {Container, Header, Segment, Button, Divider, Label} from 'semantic-ui-react'
+import {Container, Header, Segment, Button, Icon, Grid, Image, Label} from 'semantic-ui-react'
 import styles from './styles.module.scss';
 
 
@@ -29,8 +29,6 @@ class QuestionPage extends Component {
             .catch(err => console.log(err));
     };
 
-
-
     render() {
         const {QuestionStore} = this.props;
         return (
@@ -38,23 +36,59 @@ class QuestionPage extends Component {
             <div>
                 {QuestionStore.questions.map(question => (
                     question.results.map(item => (
-                        <div className={styles.box} vertical>
+                        <div className={styles.box} >
                             <Container text>
                                 <Segment>
-                                <Header as='h3' className={styles.headerTitle}>{item.title}</Header>
-                                <p className={styles.content}>{item.content}</p>
-                                <Button as='a' color='yellow' size='mini'>Перейти до питання</Button>
-                                <div className={styles.tags}>{item.get_tags.map(
-                                    tag => (
-                                        <a href={tag}>
-                                            <Label as='a' color='brown' image>
-                                                <img src='https://static.thenounproject.com/png/99472-200.png' />
-                                                {tag}
-                                            </Label>
-                                            <span>&nbsp;</span>
-                                        </a>
-                                    )
-                                )}</div>
+                                    <Grid celled='internally' columns='equal'>
+                                        <Grid.Row>
+                                            <Grid.Column width={5} >
+                                                <Image src={item.image}/>
+                                                <div className={styles.tags}>
+                                                    Теги:
+                                                    {item.get_tags.map(
+                                                        tag => (
+                                                            <div className={styles.innerTags}>
+                                                            <a href={tag}>
+                                                                <Label as='a' color='brown' image>
+                                                                    <img src='https://static.thenounproject.com/png/99472-200.png' />
+                                                                    {tag}
+                                                                </Label>
+                                                            </a>
+                                                            </div>
+                                                        )
+                                                    )}
+                                                </div>
+                                            </Grid.Column>
+                                            <Grid.Column width={10}>
+                                                <p className={styles.content}>{item.content}</p>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row >
+                                            <Grid.Column width={5} >
+                                                <Button as='div' labelPosition='left' size='mini'>
+                                                        <Label as='a' basic color='red'>
+                                                            2048
+                                                        </Label>
+                                                    <Button icon size='mini' color='red'>
+                                                        <Icon name='like' />
+                                                    </Button>
+                                                </Button>
+                                                <Button as='div' labelPosition='left' size='mini'>
+                                                    <Label as='a' basic color='blue' >
+                                                        2048
+                                                    </Label>
+                                                    <Button icon size='mini' color='blue'>
+                                                        <Icon name='comment' />
+                                                    </Button>
+                                                </Button>
+                                                    <Button size='mini' color='green' content='green' >Перейти до питання</Button>
+                                            </Grid.Column>
+                                            <Grid.Column width={10}>
+                                                Автор: {item.username}
+                                                Дата: {item.create_date}
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                    </Grid>
                                 </Segment>
                                 </Container>
                         </div>
@@ -62,7 +96,9 @@ class QuestionPage extends Component {
                 ))
                 }
             </div>
-                <div onScroll={this.handleScroll}></div>
+                <Segment textAlign='center'>
+                <Button color='olive' onClick={this.nextPage}>Завантажити наступні 10 питань...</Button>
+                </Segment>
             </div>
         );
     }

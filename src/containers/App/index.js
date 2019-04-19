@@ -5,22 +5,21 @@ import QuestionPage from "../QuestionPage"
 import {Provider} from 'mobx-react';
 import AuthStore from '../../stores/AuthStore';
 import QuestionStore from '../../stores/QuestionStore';
-import nav from '../../components/common/nav';
+import NavBar from '../../components/common/nav'
 
 
 const App = () => (
   <BrowserRouter>
-      <div>{nav()}</div>
       <Provider AuthStore={AuthStore}>
-      <Switch>
-          <Route path='/login' component={LoginPage} />
-          {/*<Redirect from='/' to='/login'/>*/}
-      </Switch>
+          <Switch>
+              <Route exact path='/(login)' component={LoginPage}/>
+              { (AuthStore.navbar) ? null : <NavBar /> }
+          </Switch>
       </Provider>
       <Provider QuestionStore={QuestionStore}>
-      <Switch>
-          <Route path='/questions' component={QuestionPage} />
-      </Switch>
+          <Switch>
+              <Route path='/questions' component={QuestionPage}/>
+          </Switch>
       </Provider>
   </BrowserRouter>
 );

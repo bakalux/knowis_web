@@ -2,7 +2,10 @@ import styles from "./styles.module.scss";
 import {Button, Container, Header, Label, Segment} from "semantic-ui-react";
 import React from "react";
 
-<div>
+render() {
+        const {QuestionStore} = this.props;
+        return (
+            <div>
             <div>
                 {QuestionStore.questions.map(question => (
                     question.results.map(item => (
@@ -16,10 +19,9 @@ import React from "react";
                                     tag => (
                                         <a href={tag}>
                                             <Label as='a' color='brown' image>
-                                                <img src='https://static.thenounproject.com/png/99472-200.png' />
-                                                {tag}
+
                                             </Label>
-                                            <span>&nbsp;</span>
+
                                         </a>
                                     )
                                 )}</div>
@@ -30,5 +32,9 @@ import React from "react";
                 ))
                 }
             </div>
-                <Button onClick={this.nextPage}>Ще</Button>
+                <Segment textAlign='center'>
+                <Button color='olive' onClick={this.nextPage}>Завантажити наступні 10 питань...</Button>
+                </Segment>
             </div>
+        );
+    }

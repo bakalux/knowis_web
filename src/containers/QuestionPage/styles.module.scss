@@ -7,8 +7,16 @@
 }
 
 .tags {
-  padding-top: 15px;
+  padding-top: 30px;
+  .innerTags {
+    padding-top: 5px;
+  }
 }
+
 .box {
   padding-top: 30px;
+}
+
+.button {
+  padding-top: 5px;
 }

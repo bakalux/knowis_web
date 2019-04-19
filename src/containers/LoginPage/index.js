@@ -25,6 +25,10 @@ class LoginPage extends Component {
         e.preventDefault();
     };
 
+    componentDidMount() {
+        this.props.AuthStore.hideNavBar();
+    };
+
     onChange = (e) =>{
         const {name, value} = e.target;
         this[name] = value;
