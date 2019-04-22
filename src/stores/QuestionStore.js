@@ -8,6 +8,7 @@ class QuestionStore {
     @observable questions = [];
     @observable nextPageURL = [];
     @observable isLoading = false;
+    @observable inProgress = false;
 
     @action addQuestion = (question) => {
         this.questions.push(question);
@@ -39,6 +40,7 @@ class QuestionStore {
     }
 
     @action nextPage() {
+        this.inProgress = true;
         this.questions.map(question => (
             this.addNextPageURL(question.next)
         ));
@@ -48,7 +50,8 @@ class QuestionStore {
             }
         })
             .then(result => this.addQuestion(result))
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
+            .finally(action(() => {this.inProgress = false;}))
     };
 }
 

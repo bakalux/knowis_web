@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import QuestionService from '../../services/QuestionService';
-import {Container, Header, Segment, Button, Icon, Grid, Image, Label} from 'semantic-ui-react'
+import {Container, Header, Loader, Segment, Button, Icon, Grid, Image, Label} from 'semantic-ui-react'
 import styles from './styles.module.scss';
 
 
@@ -19,15 +19,15 @@ class QuestionPage extends Component {
     };
 
     render() {
-        const {questions} = this.props.QuestionStore;
+        const {questions, isLoading, inProgress} = this.props.QuestionStore;
         return (
-            <div>
-            <div className={styles.getHigher}>
+            isLoading ? <Loader active size='large'>Завантаження</Loader>: <div>
+            <div >
                 {questions.map(question => (
                     question.results.map(item => (
                         <div className={styles.box} >
-                            <Container text>
-                                <Segment>
+                            <Container text loading>
+                                <Segment >
                                     <Grid celled='internally' columns='equal'>
                                         <Grid.Row>
                                             <Grid.Column width={5} >
@@ -93,9 +93,10 @@ class QuestionPage extends Component {
                 }
             </div>
                 <Segment textAlign='center'>
-                <Button color='olive' onClick={this.handleNextPage}>Завантажити наступні питання...</Button>
+                <Button loading={inProgress} color='olive' onClick={this.handleNextPage}>Завантажити наступні питання...</Button>
                 </Segment>
             </div>
+
         );
     }
 }
