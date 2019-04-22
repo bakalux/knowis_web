@@ -9,7 +9,7 @@ class LoginPage extends Component {
 
     handleEmailChange = e => this.props.AuthStore.setEmail(e.target.value)
     handlePasswordChange = e => this.props.AuthStore.setPassword1(e.target.value)
-    handleSumbitForm = (e) => {
+    handleSubmitForm = (e) => {
         e.preventDefault();
         this.props.AuthStore.login()
     };
@@ -32,7 +32,7 @@ class LoginPage extends Component {
                     <Segment attached>
             <Grid columns = {2} textAlign='center' verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450}}>
-                    <Form onSubmit={this.handleSumbitForm}>
+                    <Form onSubmit={this.handleSubmitForm}>
                         <Form.Input
                                 name='username' onChange={this.handleEmailChange} value={values.email}
                                 icon='user' iconPosition='left' label='E-mail' placeholder='E-mail'
