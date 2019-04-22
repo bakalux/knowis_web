@@ -9,18 +9,16 @@ import NavBar from '../../components/common/nav'
 
 
 const App = () => (
-  <BrowserRouter>
-      <Provider AuthStore={AuthStore}>
-          <Switch>
-              <Route exact path='/(login)' component={LoginPage}/>
-              { (AuthStore.navbar) ? null : <NavBar /> }
-          </Switch>
-      </Provider>
-      <Provider QuestionStore={QuestionStore}>
-          <Switch>
-              <Route path='/questions' component={QuestionPage}/>
-          </Switch>
-      </Provider>
+    <BrowserRouter>
+    <Provider AuthStore={AuthStore}>
+        <Provider QuestionStore={QuestionStore}>
+            <Switch>
+                <Route exact path='/(login)' component={LoginPage}/>
+                {/*{ (AuthStore.navbar) ? null : <NavBar /> }*/}
+                <Route path='/questions' component={QuestionPage}/>
+            </Switch>
+        </Provider>
+    </Provider>
   </BrowserRouter>
 );
 

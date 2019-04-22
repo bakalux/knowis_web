@@ -1,20 +1,41 @@
-import {observable, action, computed} from "mobx";
+import {observable, action, computed, reaction} from "mobx";
 
 class AuthStore {
-    @observable usertoken = [];
+    @observable inProgress = false;
+    @observable errors = undefined;
+    @observable token = window.localStorage.getItem('jwt');
     @observable navbar = null;
+    @observable isLogged = false;
 
-    @action getToken = (user) => {
-        this.usertoken.push(user)
-    };
+    constructor() {
+        reaction(
+            () => this.token,
+            token=> {
+                if (token) {
+                    window.localStorage.setItem('jwt', token);
+                } else {
+                    window.localStorage.removeItem('jwt');
+                }
+            }
+        );
+    }
+
+    @action setToken(token) {
+    this.token = token;
+    }
+
+    @computed get userToken() {
+        return this.token
+    }
 
     @action hideNavBar() {
         this.navbar = true;
     }
 
-    @computed get userToken() {
-        return this.usertoken[-1]
-    };
+    @action logout () {
+        this.token = undefined
+    }
+
 }
 
 const store = new AuthStore();

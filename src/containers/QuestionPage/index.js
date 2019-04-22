@@ -7,6 +7,7 @@ import styles from './styles.module.scss';
 
 const questionService = new QuestionService();
 
+@inject('AuthStore')
 @inject('QuestionStore')
 @observer
 class QuestionPage extends Component {
@@ -16,7 +17,11 @@ class QuestionPage extends Component {
     }
 
     componentDidMount() {
-        questionService.getQuestions()
+        questionService.getQuestions({
+            headers: {
+                "Authorization": this.props.AuthStore.token
+            }
+        })
             .then(result => this.props.QuestionStore.addQuestion(result))
             .catch(err => console.log(err));
     };
@@ -24,7 +29,11 @@ class QuestionPage extends Component {
     nextPage() {
         this.props.QuestionStore.questions.map(question => (
             this.props.QuestionStore.addNextPageURL(question.next)));
-        questionService.getQuestionsByURL(this.props.QuestionStore.pageUrl)
+        questionService.getQuestionsByURL(this.props.QuestionStore.pageUrl, {
+            headers: {
+                "Authorization": this.props.AuthStore.token
+            }
+        })
             .then(result => this.props.QuestionStore.addQuestion(result))
             .catch(err => console.log(err));
     };
@@ -33,7 +42,7 @@ class QuestionPage extends Component {
         const {QuestionStore} = this.props;
         return (
             <div>
-            <div>
+            <div className={styles.getHigher}>
                 {QuestionStore.questions.map(question => (
                     question.results.map(item => (
                         <div className={styles.box} >
@@ -60,11 +69,13 @@ class QuestionPage extends Component {
                                                 </div>
                                             </Grid.Column>
                                             <Grid.Column width={10}>
+                                                <Header as='h3' className={styles.headerTitle}>{item.title}</Header>
                                                 <p className={styles.content}>{item.content}</p>
                                             </Grid.Column>
                                         </Grid.Row>
                                         <Grid.Row >
-                                            <Grid.Column width={5} >
+                                            <Grid.Column width={5}>
+                                                <div className={styles.innerButton}>
                                                 <Button as='div' labelPosition='left' size='mini'>
                                                         <Label as='a' basic color='red'>
                                                             2048
@@ -73,6 +84,8 @@ class QuestionPage extends Component {
                                                         <Icon name='like' />
                                                     </Button>
                                                 </Button>
+                                                </div>
+                                                <div className={styles.innerButton}>
                                                 <Button as='div' labelPosition='left' size='mini'>
                                                     <Label as='a' basic color='blue' >
                                                         2048
@@ -81,7 +94,10 @@ class QuestionPage extends Component {
                                                         <Icon name='comment' />
                                                     </Button>
                                                 </Button>
-                                                    <Button size='mini' color='green' content='green' >Перейти до питання</Button>
+                                                </div>
+                                                <div className={styles.innerButton}>
+                                                    <Button size='mini' color='green' content='green'>Перейти до питання</Button>
+                                                </div>
                                             </Grid.Column>
                                             <Grid.Column width={10}>
                                                 Автор: {item.username}

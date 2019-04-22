@@ -2,7 +2,7 @@ import axios from 'axios/index';
 
 
 
-const API_URL = '127.0.0.1:8000'
+const API_URL = 'https://peaceful-ocean-66963.herokuapp.com'
 
 export default class AuthService {
     constructor() {

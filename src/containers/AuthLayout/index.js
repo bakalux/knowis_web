@@ -25,7 +25,7 @@ class LoginPage extends Component {
         password2: this.refs.password2.value
       })
       .then(result => {
-        this.props.AuthStore.addUser(result.data);
+        this.props.AuthStore.setToken(result.data);
       })
       .catch(error => {
         console.log(error.response);

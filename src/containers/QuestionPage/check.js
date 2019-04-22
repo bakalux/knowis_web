@@ -6,7 +6,6 @@ render() {
         const {QuestionStore} = this.props;
         return (
             <div>
-            <div>
                 {QuestionStore.questions.map(question => (
                     question.results.map(item => (
                         <div className={styles.box} vertical>
@@ -31,7 +30,6 @@ render() {
                     ))
                 ))
                 }
-            </div>
                 <Segment textAlign='center'>
                 <Button color='olive' onClick={this.nextPage}>Завантажити наступні 10 питань...</Button>
                 </Segment>

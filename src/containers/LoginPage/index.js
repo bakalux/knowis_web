@@ -20,7 +20,7 @@ class LoginPage extends Component {
         authService.postLogin({
             email: username,
             password: password
-        }).then(result => this.props.AuthStore.getToken(result.data.token))
+        }).then(result => this.props.AuthStore.setToken(result.data.token))
             .catch(error=> console.log(error));
         e.preventDefault();
     };
@@ -28,6 +28,10 @@ class LoginPage extends Component {
     componentDidMount() {
         this.props.AuthStore.hideNavBar();
     };
+
+    componentWillMount() {
+        this.props.AuthStore.reset()
+    }
 
     onChange = (e) =>{
         const {name, value} = e.target;
