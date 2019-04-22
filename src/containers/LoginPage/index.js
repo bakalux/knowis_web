@@ -3,6 +3,7 @@ import styles from './styles.module.scss';
 import {inject, observer} from 'mobx-react';
 import {Button, Icon, Container, Divider, Form, Grid, Header, Image, Segment, Message} from 'semantic-ui-react'
 
+
 @inject('AuthStore')
 @observer
 class LoginPage extends Component {
@@ -32,14 +33,19 @@ class LoginPage extends Component {
                     <Segment attached>
             <Grid columns = {2} textAlign='center' verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450}}>
-                    <Form onSubmit={this.handleSubmitForm}>
+                    <Form error={errors} onSubmit={this.handleSubmitForm}>
                         <Form.Input
                                 name='username' onChange={this.handleEmailChange} value={values.email}
-                                icon='user' iconPosition='left' label='E-mail' placeholder='E-mail'
+                                icon='user' iconPosition='left' label='E-mail' placeholder='E-mail' type='email'
                         />
                         <Form.Input
                                 name='password' onChange={this.handlePasswordChange} value={values.password1}
                                 icon='lock' iconPosition='left' label='Пароль' type='password' placeholder='Пароль'
+                        />
+                        <Message
+                            error
+                            header='Помилка'
+                            content='Деталі для входу не вірні або аккаунт не зареєстровано'
                         />
                         <Button disabled={inProgress} content='Увійти' color='orange' fluid size='large'/>
                     </Form>
