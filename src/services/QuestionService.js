@@ -9,12 +9,12 @@ export default class QuestionService {
 
   };
 
-  getQuestions = (data) => {
+  getQuestions = (token) => {
     const url = `${API_URL}/api/questions`;
-    return axios.get(url, data).then(response => response.data);
+    return axios.get(url, token).then(response => response.data);
   };
 
-  getQuestionsByURL = (url, data) => {
-    return axios.get(url, data).then(response => response.data);
+  getQuestionsByURL = (url, token) => {
+    return axios.get(url, token).then(response => response.data);
   };
 }

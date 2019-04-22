@@ -7,43 +7,23 @@ import styles from './styles.module.scss';
 
 const questionService = new QuestionService();
 
-@inject('AuthStore')
+
 @inject('QuestionStore')
 @observer
 class QuestionPage extends Component {
-    constructor(props) {
-        super(props);
-        this.nextPage = this.nextPage.bind(this);
-    }
+
+    handleNextPage = e => this.props.QuestionStore.nextPage();
 
     componentDidMount() {
-        questionService.getQuestions({
-            headers: {
-                "Authorization": this.props.AuthStore.token
-            }
-        })
-            .then(result => this.props.QuestionStore.addQuestion(result))
-            .catch(err => console.log(err));
-    };
-
-    nextPage() {
-        this.props.QuestionStore.questions.map(question => (
-            this.props.QuestionStore.addNextPageURL(question.next)));
-        questionService.getQuestionsByURL(this.props.QuestionStore.pageUrl, {
-            headers: {
-                "Authorization": this.props.AuthStore.token
-            }
-        })
-            .then(result => this.props.QuestionStore.addQuestion(result))
-            .catch(err => console.log(err));
+        this.props.QuestionStore.loadQuestions();
     };
 
     render() {
-        const {QuestionStore} = this.props;
+        const {questions} = this.props.QuestionStore;
         return (
             <div>
             <div className={styles.getHigher}>
-                {QuestionStore.questions.map(question => (
+                {questions.map(question => (
                     question.results.map(item => (
                         <div className={styles.box} >
                             <Container text>
@@ -113,7 +93,7 @@ class QuestionPage extends Component {
                 }
             </div>
                 <Segment textAlign='center'>
-                <Button color='olive' onClick={this.nextPage}>Завантажити наступні 10 питань...</Button>
+                <Button color='olive' onClick={this.handleNextPage}>Завантажити наступні питання...</Button>
                 </Segment>
             </div>
         );
