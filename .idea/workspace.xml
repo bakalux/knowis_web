@@ -3,16 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d49e6282-0ca1-47a9-953f-1ae86f8b3e20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/App/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/App/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App/test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/AuthLayout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AuthLayout/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/LoginPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/LoginPage/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/QuestionPage/check.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/QuestionPage/check.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/QuestionPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/QuestionPage/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/QuestionPage/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/QuestionPage/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/AuthService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/QuestionService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/QuestionService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/stores/AuthStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/AuthStore.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,19 +29,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/services/AuthService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="32" selection-start-column="32" selection-end-column="32" />
+            <state relative-caret-position="170">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/containers/LoginPage/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="47" column="57" lean-forward="true" selection-start-line="47" selection-start-column="57" selection-end-line="47" selection-end-column="57" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/LoginPage/index.js">
+        <entry file="file://$PROJECT_DIR$/src/stores/AuthStore.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-153">
-              <caret line="27" column="25" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+            <state relative-caret-position="201">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
-                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#0#60#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/stores/AuthStore.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/stores/CommonStore.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+            <state relative-caret-position="476">
+              <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -149,18 +152,18 @@
         <option value="$PROJECT_DIR$/src/containers/components/common/base.js" />
         <option value="$PROJECT_DIR$/src/components/common/nav.js" />
         <option value="$PROJECT_DIR$/src/containers/App/test.js" />
-        <option value="$PROJECT_DIR$/src/services/AuthService.js" />
         <option value="$PROJECT_DIR$/src/services/QuestionService.js" />
         <option value="$PROJECT_DIR$/src/containers/QuestionPage/check.js" />
         <option value="$PROJECT_DIR$/src/containers/App/index.js" />
         <option value="$PROJECT_DIR$/src/stores/QuestionStore.js" />
         <option value="$PROJECT_DIR$/src/stores/commonStore.js" />
-        <option value="$PROJECT_DIR$/src/stores/CommonStore.js" />
         <option value="$PROJECT_DIR$/src/containers/AuthLayout/index.js" />
         <option value="$PROJECT_DIR$/src/containers/QuestionPage/index.js" />
         <option value="$PROJECT_DIR$/src/containers/QuestionPage/styles.module.scss" />
-        <option value="$PROJECT_DIR$/src/containers/LoginPage/index.js" />
+        <option value="$PROJECT_DIR$/src/stores/CommonStore.js" />
+        <option value="$PROJECT_DIR$/src/services/AuthService.js" />
         <option value="$PROJECT_DIR$/src/stores/AuthStore.js" />
+        <option value="$PROJECT_DIR$/src/containers/LoginPage/index.js" />
       </list>
     </option>
   </component>
@@ -340,12 +343,12 @@
       <workItem from="1555617642299" duration="161000" />
       <workItem from="1555617863367" duration="5215000" />
       <workItem from="1555623251860" duration="3174000" />
-      <workItem from="1555930029077" duration="1893000" />
+      <workItem from="1555930029077" duration="3758000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156890000" />
+    <option name="totallyTimeSpent" value="158755000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
@@ -374,7 +377,7 @@
       <window_info anchor="right" id="Database" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16389728" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15601704" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -387,8 +390,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5021299" side_tool="true" weight="0.22508039" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4978701" visible="true" weight="0.22331691" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5026624" side_tool="true" weight="0.22079314" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49733758" visible="true" weight="0.22079314" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3290461" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -527,7 +530,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stores/CommonStore.js" />
     <entry file="file://$PROJECT_DIR$/yarn.lock">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="394">
@@ -546,13 +548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="4" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/QuestionPage/styles.module.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -583,16 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/LoginPage/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="27" column="25" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/App/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -605,8 +590,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/services/AuthService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="32" selection-start-column="32" selection-end-column="32" />
+        <state relative-caret-position="170">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stores/CommonStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/QuestionPage/styles.module.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -619,8 +618,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/stores/AuthStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        <state relative-caret-position="201">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/LoginPage/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="47" column="57" lean-forward="true" selection-start-line="47" selection-start-column="57" selection-end-line="47" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
