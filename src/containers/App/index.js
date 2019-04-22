@@ -3,10 +3,11 @@ import {Route, Switch} from "react-router-dom";
 import { inject, observer } from 'mobx-react';
 import  LoginPage from "../LoginPage"
 import QuestionPage from "../QuestionPage"
-import NavBar from '../../components/common/nav'
+import Header from "../Header"
 
 
 @inject('CommonStore')
+@inject('AuthStore')
 @observer
 class App extends React.Component{
 

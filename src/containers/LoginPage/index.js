@@ -19,6 +19,10 @@ class LoginPage extends Component {
         this.props.AuthStore.reset();
     }
 
+    componentDidMount() {
+        this.props.AuthStore.hideNavBar();
+    }
+
     render (){
         const {values, errors, inProgress} = this.props.AuthStore;
         return (
