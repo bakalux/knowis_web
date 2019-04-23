@@ -1,44 +1,33 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import QuestionService from '../../services/QuestionService';
-import {Container, Header, Segment, Button, Icon, Grid, Image, Label} from 'semantic-ui-react'
+import {Container, Header, Loader, Segment, Button, Icon, Grid, Image, Label} from 'semantic-ui-react'
 import styles from './styles.module.scss';
 
 
 const questionService = new QuestionService();
 
+
 @inject('QuestionStore')
 @observer
 class QuestionPage extends Component {
-    constructor(props) {
-        super(props);
-        this.nextPage = this.nextPage.bind(this);
-    }
+
+    handleNextPage = e => this.props.QuestionStore.nextPage();
 
     componentDidMount() {
-        questionService.getQuestions()
-            .then(result => this.props.QuestionStore.addQuestion(result))
-            .catch(err => console.log(err));
-    };
-
-    nextPage() {
-        this.props.QuestionStore.questions.map(question => (
-            this.props.QuestionStore.addNextPageURL(question.next)));
-        questionService.getQuestionsByURL(this.props.QuestionStore.pageUrl)
-            .then(result => this.props.QuestionStore.addQuestion(result))
-            .catch(err => console.log(err));
+        this.props.QuestionStore.loadQuestions();
     };
 
     render() {
-        const {QuestionStore} = this.props;
+        const {questions, isLoading, inProgress} = this.props.QuestionStore;
         return (
-            <div>
-            <div>
-                {QuestionStore.questions.map(question => (
+            isLoading ? <Loader active size='large'>Завантаження</Loader>: <div>
+            <div >
+                {questions.map(question => (
                     question.results.map(item => (
                         <div className={styles.box} >
-                            <Container text>
-                                <Segment>
+                            <Container text loading>
+                                <Segment >
                                     <Grid celled='internally' columns='equal'>
                                         <Grid.Row>
                                             <Grid.Column width={5} >
@@ -60,11 +49,13 @@ class QuestionPage extends Component {
                                                 </div>
                                             </Grid.Column>
                                             <Grid.Column width={10}>
+                                                <Header as='h3' className={styles.headerTitle}>{item.title}</Header>
                                                 <p className={styles.content}>{item.content}</p>
                                             </Grid.Column>
                                         </Grid.Row>
                                         <Grid.Row >
-                                            <Grid.Column width={5} >
+                                            <Grid.Column width={5}>
+                                                <div className={styles.innerButton}>
                                                 <Button as='div' labelPosition='left' size='mini'>
                                                         <Label as='a' basic color='red'>
                                                             2048
@@ -73,6 +64,8 @@ class QuestionPage extends Component {
                                                         <Icon name='like' />
                                                     </Button>
                                                 </Button>
+                                                </div>
+                                                <div className={styles.innerButton}>
                                                 <Button as='div' labelPosition='left' size='mini'>
                                                     <Label as='a' basic color='blue' >
                                                         2048
@@ -81,7 +74,10 @@ class QuestionPage extends Component {
                                                         <Icon name='comment' />
                                                     </Button>
                                                 </Button>
-                                                    <Button size='mini' color='green' content='green' >Перейти до питання</Button>
+                                                </div>
+                                                <div className={styles.innerButton}>
+                                                    <Button size='mini' color='green' content='green'>Перейти до питання</Button>
+                                                </div>
                                             </Grid.Column>
                                             <Grid.Column width={10}>
                                                 Автор: {item.username}
@@ -97,9 +93,10 @@ class QuestionPage extends Component {
                 }
             </div>
                 <Segment textAlign='center'>
-                <Button color='olive' onClick={this.nextPage}>Завантажити наступні 10 питань...</Button>
+                <Button loading={inProgress} color='olive' onClick={this.handleNextPage}>Завантажити наступні питання...</Button>
                 </Segment>
             </div>
+
         );
     }
 }
