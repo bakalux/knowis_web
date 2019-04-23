@@ -8,6 +8,7 @@ import Header from "../Header"
 
 @inject('CommonStore')
 @inject('AuthStore')
+@inject('UserStore')
 @observer
 class App extends React.Component{
 
@@ -17,18 +18,30 @@ class App extends React.Component{
         }
     }
 
-    render() {
-        return (
-            <div>
-                <Switch>
-                    <Route path='/login' component={LoginPage}/>
-                    <Route path='/questions' component={QuestionPage}/>
-                </Switch>
-            </div>
-        )
+    componentDidMount() {
+        if (this.props.CommonStore.token){
+            this.props.UserStore.pullUser()
+                .finally(() => this.props.CommonStore.setAppLoaded());
+        }
     }
 
+    render() {
+        if (this.props.CommonStore.appLoaded) {
 
+            return (
+                <div>
+                    <Header/>
+                    <Switch>
+                        <Route path='/login' component={LoginPage}/>
+                        <Route path='/questions' component={QuestionPage}/>
+                    </Switch>
+                </div>
+            )
+        }
+        return (
+            <Header/>
+        );
+    }
 }
 
 export default App;

@@ -30,7 +30,7 @@ class QuestionStore {
         this.isLoading = true;
         return questionService.getQuestions({
             headers: {
-                "Authorization": CommonStore.token
+                "Authorization": 'JWT ' + CommonStore.token
             }
         })
             .then(result => this.addQuestion(result))
@@ -46,7 +46,7 @@ class QuestionStore {
         ));
         questionService.getQuestionsByURL(this.pageUrl, {
             headers: {
-                "Authorization": CommonStore.token
+                "Authorization": 'JWT ' + CommonStore.token
             }
         })
             .then(result => this.addQuestion(result))

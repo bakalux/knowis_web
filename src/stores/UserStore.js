@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx';
 import UserAccountService from '../services/UserAccountService'
+import CommonStore from "./CommonStore";
 
 const userAccountService = new UserAccountService();
 
@@ -11,9 +12,13 @@ class UserStore {
 
     @action pullUser(){
         this.loadingUser = true;
-        return userAccountService.current()
+        return userAccountService.current({
+            headers: {
+                "Authorization": 'JWT ' + CommonStore.token
+            }
+        })
             .then(result => {
-                this.currentUser = result.data;
+                this.currentUser = result;
             })
             .finally(action(() => {this.loadingUser = false;}))
     }

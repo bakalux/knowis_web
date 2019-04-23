@@ -2,7 +2,7 @@ import axios from 'axios/index';
 
 
 
-const API_URL = 'https://peaceful-ocean-66963.herokuapp.com'
+const API_URL = 'https://peaceful-ocean-66963.herokuapp.com';
 
 export default class UserAccountService {
     constructor() {
