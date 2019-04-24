@@ -23,7 +23,7 @@ class UserStore {
             .finally(action(() => {this.loadingUser = false;}))
     }
 
-    @action forgetuser() {
+    @action forgetUser() {
         this.currentUser = undefined;
     }
 }

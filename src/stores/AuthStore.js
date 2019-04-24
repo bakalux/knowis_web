@@ -1,5 +1,6 @@
 import {observable, action, computed, reaction} from "mobx";
 import CommonStore from './CommonStore'
+import UserStore from './UserStore'
 import AuthService from '../services/AuthService'
 
 const authService = new AuthService();
@@ -59,6 +60,7 @@ class AuthStore {
 
     @action logout() {
         CommonStore.setToken(undefined);
+        UserStore.forgetUser();
         return Promise.resolve();
     }
 

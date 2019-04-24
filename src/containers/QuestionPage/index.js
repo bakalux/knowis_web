@@ -16,7 +16,7 @@ class QuestionPage extends Component {
     };
 
     render() {
-        const {questions, isLoading, inProgress} = this.props.QuestionStore;
+        const {questions, isLoading, inProgress, nextPageURL} = this.props.QuestionStore;
         return (
             isLoading ? <Loader active size='large'>Завантаження</Loader>: <div>
             <div >

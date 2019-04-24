@@ -7,6 +7,7 @@ import styles from './styles.module.scss';
 import KnowisSearch from '../../components/ui/search'
 
 
+
 const LoggedOutView = props => {
   if (!props.currentUser) {
     return (
@@ -61,11 +62,11 @@ const LoggedInView = props => {
                 <KnowisSearch/>
               </Menu.Item>
                 <Menu.Item>
-                  <Dropdown trigger={<Image size='mini' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwpQWxE15D-8dwBtVXemg_UPsThPSV9voiM3jWXmtXUN0PjC2Vag' />}>
+                  <Dropdown trigger={<Image size='mini' src={props.currentUser.map(item => (item.avatar))}/>}>
                     <Dropdown.Menu>
                       <Dropdown.Item icon='address card outline' text='Профіль'/>
                       <Dropdown.Divider />
-                      <Button>hey</Button>
+                      <Dropdown.Item icon='address card outline' text='Вийти' onChange={console.log(props.loadingUser)}/>
                     </Dropdown.Menu>
                   </Dropdown>
                 </Menu.Item>
@@ -85,7 +86,7 @@ const LoggedInView = props => {
 class Header extends Component {
   render() {
     return (
-        <nav className="navbar navbar-light">
+        <nav>
         <div className="container">
           <LoggedInView currentUser={this.props.UserStore.currentUser} />
           <LoggedOutView currentUser={this.props.UserStore.currentUser} />
