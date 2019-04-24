@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import QuestionService from '../../services/QuestionService';
-import {Container, Header, Loader, Segment, Button, Icon, Grid, Image, Label, List, Message} from 'semantic-ui-react'
+import {Container, Header, Loader, Segment, Button, Icon, Grid, Image, Label, List} from 'semantic-ui-react'
 import styles from './styles.module.scss';
 
 
@@ -24,7 +24,7 @@ class QuestionPage extends Component {
                     question.results.map(item => (
                         <div className={styles.box} >
                             <Container text loading key={item}>
-                                <Segment attached>
+                                <Segment >
                                     <Grid celled='internally' columns='equal'>
                                         <Grid.Row>
                                             <Grid.Column width={5} >
@@ -50,7 +50,7 @@ class QuestionPage extends Component {
                                                     <List.Item>
                                                          <Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png' />
                                                          <List.Content>
-                                                             <List.Header as='a' key={item.username}>{item.username}</List.Header>
+                                                             <List.Header as='a' key={item.create_user}>{item.create_user}</List.Header>
                                                              <List.Description key={item.create_date}>
                                                                  {item.create_date}
                                                              </List.Description>
@@ -61,27 +61,37 @@ class QuestionPage extends Component {
                                                 <p className={styles.content} key={item.content}>{item.content}</p>
                                             </Grid.Column>
                                         </Grid.Row>
+                                        <Grid.Row >
+                                            <Grid.Column width={5}>
+                                                <div className={styles.innerButton}>
+                                                <Button as='div' labelPosition='left' size='mini'>
+                                                        <Label as='a' basic color='red'>
+                                                            2048
+                                                        </Label>
+                                                    <Button icon size='mini' color='red'>
+                                                        <Icon name='like' />
+                                                    </Button>
+                                                </Button>
+                                                </div>
+                                                <div className={styles.innerButton}>
+                                                <Button as='div' labelPosition='left' size='mini'>
+                                                    <Label as='a' basic color='blue' >
+                                                        2048
+                                                    </Label>
+                                                    <Button icon size='mini' color='blue'>
+                                                        <Icon name='comment' />
+                                                    </Button>
+                                                </Button>
+                                                </div>
+                                                <div className={styles.innerButton}>
+                                                    <Button size='mini' color='green' content='green'>Перейти до питання</Button>
+                                                </div>
+                                            </Grid.Column>
+                                            <Grid.Column width={10}>
+                                            </Grid.Column>
+                                        </Grid.Row>
                                     </Grid>
                                 </Segment>
-                                <Message attached>
-                                    <Button as='div' labelPosition='left' size='mini'>
-                                        <Label as='a' basic color='red'>
-                                            2048
-                                        </Label>
-                                        <Button icon size='mini' color='red'>
-                                            <Icon name='like' />
-                                        </Button>
-                                    </Button>
-                                    <Button as='div' labelPosition='left' size='mini'>
-                                        <Label as='a' basic color='blue' >
-                                            2048
-                                        </Label>
-                                        <Button icon size='mini' color='blue'>
-                                            <Icon name='comment' />
-                                        </Button>
-                                    </Button>
-                                    <Button size='mini' color='green' content='green'>Перейти до питання</Button>
-                                </Message>
                                 </Container>
                         </div>
                     ))

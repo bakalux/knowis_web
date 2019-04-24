@@ -27,16 +27,15 @@ class App extends React.Component{
 
     render() {
         if (this.props.CommonStore.appLoaded) {
-
             return (
                 <div>
-                    <Header/>
+                    {(this.props.AuthStore.navbar) ? null : <Header/>}
                     <Switch>
                         <Route path='/login' component={LoginPage}/>
                         <Route path='/questions' component={QuestionPage}/>
                     </Switch>
                 </div>
-            )
+            );
         }
         return (
             <Header/>
