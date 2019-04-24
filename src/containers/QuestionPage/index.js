@@ -27,20 +27,14 @@ class QuestionPage extends Component {
                                 <Segment attached>
                                     <Grid celled='internally' columns='equal'>
                                         <Grid.Row>
-                                            <Grid.Column width={5} >
+                                            <Grid.Column width={5} key={item}>
                                                 <Image src={item.image}/>
                                                 <div className={styles.tags}>
-                                                    Теги:
                                                     {item.get_tags.map(
                                                         tag => (
-                                                            <div className={styles.innerTags}>
-                                                            <a href={tag} key={tag}>
-                                                                <Label as='a' color='brown' image key={tag}>
-                                                                    <img src='https://static.thenounproject.com/png/99472-200.png' />
-                                                                    {tag}
-                                                                </Label>
-                                                            </a>
-                                                            </div>
+                                                            <List key={tag}>
+                                                                <List.Item icon='github' content={tag}/>
+                                                            </List>
                                                         )
                                                     )}
                                                 </div>
@@ -63,25 +57,37 @@ class QuestionPage extends Component {
                                         </Grid.Row>
                                     </Grid>
                                 </Segment>
-                                <Message attached>
-                                    <Button as='div' labelPosition='left' size='mini'>
-                                        <Label as='a' basic color='red'>
-                                            2048
-                                        </Label>
-                                        <Button icon size='mini' color='red'>
-                                            <Icon name='like' />
-                                        </Button>
-                                    </Button>
-                                    <Button as='div' labelPosition='left' size='mini'>
-                                        <Label as='a' basic color='blue' >
-                                            2048
-                                        </Label>
-                                        <Button icon size='mini' color='blue'>
-                                            <Icon name='comment' />
-                                        </Button>
-                                    </Button>
-                                    <Button size='mini' color='green' content='green'>Перейти до питання</Button>
-                                </Message>
+                                <Segment attached >
+                                    <Grid>
+                                        <Grid.Row>
+                                            <Grid.Column width={7}>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;<Button as='div' labelPosition='left' size='mini'>
+                                                    <Label as='a' basic color='red'>
+                                                        2048
+                                                    </Label>
+                                                    <Button icon size='mini' color='red'>
+                                                        <Icon name='like' />
+                                                    </Button>
+                                                </Button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <Button as='div' labelPosition='left' size='mini' >
+                                                    <Label as='a' basic color='blue' >
+                                                        2048
+                                                    </Label>
+                                                    <Button icon size='mini' color='blue'>
+                                                        <Icon name='comment' />
+                                                    </Button>
+                                                </Button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </Grid.Column>
+                                            <Grid.Column width={5}>
+                                                <p>
+                                                </p>
+                                            </Grid.Column>
+                                            <Grid.Column width={4}>
+                                                <Button size='mini' color='green' content='green'>Перейти до питання</Button>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                    </Grid>
+                                </Segment>
                                 </Container>
                         </div>
                     ))

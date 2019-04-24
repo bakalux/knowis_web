@@ -65,7 +65,7 @@ const LoggedInView = props => {
                     <Dropdown.Menu>
                       <Dropdown.Item icon='address card outline' text='Профіль'/>
                       <Dropdown.Divider />
-                      <Dropdown.Item icon='fly' text='Вийти'/>
+                      <Button>hey</Button>
                     </Dropdown.Menu>
                   </Dropdown>
                 </Menu.Item>
@@ -81,7 +81,7 @@ const LoggedInView = props => {
 };
 
 
-@inject('UserStore', 'CommonStore')
+@inject('UserStore', 'CommonStore', 'AuthStore')
 class Header extends Component {
   render() {
     return (
