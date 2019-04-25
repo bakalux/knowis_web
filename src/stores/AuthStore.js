@@ -64,6 +64,21 @@ class AuthStore {
         return Promise.resolve();
     }
 
+    @action signup() {
+        this.inProgress = true;
+        this.errors = undefined;
+        return authService.postSignup({
+            username: this.values.username,
+            email: this.values.email,
+            password1: this.values.password1,
+            password2: this.values.password2
+        })
+            .then(result => CommonStore.setToken(result.data.token))
+            .catch(action((err) => {this.errors = err}))
+            .finally(action(() => {this.inProgress = false;}))
+
+    }
+
 
 
 }

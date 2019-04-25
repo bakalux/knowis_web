@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Menu, Button, Container, Image, Icon, Dropdown } from 'semantic-ui-react'
-import { inject, observer } from 'mobx-react';
-import QuestionPage from "../QuestionPage";
+import { inject} from 'mobx-react';
 import styles from './styles.module.scss';
 import KnowisSearch from '../../components/ui/search'
-
 
 
 const LoggedOutView = props => {
@@ -66,7 +64,7 @@ const LoggedInView = props => {
                     <Dropdown.Menu>
                       <Dropdown.Item icon='address card outline' text='Профіль'/>
                       <Dropdown.Divider />
-                      <Dropdown.Item icon='address card outline' text='Вийти' onChange={console.log(props.loadingUser)}/>
+                      <Dropdown.Item icon='address card outline' text='Вийти' onClick={() => props.AuthStore.logout().then(props.history.replace('/login'))}/>
                     </Dropdown.Menu>
                   </Dropdown>
                 </Menu.Item>
@@ -82,13 +80,15 @@ const LoggedInView = props => {
 };
 
 
-@inject('UserStore', 'CommonStore', 'AuthStore')
+@inject('UserStore', 'AuthStore')
+@withRouter
 class Header extends Component {
   render() {
     return (
         <nav>
         <div className="container">
-          <LoggedInView currentUser={this.props.UserStore.currentUser} />
+          <LoggedInView currentUser={this.props.UserStore.currentUser} AuthStore={this.props.AuthStore}
+          history={this.props.history}/>
           <LoggedOutView currentUser={this.props.UserStore.currentUser} />
         </div>
       </nav>

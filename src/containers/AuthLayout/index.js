@@ -1,63 +1,25 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-import { Button, Form } from 'semantic-ui-react';
-import axios from 'axios/index';
-import AuthService from '../../services/AuthService';
+import {Button, Form, Message, Grid, Segment, Container} from 'semantic-ui-react';
 import styles from './styles.module.scss';
-
-const API_URL = 'https://peaceful-ocean-66963.herokuapp.com';
 
 @inject('AuthStore')
 @observer
 class LoginPage extends Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
 
-  authReg() {
-    const url = `${API_URL}/auth/registration/`;
-    axios
-      .post(url, {
-        username: this.refs.username.value,
-        email: this.refs.email.value,
-        password1: this.refs.password1.value,
-        password2: this.refs.password2.value
-      })
-      .then(result => {
-        this.props.AuthStore.setToken(result.data);
-      })
-      .catch(error => {
-        console.log(error.response);
-      });
-  }
+    handleEmailChange = e => this.props.AuthStore.setEmail(e.target.value);
+    handleUsernameChange = e => this.props.AuthStore.setUsername(e.target.value);
+    handlePassword1Change = e => this.props.AuthStore.setPassword1(e.target.value);
+    handlePassword2Change = e => this.props.AuthStore.setPassword2(e.target.value);
+    handleSubmitForm = (e) => {
+        e.preventDefault();
+        this.props.AuthStore.signup()
+    };
 
-  handleSubmit = e => {
-    this.authReg();
-    e.preventDefault();
-  };
-
-  render() {
+    render() {
+        const {values, errors, inProgress} = this.props.AuthStore;
     return (
-      <Form onSubmit={e => this.handleSubmit(e)}>
-        <Form.Field>
-          <label>Username</label>
-          <input placeholder="username" ref="username" />
-        </Form.Field>
-        <Form.Field>
-          <label>Email</label>
-          <input placeholder="Email" ref="email" />
-        </Form.Field>
-        <Form.Field>
-          <label>Password</label>
-          <input placeholder="Password" ref="password1" />
-        </Form.Field>
-        <Form.Field>
-          <label>Retype Password</label>
-          <input placeholder="Retype Password" ref="password2" />
-        </Form.Field>
-        <Button type="submit">Submit</Button>
-      </Form>
+        1
     );
   }
 }
