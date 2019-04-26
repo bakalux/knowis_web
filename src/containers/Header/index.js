@@ -22,11 +22,9 @@ const LoggedOutView = props => {
                 <KnowisSearch/>
                 </Menu.Item>
                 <Menu.Item>
+                   <Link to='/login' className={styles.navLink}>
                   <Button size='mini' color='yellow'>
-                    <Link to='/login' className={styles.navLink}>
-                      Увійти
-                    </Link>
-                  </Button>
+                    Увійти</Button></Link>
                 </Menu.Item>
               </Menu.Menu>
             </Container>

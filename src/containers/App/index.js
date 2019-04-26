@@ -6,6 +6,7 @@ import QuestionPage from "../QuestionPage"
 import AuthLayout from "../AuthLayout"
 import Header from "../Header"
 
+
 @inject('CommonStore', 'AuthStore', 'UserStore')
 @withRouter
 @observer
@@ -28,8 +29,7 @@ class App extends React.Component{
         if (this.props.CommonStore.appLoaded) {
             return (
                 <div>
-                    <Header/>
-                    {/*{(this.props.AuthStore.navbar) ? null : <Header/>}*/}
+                    {(this.props.AuthStore.navBar) ? false : <Header/>}
                     <Switch>
                         <Route path='/login' component={LoginPage}/>
                         <Route path='/signup' component={AuthLayout}/>

@@ -8,17 +8,15 @@ const authService = new AuthService();
 class AuthStore {
     @observable inProgress = false;
     @observable errors = undefined;
-    @observable navbar = null;
+    @observable navBar = false;
+    @observable signUp = false;
+
 
     @observable values = {
         username: '',
         email: '',
         password1: '',
         password2: '',
-    };
-
-    @action hideNavBar() {
-        this.navbar = true;
     };
 
     @action setUsername(username) {

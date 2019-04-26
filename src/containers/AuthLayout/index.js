@@ -11,15 +11,42 @@ class LoginPage extends Component {
     handleUsernameChange = e => this.props.AuthStore.setUsername(e.target.value);
     handlePassword1Change = e => this.props.AuthStore.setPassword1(e.target.value);
     handlePassword2Change = e => this.props.AuthStore.setPassword2(e.target.value);
-    handleSubmitForm = (e) => {
+    handleSubmitSignUp = async (e) => {
         e.preventDefault();
-        this.props.AuthStore.signup()
+        await this.props.AuthStore.signup()
     };
 
     render() {
         const {values, errors, inProgress} = this.props.AuthStore;
     return (
-        1
+        <Grid.Column textAlign='center'>
+                                    <Form error={errors} onSubmit={this.handleSubmitForm}>
+                                        <Form.Input
+                                            name='username' onChange={this.handleEmailChange} value={values.email}
+                                            icon='user' iconPosition='left' label='E-mail' placeholder='E-mail' type='email'
+                                        />
+                                        <Form.Input
+                                            name='password' onChange={this.handlePasswordChange} value={values.password1}
+                                            icon='lock' iconPosition='left' label='Пароль' type='password' placeholder='Пароль'
+                                        />
+                                        <Form.Input
+                                            name='username' onChange={this.handleEmailChange} value={values.email}
+                                            icon='user' iconPosition='left' label='E-mail' placeholder='E-mail' type='email'
+                                        />
+                                        <Form.Input
+                                            name='password' onChange={this.handlePasswordChange} value={values.password1}
+                                            icon='lock' iconPosition='left' label='Пароль' type='password' placeholder='Пароль'
+                                        />
+                                        <Message
+                                            error
+                                            header='Помилка'
+                                            content='Деталі для входу не вірні або аккаунт не зареєстровано'
+                                        />
+                                        <Button disabled={!values.email || inProgress}  color='orange' fluid size='large' >
+                                            Увійти
+                                        </Button>
+                                    </Form>
+                                </Grid.Column>
     );
   }
 }
