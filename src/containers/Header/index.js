@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Menu, Button, Container, Image, Icon, Dropdown } from 'semantic-ui-react'
-import { inject, observer } from 'mobx-react';
-import QuestionPage from "../QuestionPage";
+import { inject} from 'mobx-react';
 import styles from './styles.module.scss';
 import KnowisSearch from '../../components/ui/search'
 
@@ -23,7 +22,9 @@ const LoggedOutView = props => {
                 <KnowisSearch/>
                 </Menu.Item>
                 <Menu.Item>
-                  <Button size='mini' color='yellow'>Увійти</Button>
+                   <Link to='/login' className={styles.navLink}>
+                  <Button size='mini' color='yellow'>
+                    Увійти</Button></Link>
                 </Menu.Item>
               </Menu.Menu>
             </Container>
@@ -41,7 +42,7 @@ const LoggedInView = props => {
             size='small'>
             <Container >
               <Menu.Item header as='a'>
-                <Image size='mini' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwpQWxE15D-8dwBtVXemg_UPsThPSV9voiM3jWXmtXUN0PjC2Vag' />
+                <Image avatar src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwpQWxE15D-8dwBtVXemg_UPsThPSV9voiM3jWXmtXUN0PjC2Vag' />
                 KNOWIS
               </Menu.Item>
               <Menu.Item as='a'>
@@ -57,11 +58,11 @@ const LoggedInView = props => {
                 <KnowisSearch/>
               </Menu.Item>
                 <Menu.Item>
-                  <Dropdown trigger={<Image size='mini' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwpQWxE15D-8dwBtVXemg_UPsThPSV9voiM3jWXmtXUN0PjC2Vag' />}>
+                  <Dropdown trigger={<Image size='mini' src={props.currentUser.map(item => (item.avatar))}/>}>
                     <Dropdown.Menu>
                       <Dropdown.Item icon='address card outline' text='Профіль'/>
                       <Dropdown.Divider />
-                      <Dropdown.Item icon='fly' text='Вийти'/>
+                      <Dropdown.Item icon='address card outline' text='Вийти' onClick={() => props.AuthStore.logout().then(props.history.replace('/login'))}/>
                     </Dropdown.Menu>
                   </Dropdown>
                 </Menu.Item>
@@ -71,20 +72,24 @@ const LoggedInView = props => {
               </Menu.Menu>
             </Container>
           </Menu>
-        );
+        )
   }
   return null;
 };
 
 
-@inject('UserStore', 'CommonStore')
+@inject('UserStore', 'AuthStore')
+@withRouter
 class Header extends Component {
   render() {
     return (
-        <div>
-          <LoggedInView currentuser={this.props.UserStore.currentUser}/>
-          <LoggedOutView currentUser={this.props.UserStore.currentUser}/>
+        <nav>
+        <div className="container">
+          <LoggedInView currentUser={this.props.UserStore.currentUser} AuthStore={this.props.AuthStore}
+          history={this.props.history}/>
+          <LoggedOutView currentUser={this.props.UserStore.currentUser} />
         </div>
+      </nav>
         )
   }
 }

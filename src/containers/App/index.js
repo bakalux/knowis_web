@@ -1,14 +1,14 @@
 import React from 'react';
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, withRouter} from "react-router-dom";
 import { inject, observer } from 'mobx-react';
 import  LoginPage from "../LoginPage"
 import QuestionPage from "../QuestionPage"
+import AuthLayout from "../AuthLayout"
 import Header from "../Header"
 
 
-@inject('CommonStore')
-@inject('AuthStore')
-@inject('UserStore')
+@inject('CommonStore', 'AuthStore', 'UserStore')
+@withRouter
 @observer
 class App extends React.Component{
 
@@ -27,16 +27,16 @@ class App extends React.Component{
 
     render() {
         if (this.props.CommonStore.appLoaded) {
-
             return (
                 <div>
-                    <Header/>
+                    {(this.props.AuthStore.navBar) ? false : <Header/>}
                     <Switch>
                         <Route path='/login' component={LoginPage}/>
-                        <Route path='/questions' component={QuestionPage}/>
+                        <Route path='/signup' component={AuthLayout}/>
+                        <Route path='/' component={QuestionPage}/>
                     </Switch>
                 </div>
-            )
+            );
         }
         return (
             <Header/>

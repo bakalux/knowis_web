@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './styles.module.scss';
+import { Link } from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 import {Button, Icon, Container, Divider, Form, Grid, Header, Image, Segment, Message} from 'semantic-ui-react'
 
@@ -8,26 +9,23 @@ import {Button, Icon, Container, Divider, Form, Grid, Header, Image, Segment, Me
 @observer
 class LoginPage extends Component {
 
-    handleEmailChange = e => this.props.AuthStore.setEmail(e.target.value);
-    handlePasswordChange = e => this.props.AuthStore.setPassword1(e.target.value);
-    handleSubmitLogin = async (e) => {
+    handleEmailChange = e => this.props.AuthStore.setEmail(e.target.value)
+    handlePasswordChange = e => this.props.AuthStore.setPassword1(e.target.value)
+    handleSubmitForm = async (e) => {
         e.preventDefault();
         await this.props.AuthStore.login()
     };
-
-    handleSignUp = e => this.props.AuthStore.signUp = !this.props.AuthStore.signUp;
 
     componentWillUnmount() {
         this.props.AuthStore.reset();
     }
 
     componentDidMount() {
-        this.props.AuthStore.navBar = true;
+        this.props.AuthStore.hideNavBar();
     }
 
     render (){
         const {values, errors, inProgress} = this.props.AuthStore;
-        console.log(errors)
         return (
             <div className='login-form'>
                 <Container text>
@@ -40,13 +38,13 @@ class LoginPage extends Component {
                                     <Image src='https://i1.wp.com/frenky.id/wp-content/uploads/2018/02/doge-icon.png?ssl=1'/>
                                     KNOWIS
                                     </Header>
-                                    <p>Hello</p>
+                                    <p>Hello world</p>
                                 </Grid.Column>
                                 <Grid.Column width={4}></Grid.Column>
                             </Grid.Row>
                             <Grid.Row columns={2} divided>
                                 <Grid.Column textAlign='center'>
-                                    <Form error={errors} onSubmit={this.handleSubmitLogin}>
+                                    <Form error={errors} onSubmit={<Link to='/'></Link>}>
                                         <Form.Input
                                             name='username' onChange={this.handleEmailChange} value={values.email}
                                             icon='user' iconPosition='left' label='E-mail' placeholder='E-mail' type='email'
@@ -60,12 +58,12 @@ class LoginPage extends Component {
                                             header='Помилка'
                                             content='Деталі для входу не вірні або аккаунт не зареєстровано'
                                         />
-                                        <Button disabled={!values.email || inProgress}  color='orange' fluid size='large' >
+                                        <Button disabled={!values.email && !values.errors}  color='orange' fluid size='large' >
                                             Увійти
                                         </Button>
                                     </Form>
                                 </Grid.Column>
-                                <Grid.Column columns={2} textAlign='left'>
+                                <Grid.Column columns={2} textAlign='center'>
                                     <div className={styles.googleButton}>
                                         <Button color='google plus'>
                                             <Icon name='google plus' /> Увійти за допомогою Google &nbsp; &nbsp; &nbsp;
@@ -75,9 +73,6 @@ class LoginPage extends Component {
                                         <Button color='facebook'>
                                             <Icon name='facebook' /> Увійти за допомогою Facebook
                                         </Button>
-                                    </div>
-                                    <div>
-                                        <a href='#'><p onClick={this.handleSignUp} className={styles.info}>Або Зареєструватися</p></a>
                                     </div>
                                 </Grid.Column>
                             </Grid.Row>
