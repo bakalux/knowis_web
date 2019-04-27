@@ -7,6 +7,8 @@ const questionService = new QuestionService();
 class QuestionStore {
     @observable questions = [];
     @observable nextPageURL = '';
+    @observable questionUUID = '';
+    @observable question;
     @observable isLoading = false;
     @observable inProgress = false;
 
@@ -14,9 +16,13 @@ class QuestionStore {
         this.questions.push(question);
     };
 
+    @action setQuestionUUID = (questionUUID) => {
+        this.questionUUID = questionUUID
+    };
+
     @computed get questionCount() {
         return this.questions.length;
-    }
+    };
 
     @action loadQuestions() {
         this.isLoading = true;
@@ -45,6 +51,18 @@ class QuestionStore {
             .catch(err => console.log(err))
             .finally(action(() => {this.inProgress = false;}))
     };
+
+    @action getQuestionByUUID() {
+        this.inProgress = true;
+        questionService.getQuestionByUUID({
+            headers: {
+                "Authorization": 'JWT ' + CommonStore.token
+            }
+        }, this.questionUUID)
+            .then(result => this.question = result)
+    }
+
+
 }
 
 const store = new QuestionStore();

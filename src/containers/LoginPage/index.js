@@ -40,7 +40,7 @@ class LoginPage extends Component {
                                     <Image src='https://i1.wp.com/frenky.id/wp-content/uploads/2018/02/doge-icon.png?ssl=1'/>
                                     KNOWIS
                                     </Header>
-                                    <p>Hello</p>
+                                    <p className={styles.description}>Місце де знаходять відповіді</p>
                                 </Grid.Column>
                                 <Grid.Column width={4}></Grid.Column>
                             </Grid.Row>

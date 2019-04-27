@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-import QuestionService from '../../services/QuestionService';
 import {Container, Header, Loader, Segment, Button, Icon, Grid, Image, Label, List, Message} from 'semantic-ui-react'
 import styles from './styles.module.scss';
 
@@ -71,7 +70,7 @@ class QuestionPage extends Component {
                                                 </Button>&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <Button as='div' labelPosition='left' size='mini' >
                                                     <Label as='a' basic color='blue' >
-                                                        2048
+                                                        {item.get_num_comments}
                                                     </Label>
                                                     <Button icon size='mini' color='blue'>
                                                         <Icon name='comment' />
@@ -95,7 +94,7 @@ class QuestionPage extends Component {
                 }
             </div>
                 <Segment textAlign='center'>
-                <Button loading={inProgress} color='olive' onClick={this.handleNextPage}>Завантажити наступні питання...</Button>
+                <Button loading={inProgress} color='olive' size='mini' onClick={this.handleNextPage}>Завантажити наступні питання...</Button>
                 </Segment>
             </div>
         );

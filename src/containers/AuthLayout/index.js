@@ -28,8 +28,8 @@ class LoginPage extends Component {
                                             icon='user' iconPosition='left' label='Логін' placeholder='Логін' type='text'
                                         />
                                         <Form.Input
-                                            name='mail' onChange={this.handleEmailChange} value={values.email}
-                                            icon='user' iconPosition='left' label='E-mail' placeholder='E-mail' type='email'
+                                            name='email' onChange={this.handleEmailChange} value={values.email}
+                                            icon='mail' iconPosition='left' label='E-mail' placeholder='E-mail' type='email'
                                         />
                                         <Form.Input
                                             name='password' onChange={this.handlePassword1Change} value={values.password1}
@@ -37,7 +37,7 @@ class LoginPage extends Component {
                                         />
                                         <Form.Input
                                             name='password' onChange={this.handlePassword2Change} value={values.password2}
-                                            icon='lock' iconPosition='left' label='Повторіть пароль' type='password' placeholder='Повторіть парол'
+                                            icon='lock' iconPosition='left' label='Повторіть пароль' type='password' placeholder='Повторіть пароль'
                                         />
                                         <Message
                                             error
@@ -45,7 +45,7 @@ class LoginPage extends Component {
                                             content='Аккаунт з таким email вже зареєстровано.'
                                         />
                                         <Button disabled={!values.email || inProgress}  color='orange' fluid size='large' >
-                                            Увійти
+                                            Зареєструватися
                                         </Button>
                                         <a href='#'><p onClick={this.handleSignUp} className={styles.info}>Відмінити</p></a>
                                     </Form>
