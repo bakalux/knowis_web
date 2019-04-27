@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './styles.module.scss';
 import {inject, observer} from 'mobx-react';
 import {Button, Icon, Container, Divider, Form, Grid, Header, Image, Segment, Message} from 'semantic-ui-react'
-
+import AuthLayout from '../AuthLayout'
 
 @inject('AuthStore')
 @observer
@@ -26,7 +26,7 @@ class LoginPage extends Component {
     }
 
     render (){
-        const {values, errors, inProgress} = this.props.AuthStore;
+        const {values, errors, inProgress, signUp} = this.props.AuthStore;
         console.log(errors)
         return (
             <div className='login-form'>
@@ -66,6 +66,8 @@ class LoginPage extends Component {
                                     </Form>
                                 </Grid.Column>
                                 <Grid.Column columns={2} textAlign='left'>
+                                    {signUp ? <AuthLayout/> :
+                                    <div>
                                     <div className={styles.googleButton}>
                                         <Button color='google plus'>
                                             <Icon name='google plus' /> Увійти за допомогою Google &nbsp; &nbsp; &nbsp;
@@ -79,6 +81,7 @@ class LoginPage extends Component {
                                     <div>
                                         <a href='#'><p onClick={this.handleSignUp} className={styles.info}>Або Зареєструватися</p></a>
                                     </div>
+                                    </div>}
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>

@@ -29,7 +29,7 @@ class App extends React.Component{
         if (this.props.CommonStore.appLoaded) {
             return (
                 <div>
-                    {(this.props.AuthStore.navBar) ? false : <Header/>}
+
                     <Switch>
                         <Route path='/login' component={LoginPage}/>
                         <Route path='/signup' component={AuthLayout}/>
