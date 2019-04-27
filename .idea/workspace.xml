@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d49e6282-0ca1-47a9-953f-1ae86f8b3e20" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/App/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Header/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Header/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Header/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Header/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/LoginPage/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/LoginPage/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/QuestionPage/check.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/UserAccountService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/UserAccountService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stores/QuestionStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/QuestionStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stores/UserStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/UserStore.js" afterDir="false" />
-    </list>
+    <list default="true" id="cf9e0d76-8345-4233-b529-cc6fe0c9cc0e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,38 +9,26 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5211356">
+    <splitter split-orientation="horizontal" split-proportion="0.78571427">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/stores/AuthStore.js">
+            <entry file="file://$PROJECT_DIR$/src/containers/QuestionPage/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-86">
-                  <caret line="18" selection-start-line="18" selection-end-line="20" selection-end-column="6" />
+                <state relative-caret-position="128">
+                  <caret line="70" column="60" selection-start-line="70" selection-start-column="60" selection-end-line="70" selection-end-column="60" />
                   <folding>
-                    <element signature="e#0#60#0" expanded="true" />
+                    <element signature="e#0#41#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/stores/QuestionStore.js">
+            <entry file="file://$PROJECT_DIR$/src/containers/QuestionPage/styles.module.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
-                  <caret line="31" column="22" lean-forward="true" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-                  <folding>
-                    <element signature="e#0#50#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/services/AuthService.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="12" column="38" lean-forward="true" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+                <state relative-caret-position="375">
+                  <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
                 </state>
               </provider>
             </entry>
@@ -59,8 +36,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/containers/LoginPage/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-85">
-                  <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+                <state relative-caret-position="75">
+                  <caret line="9" selection-start-line="9" selection-end-line="9" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                   </folding>
@@ -69,39 +46,30 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/stores/AuthStore.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="285">
+                  <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/containers/LoginPage/styles.module.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+                <state>
+                  <caret column="1" selection-start-column="1" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/services/QuestionService.js">
+            <entry file="file://$PROJECT_DIR$/src/containers/App/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/stores/CommonStore.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="459">
-                  <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/containers/QuestionPage/index.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+                <state relative-caret-position="105">
+                  <caret line="7" selection-start-line="7" selection-end-line="7" />
                   <folding>
-                    <element signature="e#0#41#0" expanded="true" />
+                    <element signature="e#0#26#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -110,54 +78,15 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/containers/App/index.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/stores/UserStore.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="42" lean-forward="true" selection-start-column="42" selection-end-column="42" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/services/UserAccountService.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="44" />
-                </state>
-              </provider>
-            </entry>
-          </file>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/containers/Header/index.js">
+            <entry file="file://$PROJECT_DIR$/src/containers/QuestionPage/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="73" column="10" lean-forward="true" selection-start-line="73" selection-start-column="10" selection-end-line="73" selection-end-column="10" />
+                <state relative-caret-position="80">
+                  <caret line="70" column="60" selection-start-line="70" selection-start-column="60" selection-end-line="70" selection-end-column="60" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/ui/search.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="40" lean-forward="true" selection-start-column="40" selection-end-column="40" />
                 </state>
               </provider>
             </entry>
@@ -250,11 +179,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1" />
-    <option name="y" value="27" />
-    <option name="width" value="1914" />
-    <option name="height" value="1049" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="214" />
+    <option name="y" value="10" />
+    <option name="width" value="940" />
+    <option name="height" value="524" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -285,13 +214,6 @@
               <item name="knowis_web" type="b2602c69:ProjectViewProjectNode" />
               <item name="knowis_web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="knowis_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="knowis_web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -299,14 +221,7 @@
               <item name="knowis_web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="knowis_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="knowis_web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="Header" type="462c0819:PsiDirectoryNode" />
+              <item name="AuthLayout" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="knowis_web" type="b2602c69:ProjectViewProjectNode" />
@@ -321,12 +236,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
               <item name="QuestionPage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="knowis_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="knowis_web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="knowis_web" type="b2602c69:ProjectViewProjectNode" />
@@ -441,16 +350,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183349000" />
+    <option name="totallyTimeSpent" value="183484000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
-    <editor active="true" />
+    <frame x="214" y="10" width="940" height="524" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15601704" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26169264" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3279743" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -462,8 +369,9 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5026624" side_tool="true" weight="0.22079314" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49733758" visible="true" weight="0.22079314" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49733758" visible="true" weight="0.3341646" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3290461" />
+      <window_info anchor="bottom" id="TypeScript" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -596,16 +504,7 @@
         <state relative-caret-position="-102" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ui/ListErrors.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="12" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ui/ListErrors.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/semantic-ui-react/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
@@ -613,16 +512,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/common/nav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="8" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/common/nav.js" />
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -655,7 +545,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/QuestionPage/styles.module.scss">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Header/styles.module.scss">
       <provider selected="true" editor-type-id="text-editor">
@@ -703,16 +597,7 @@
     <entry file="file://$PROJECT_DIR$/node_modules/semantic-ui-sass/semantic-ui.scss">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ui/dropdown.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="20" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ui/dropdown.js" />
     <entry file="file://$PROJECT_DIR$/src/components/ui/search.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -720,17 +605,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/QuestionPage/check.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="42" selection-start-column="42" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/QuestionPage/check.js" />
     <entry file="file://$PROJECT_DIR$/src/containers/QuestionPage/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        <state relative-caret-position="128">
+          <caret line="70" column="60" selection-start-line="70" selection-start-column="60" selection-end-line="70" selection-end-column="60" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -753,8 +632,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/LoginPage/styles.module.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -767,8 +646,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/LoginPage/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
-          <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+        <state relative-caret-position="75">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -787,11 +666,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/stores/AuthStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-86">
-          <caret line="18" selection-start-line="18" selection-end-line="20" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#60#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="285">
+          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -811,8 +687,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/App/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
