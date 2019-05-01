@@ -7,17 +7,18 @@ const questionService = new QuestionService();
 class QuestionStore {
     @observable questions = [];
     @observable nextPageURL = '';
-    @observable questionUUID = '';
+    @observable questionSlug= '';
     @observable question;
     @observable isLoading = false;
     @observable inProgress = false;
+    @observable questionRegistry = observable.map();
 
     @action addQuestion = (question) => {
         this.questions.push(question);
     };
 
-    @action setQuestionUUID = (questionUUID) => {
-        this.questionUUID = questionUUID
+    @action setQuestionSlug = (questionSlug) => {
+        this.questionSlug = questionSlug
     };
 
     @computed get questionCount() {
@@ -52,17 +53,17 @@ class QuestionStore {
             .finally(action(() => {this.inProgress = false;}))
     };
 
-    @action getQuestionByUUID() {
+    @action loadQuestionBySlug() {
         this.inProgress = true;
-        questionService.getQuestionByUUID({
+        questionService.getQuestionBySlug({
             headers: {
                 "Authorization": 'JWT ' + CommonStore.token
             }
-        }, this.questionUUID)
+        }, this.questionSlug)
             .then(result => this.question = result)
+            .catch(err => console.log('Error: ', err))
+            .finally(action(()=> { this.inProgress = false;}))
     }
-
-
 }
 
 const store = new QuestionStore();

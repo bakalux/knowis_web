@@ -10,9 +10,11 @@ class LoginPage extends Component {
 
     handleEmailChange = e => this.props.AuthStore.setEmail(e.target.value);
     handlePasswordChange = e => this.props.AuthStore.setPassword1(e.target.value);
-    handleSubmitLogin = async (e) => {
+    handleSubmitLogin = (e) => {
         e.preventDefault();
-        await this.props.AuthStore.login()
+        this.props.AuthStore.login()
+            .then(() => this.props.history.replace('/'))
+            .then(() => window.location.reload())
     };
 
     handleSignUp = e => this.props.AuthStore.signUp = !this.props.AuthStore.signUp;
@@ -27,7 +29,6 @@ class LoginPage extends Component {
 
     render (){
         const {values, errors, inProgress, signUp} = this.props.AuthStore;
-        console.log(errors)
         return (
             <div className='login-form'>
                 <Container text>

@@ -32,11 +32,11 @@ class LoginPage extends Component {
                                             icon='mail' iconPosition='left' label='E-mail' placeholder='E-mail' type='email'
                                         />
                                         <Form.Input
-                                            name='password' onChange={this.handlePassword1Change} value={values.password1}
+                                            name='password1' onChange={this.handlePassword1Change} value={values.password1}
                                             icon='lock' iconPosition='left' label='Пароль' type='password' placeholder='Пароль'
                                         />
                                         <Form.Input
-                                            name='password' onChange={this.handlePassword2Change} value={values.password2}
+                                            name='password2' onChange={this.handlePassword2Change} value={values.password2}
                                             icon='lock' iconPosition='left' label='Повторіть пароль' type='password' placeholder='Повторіть пароль'
                                         />
                                         <Message

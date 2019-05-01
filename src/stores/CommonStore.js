@@ -2,7 +2,7 @@ import { observable, action, reaction } from 'mobx';
 
 
 class CommonStore {
-    @observable appName = 'knowis'
+    @observable appName = 'knowis';
     @observable token = window.localStorage.getItem('jwt');
     @observable appLoaded = false;
 

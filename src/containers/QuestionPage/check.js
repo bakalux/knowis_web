@@ -10,7 +10,6 @@ import styles from './styles.module.scss';
 class QuestionPage extends Component {
 
     handleNextPage = e => this.props.QuestionStore.nextPage();
-    handleSlug = e => this.props.QuestionStore.setQuestionSlug(e.questionSlug)
 
     componentDidMount() {
         this.props.QuestionStore.loadQuestions();
@@ -47,14 +46,14 @@ class QuestionPage extends Component {
                                                          <List.Content>
                                                              <List.Header as='a' key={item.username}>{item.username}</List.Header>
                                                              <List.Description key={item.create_date}>
-                                                                 {new Date(item.create_date).toLocaleString('uk-UA')}
+                                                                 {item.create_date}
                                                              </List.Description>
                                                          </List.Content>
                                                     </List.Item>
                                                 </List>
-                                                <Link onClick={this.handleSlug} to={`/${item.slug}`}>
-                                                    <Header as='h3' className={styles.headerTitle}>{item.title}</Header>
-                                                </Link>
+                                                {/*<a href='#'>*/}
+                                                {/*    <Header as='h3' className={styles.headerTitle}>{item.title}</Header>*/}
+                                                {/*</a>*/}
                                                 <p className={styles.content} key={item.content}>{item.content}</p>
                                             </Grid.Column>
                                         </Grid.Row>

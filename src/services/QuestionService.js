@@ -14,8 +14,12 @@ export default class QuestionService {
     return axios.get(url, token).then(response => response.data);
   };
 
-  getQuestionByUUID = (token, uuid) => {
-    const url = `${API_URL}/api/questions/d/${uuid}`;
+  getQuestionsByURL = (url, token) => {
+    return axios.get(url, token).then(response => response.data);
+};
+
+  getQuestionBySlug = (token, slug) => {
+    const url = `${API_URL}/api/questions/d/${slug}`;
     return axios.get(url, token).then(response => response.data);
   };
 }
