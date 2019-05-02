@@ -14,7 +14,7 @@ class LoginPage extends Component {
         e.preventDefault();
         this.props.AuthStore.login()
             .then(() => this.props.history.replace('/'))
-            .then(() => window.location.reload())
+            .then(() => window.location.reload());
     };
 
     handleSignUp = e => this.props.AuthStore.signUp = !this.props.AuthStore.signUp;

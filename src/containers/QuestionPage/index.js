@@ -25,6 +25,7 @@ class QuestionPage extends Component {
                     question.results.map(item => (
                         <div className={styles.box} >
                             <Container text loading key={item}>
+                                <Segment.Group >
                                 <Segment attached>
                                     <Grid celled='internally' columns='equal'>
                                         <Grid.Row>
@@ -91,15 +92,16 @@ class QuestionPage extends Component {
                                         </Grid.Row>
                                     </Grid>
                                 </Segment>
+                                </Segment.Group>
                                 </Container>
                         </div>
                     ))
                 ))
                 }
             </div>
-                <Segment textAlign='center'>
-                <Button loading={inProgress} color='olive' size='mini' onClick={this.handleNextPage}>Завантажити наступні питання...</Button>
-                </Segment>
+                <Container textAlign='center' className={styles.loadButton}>
+                    <Button loading={inProgress} color='olive' size='mini' onClick={this.handleNextPage}>Завантажити наступні питання...</Button>
+                </Container>
             </div>
         );
     }

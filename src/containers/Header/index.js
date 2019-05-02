@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Menu, Button, Container, Image, Icon, Dropdown } from 'semantic-ui-react'
+import { Menu, Button, Container, Image, Icon, Dropdown, Responsive } from 'semantic-ui-react'
 import { inject} from 'mobx-react';
 import styles from './styles.module.scss';
 import KnowisSearch from '../../components/common/search'
 
+const getWidth = () => {
+  const isSSR = typeof window === 'undefined'
+
+  return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth
+};
 
 const LoggedOutView = props => {
   if (!props.currentUser) {

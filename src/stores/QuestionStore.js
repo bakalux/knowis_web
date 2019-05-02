@@ -1,4 +1,4 @@
-import {observable, action, computed} from "mobx";
+import {observable, action, computed, toJS} from "mobx";
 import QuestionService from '../services/QuestionService'
 import CommonStore from './CommonStore'
 
@@ -8,10 +8,10 @@ class QuestionStore {
     @observable questions = [];
     @observable nextPageURL = '';
     @observable questionSlug= '';
-    @observable question;
+    @observable question='';
     @observable isLoading = false;
     @observable inProgress = false;
-    @observable questionRegistry = observable.map();
+    // @observable questionRegistry = observable.map();
 
     @action addQuestion = (question) => {
         this.questions.push(question);

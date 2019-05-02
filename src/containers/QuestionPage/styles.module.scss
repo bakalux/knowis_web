@@ -6,6 +6,10 @@
   font-size: 2em;
 }
 
+.headerTitle:hover {
+  text-decoration: underline;
+}
+
 .tags {
   padding-top: 30px;
   .innerTags {
@@ -24,4 +28,9 @@
 
 .innerButton {
   padding-right: 5px;
+}
+
+.loadButton {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
