@@ -10,9 +10,11 @@ class LoginPage extends Component {
 
     handleEmailChange = e => this.props.AuthStore.setEmail(e.target.value);
     handlePasswordChange = e => this.props.AuthStore.setPassword1(e.target.value);
-    handleSubmitLogin = async (e) => {
+    handleSubmitLogin = (e) => {
         e.preventDefault();
-        await this.props.AuthStore.login()
+        this.props.AuthStore.login()
+            .then(() => this.props.history.replace('/'))
+            .then(() => window.location.reload())
     };
 
     handleSignUp = e => this.props.AuthStore.signUp = !this.props.AuthStore.signUp;
@@ -27,7 +29,6 @@ class LoginPage extends Component {
 
     render (){
         const {values, errors, inProgress, signUp} = this.props.AuthStore;
-        console.log(errors)
         return (
             <div className='login-form'>
                 <Container text>
@@ -40,7 +41,7 @@ class LoginPage extends Component {
                                     <Image src='https://i1.wp.com/frenky.id/wp-content/uploads/2018/02/doge-icon.png?ssl=1'/>
                                     KNOWIS
                                     </Header>
-                                    <p>Hello</p>
+                                    <p className={styles.description}>Місце де знаходять відповіді</p>
                                 </Grid.Column>
                                 <Grid.Column width={4}></Grid.Column>
                             </Grid.Row>
@@ -66,7 +67,8 @@ class LoginPage extends Component {
                                     </Form>
                                 </Grid.Column>
                                 <Grid.Column columns={2} textAlign='left'>
-                                    {signUp ? false :<div>
+                                    {signUp ? <AuthLayout/> :
+                                    <div>
                                     <div className={styles.googleButton}>
                                         <Button color='google plus'>
                                             <Icon name='google plus' /> Увійти за допомогою Google &nbsp; &nbsp; &nbsp;
@@ -80,7 +82,7 @@ class LoginPage extends Component {
                                     <div>
                                         <a href='#'><p onClick={this.handleSignUp} className={styles.info}>Або Зареєструватися</p></a>
                                     </div>
-                                        </div>}
+                                    </div>}
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>

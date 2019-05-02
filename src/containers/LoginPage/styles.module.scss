@@ -1,5 +1,5 @@
 body {
-	padding-top: 200px;
+	padding-top: 100px;
 	>div {
 		height: 50%;
 		>div {
@@ -27,4 +27,11 @@ body {
 
 .info:hover {
 	text-decoration: underline;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+.description {
+	color: gray;
+	font-size: 20px;
+	font-family: 'Slabo 27px';
 }

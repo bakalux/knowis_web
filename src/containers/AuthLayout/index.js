@@ -15,36 +15,39 @@ class LoginPage extends Component {
         e.preventDefault();
         await this.props.AuthStore.signup()
     };
+    handleSignUp = e => this.props.AuthStore.signUp = !this.props.AuthStore.signUp;
+
 
     render() {
         const {values, errors, inProgress} = this.props.AuthStore;
     return (
-        <Grid.Column columns={2} textAlign='center'>
-                                    <Form error={errors} onSubmit={this.handleSubmitForm}>
+        <Grid.Column textAlign='center'>
+                                    <Form error={errors} onSubmit={this.handleSubmitSignUp}>
                                         <Form.Input
-                                            name='username' onChange={this.handleUsernameChange} value={values.email}
+                                            name='username' onChange={this.handleUsernameChange} value={values.username}
                                             icon='user' iconPosition='left' label='Логін' placeholder='Логін' type='text'
-                                        />
-                                        <Form.Input
-                                            name='password' onChange={this.handlePasswordChange} value={values.password1}
-                                            icon='lock' iconPosition='left' label='Пароль' type='password' placeholder='Пароль'
                                         />
                                         <Form.Input
                                             name='email' onChange={this.handleEmailChange} value={values.email}
                                             icon='mail' iconPosition='left' label='E-mail' placeholder='E-mail' type='email'
                                         />
                                         <Form.Input
-                                            name='password2' onChange={this.handlePasswordChange} value={values.password2}
+                                            name='password1' onChange={this.handlePassword1Change} value={values.password1}
+                                            icon='lock' iconPosition='left' label='Пароль' type='password' placeholder='Пароль'
+                                        />
+                                        <Form.Input
+                                            name='password2' onChange={this.handlePassword2Change} value={values.password2}
                                             icon='lock' iconPosition='left' label='Повторіть пароль' type='password' placeholder='Повторіть пароль'
                                         />
                                         <Message
                                             error
                                             header='Помилка'
-                                            content='Деталі для входу не вірні або аккаунт не зареєстровано'
+                                            content='Аккаунт з таким email вже зареєстровано.'
                                         />
-                                        <Button disabled={(!values.email && !values.username) || inProgress}  color='orange' fluid size='large' >
+                                        <Button disabled={!values.email || inProgress}  color='orange' fluid size='large' >
                                             Зареєструватися
                                         </Button>
+                                        <a href='#'><p onClick={this.handleSignUp} className={styles.info}>Відмінити</p></a>
                                     </Form>
                                 </Grid.Column>
     );

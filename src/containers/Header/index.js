@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Menu, Button, Container, Image, Icon, Dropdown } from 'semantic-ui-react'
 import { inject} from 'mobx-react';
 import styles from './styles.module.scss';
-import KnowisSearch from '../../components/ui/search'
+import KnowisSearch from '../../components/common/search'
 
 
 const LoggedOutView = props => {
@@ -13,10 +13,12 @@ const LoggedOutView = props => {
             fixed='top'
             size='small'>
             <Container >
+              <Link to='/'>
               <Menu.Item header as='a'>
                 <Image size='mini' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwpQWxE15D-8dwBtVXemg_UPsThPSV9voiM3jWXmtXUN0PjC2Vag' />
                 KNOWIS
               </Menu.Item>
+              </Link>
               <Menu.Menu position='right'>
                 <Menu.Item>
                 <KnowisSearch/>
@@ -81,13 +83,18 @@ const LoggedInView = props => {
 @inject('UserStore', 'AuthStore')
 @withRouter
 class Header extends Component {
+
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    return this.props.UserStore.currentUser;
+  }
+
   render() {
     return (
         <nav>
         <div className="container">
           <LoggedInView currentUser={this.props.UserStore.currentUser} AuthStore={this.props.AuthStore}
-          history={this.props.history}/>
-          <LoggedOutView currentUser={this.props.UserStore.currentUser} />
+          history={this.props.history} forceUpdate={this.forceUpdateHandler}/>
+          <LoggedOutView currentUser={this.props.UserStore.currentUser}/>
         </div>
       </nav>
         )
