@@ -54,6 +54,7 @@ class Question extends Component {
                                         <p className={styles.content} key={myQuestion.content}>
                                             {myQuestion.content}
                                         </p>
+                                        <Divider fitted/>
                                     </Grid.Column>
                                 </Grid.Row>
                                 <Grid.Row>
