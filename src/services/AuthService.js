@@ -8,13 +8,12 @@ const API_URL = 'https://peaceful-ocean-66963.herokuapp.com';
 
 
 export default class AuthService {
-    constructor() {
-    }
+    constructor() {}
 
     postLogin = (creds) => {
         const url = `${API_URL}/auth/login/`;
         return axios.post(url, creds);
-    }
+    };
 
     postSignup = (creds) => {
         const url = `${API_URL}/auth/registration/`;

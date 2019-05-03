@@ -8,22 +8,17 @@ import styles from './styles.module.scss';
 @observer
 class Question extends Component {
     handleSlug = () => this.props.QuestionStore.setQuestionSlug(this.props.match.params.slug);
-    handleUUID = () => this.props.QuestionStore.setQuestionUUID();
 
     componentWillMount() {
         this.handleSlug();
         this.props.QuestionStore.loadQuestionBySlug();
-        this.handleUUID()
-    }
-
-    componentDidMount() {
-        this.props.AnswerStore.loadAnswersByUUID();
     }
 
     render () {
         const {question, questionSlug, inProgress} = this.props.QuestionStore;
-        const {answers} = this.props.AnswerStore;
+        const {answers, questionUUID} = this.props.AnswerStore;
         const myQuestion = toJS(question);
+
         return (
             inProgress ? <Loader active size='large'>Завантаження</Loader>: <div>
                 <div>
@@ -61,7 +56,13 @@ class Question extends Component {
                                         <p className={styles.content} key={myQuestion.content}>
                                             {myQuestion.content}
                                         </p>
-                                        <Divider fitted/>
+                                        <List horizontal>
+                                                <List.Item>
+                                                    <Label circular inverted color='teal' as='a' onClick={()=> console.log(1)}>
+                                                        <Icon name='write'/>Відповісти
+                                                    </Label>
+                                                </List.Item>
+                                            </List>
                                     </Grid.Column>
                                 </Grid.Row>
                                 <Grid.Row>
@@ -70,23 +71,29 @@ class Question extends Component {
                                         <Divider fitted/>
                                     </Grid.Column>
                                 </Grid.Row>
-                                <Grid.Row>
-                                    <Grid.Column>
-                                        <List>
-                                            <List.Item><Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png' />
-                                            <List.Content>
-                                                <List.Header as='a' key={myQuestion.username}>{myQuestion.username}</List.Header>
-                                                <List.Description key={myQuestion.create_date}>
-                                                    {new Date(myQuestion.create_date).toLocaleString('uk-UA')}
-                                                </List.Description>
-                                            </List.Content>
-                                            </List.Item>
-                                        </List>
-                                        <p className={styles.content} key={myQuestion.content}>
-                                            {myQuestion.content}
-                                        </p>
-                                    </Grid.Column>
-                                </Grid.Row>
+                                {answers.map(answer => (
+                                    answer.results.map(item=>
+                                    <Grid.Row key={item.comment}>
+                                        <Grid.Column>
+                                            <List>
+                                                <List.Item><Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png' />
+                                                <List.Content>
+                                                    <List.Header as='a' key={myQuestion.username}>{myQuestion.username}</List.Header>
+                                                    <List.Description key={myQuestion.create_date}>
+                                                        {new Date(myQuestion.create_date).toLocaleString('uk-UA')}
+                                                    </List.Description>
+                                                </List.Content>
+                                                </List.Item>
+                                                <p>
+                                                    {item.comment}
+                                                </p>
+                                            </List>
+                                            <Divider fitted/>
+                                        </Grid.Column>
+                                    </Grid.Row>
+
+                                    )
+                                ))}
                             </Grid>
                         </Segment>
                     </Container>}

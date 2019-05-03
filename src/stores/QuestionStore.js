@@ -1,5 +1,6 @@
 import {observable, action, computed, toJS} from "mobx";
 import QuestionService from '../services/QuestionService'
+import AnswerStore from './AnswerStore'
 import CommonStore from './CommonStore'
 
 const questionService = new QuestionService();
@@ -13,6 +14,9 @@ class QuestionStore {
     @observable isLoading = false;
     @observable inProgress = false;
 
+    @action setQuestionUUID = (uuid) => {
+        this.questionUUID = uuid;
+    };
 
     @action addQuestion = (question) => {
         this.questions.push(question);
@@ -20,11 +24,6 @@ class QuestionStore {
 
     @action setQuestionSlug = (slug) => {
         this.questionSlug = slug
-    };
-
-    @action setQuestionUUID = () => {
-        this.questionUUID = this.question.uuid;
-        console.log(this.question)
     };
 
     @computed get questionCount() {
@@ -66,7 +65,11 @@ class QuestionStore {
                 "Authorization": 'JWT ' + CommonStore.token
             }
         }, this.questionSlug)
-            .then(result => this.question = result)
+            .then(result => {
+                this.question = result;
+                this.setQuestionUUID(result.uuid);
+                AnswerStore.loadAnswersByUUID(this.questionUUID);
+            })
             .catch(err => console.log('Error: ', err))
             .finally(action(()=> { this.inProgress = false;}))
     };
