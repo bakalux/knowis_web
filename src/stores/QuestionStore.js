@@ -18,12 +18,13 @@ class QuestionStore {
         this.questions.push(question);
     };
 
-    @action setQuestionSlug = () => {
-        this.questionSlug = this.question.uuid
+    @action setQuestionSlug = (slug) => {
+        this.questionSlug = slug
     };
 
-    @action setQuestionUUID = (questionUUID) => {
-        this.questionUUID = questionUUID
+    @action setQuestionUUID = () => {
+        this.questionUUID = this.question.uuid;
+        console.log(this.question)
     };
 
     @computed get questionCount() {
@@ -65,11 +66,10 @@ class QuestionStore {
                 "Authorization": 'JWT ' + CommonStore.token
             }
         }, this.questionSlug)
-            .then(result => console.log(result))
+            .then(result => this.question = result)
             .catch(err => console.log('Error: ', err))
             .finally(action(()=> { this.inProgress = false;}))
-    }
-
+    };
 
 }
 

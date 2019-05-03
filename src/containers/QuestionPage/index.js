@@ -9,8 +9,7 @@ import styles from './styles.module.scss';
 @observer
 class QuestionPage extends Component {
 
-    handleNextPage = e => this.props.QuestionStore.nextPage();
-    handleSlug = e => this.props.QuestionStore.setQuestionSlug(e.questionSlug)
+    handleNextPage = () => this.props.QuestionStore.nextPage();
 
     componentDidMount() {
         this.props.QuestionStore.loadQuestions();

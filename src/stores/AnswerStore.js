@@ -16,14 +16,14 @@ class AnswerStore {
         this.answers.push(answer)
     };
 
-    @action getAnswersByUUID() {
+    @action loadAnswersByUUID() {
         this.inProgress = true;
         answerService.getAnswers({
             headers: {
                 "Authorization": 'JWT ' + CommonStore.token
             }
         }, QuestionStore.questionUUID)
-            .then(result=> QuestionStore.questionUUID = result)
+            .then(result=> console.log(result))
             .catch(err => console.log('Error: ', err))
             .finally(action(()=> {this.inProgress = false;}))
 
