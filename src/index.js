@@ -7,6 +7,7 @@ import AuthStore from './stores/AuthStore'
 import QuestionStore from './stores/QuestionStore';
 import CommonStore from './stores/CommonStore';
 import UserStore from './stores/UserStore';
+import AnswerStore from './stores/AnswerStore';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -18,7 +19,8 @@ const stores = {
     AuthStore,
     QuestionStore,
     CommonStore,
-    UserStore
+    UserStore,
+    AnswerStore
 };
 promiseFinally.shim();
 
