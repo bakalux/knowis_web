@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 
 @inject('AuthStore')
 @observer
-class LoginPage extends Component {
+class AuthLayout extends Component {
 
     handleEmailChange = e => this.props.AuthStore.setEmail(e.target.value);
     handleUsernameChange = e => this.props.AuthStore.setUsername(e.target.value);
@@ -54,4 +54,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+export default AuthLayout;

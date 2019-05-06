@@ -10,11 +10,12 @@ class AnswerStore {
     @observable isCreatingAnswer = false;
     @observable answers=[];
     @observable answer = '';
-    @observable commentErrors = undefined;
+    @observable answerErrors = undefined;
     @observable inProgressAnswer = false;
+    @observable isCreatingAnswer = false;
 
 
-    @action addAnswer = (answer) => {
+    @action pushAnswer = (answer) => {
         this.answers.push(answer)
     };
 
@@ -24,19 +25,25 @@ class AnswerStore {
 
     @action loadAnswersByUUID() {
         this.inProgressAnswer = true;
-        answerService.getAnswers({
+        return answerService.getAnswers({
             headers: {
                 "Authorization": 'JWT ' + CommonStore.token
             }
         }, QuestionStore.questionUUID)
-            .then(result=> this.addAnswer(result))
+            .then(result=> this.pushAnswer(result))
             .catch(action((err) => console.log('Error: ', err)))
             .finally(action(()=> {this.inProgressAnswer = false;}))
     }
 
     @action createAnswer() {
         this.isCreatingAnswer = true;
-        //TODO CREATE ANSWER SERVICE + ACTION
+        return answerService.postAnswer({
+            question: QuestionStore.question.id,
+            comment: this.answer,
+        })
+            .then(() => this.loadAnswersByUUID())
+            .catch(err=> console.log(err))
+            .finally(action(() => {this.isCreatingAnswer = false;}))
     }
 }
 const store = new AnswerStore();

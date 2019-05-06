@@ -10,17 +10,19 @@ import styles from './styles.module.scss';
 @observer
 class Question extends Component {
 
+    handlePostAnswer = () => this.props.AnswerStore.createAnswer();
+
     componentDidMount() {
         const slug = this.props.match.params.slug;
         this.props.QuestionStore.setQuestionSlug(slug);
         this.props.QuestionStore.loadQuestionBySlug();
     }
 
-
     render () {
         const {question, inProgress} = this.props.QuestionStore;
         const {answers, inProgressAnswer} = this.props.AnswerStore;
         const myQuestion = toJS(question);
+        console.log(myQuestion)
         return (
             inProgress ? <Loader active size='large'>Завантаження</Loader>: <div>
                 <div>
@@ -60,7 +62,7 @@ class Question extends Component {
                                         </p>
                                         <List horizontal>
                                                 <List.Item>
-                                                    <Label circular inverted color='teal' as='a' onClick={()=> console.log(1)}>
+                                                    <Label circular inverted color='teal' as='a' onClick={this.handlePostAnswer}>
                                                         <Icon name='write'/>Відповісти
                                                     </Label>
                                                 </List.Item>
@@ -71,9 +73,12 @@ class Question extends Component {
                                     <Grid.Column width={16}>
                                         <p className={styles.content}>Відповіді</p>
                                         <Divider fitted/>
-                                        {inProgressAnswer ? <Loader active inline='centered'></Loader> : null}
                                     </Grid.Column>
                                 </Grid.Row>
+                                {inProgressAnswer ?
+                                    <Grid.Row>
+                                        <Loader active inline='centered'></Loader>
+                                    </Grid.Row> : null}
                                 {answers.map(answer => (
                                     answer.results.map(item=>
                                     <Grid.Row key={item.comment}>

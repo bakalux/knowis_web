@@ -53,7 +53,7 @@ class QuestionStore {
         this.questions.map(question => (
             this.nextPageURL = question.next
         ));
-        questionService.getQuestionsByURL(this.nextPageURL, {
+        return questionService.getQuestionsByURL(this.nextPageURL, {
             headers: {
                 "Authorization": 'JWT ' + CommonStore.token
             }
@@ -65,7 +65,7 @@ class QuestionStore {
 
     @action loadQuestionBySlug() {
         this.inProgress = true;
-        questionService.getQuestionBySlug({
+        return questionService.getQuestionBySlug({
             headers: {
                 "Authorization": 'JWT ' + CommonStore.token
             }

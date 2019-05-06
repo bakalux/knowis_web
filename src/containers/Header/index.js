@@ -5,11 +5,7 @@ import { inject} from 'mobx-react';
 import styles from './styles.module.scss';
 import KnowisSearch from '../../components/common/search'
 
-const getWidth = () => {
-  const isSSR = typeof window === 'undefined'
 
-  return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth
-};
 
 const LoggedOutView = props => {
   if (!props.currentUser) {
@@ -98,7 +94,7 @@ class Header extends Component {
         <nav>
         <div className="container">
           <LoggedInView currentUser={this.props.UserStore.currentUser} AuthStore={this.props.AuthStore}
-          history={this.props.history} forceUpdate={this.forceUpdateHandler}/>
+          history={this.props.history}/>
           <LoggedOutView currentUser={this.props.UserStore.currentUser}/>
         </div>
       </nav>
