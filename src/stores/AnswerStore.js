@@ -1,6 +1,7 @@
 import {observable, action} from "mobx";
 import AnswerService from '../services/AnswerService'
 import CommonStore from "./CommonStore";
+import QuestionStore from "./QuestionStore";
 
 const answerService = new AnswerService();
 
@@ -8,7 +9,7 @@ const answerService = new AnswerService();
 class AnswerStore {
     @observable isCreatingAnswer = false;
     @observable answers=[];
-    @observable questionUUID = '';
+    @observable answer = '';
     @observable commentErrors = undefined;
     @observable inProgressAnswer = false;
 
@@ -17,21 +18,23 @@ class AnswerStore {
         this.answers.push(answer)
     };
 
-    @action loadAnswersByUUID(uuid) {
-        this.inProgress = true;
+    @action setAnswer = (answer) => {
+        this.answer = answer
+    };
+
+    @action loadAnswersByUUID() {
+        this.inProgressAnswer = true;
         answerService.getAnswers({
             headers: {
                 "Authorization": 'JWT ' + CommonStore.token
             }
-        }, uuid)
+        }, QuestionStore.questionUUID)
             .then(result=> this.addAnswer(result))
             .catch(action((err) => console.log('Error: ', err)))
-            .finally(action(()=> {this.inProgress = false;}))
-
-
+            .finally(action(()=> {this.inProgressAnswer = false;}))
     }
 
-    @action createAnswer(answer) {
+    @action createAnswer() {
         this.isCreatingAnswer = true;
         //TODO CREATE ANSWER SERVICE + ACTION
     }

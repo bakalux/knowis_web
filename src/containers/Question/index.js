@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
 import {toJS} from "mobx";
 import { inject, observer } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
 import {Container, Header, Loader, Segment, Button, Icon, Grid, Image, Divider, Label, List, Message} from 'semantic-ui-react'
 import styles from './styles.module.scss';
 
-@inject('QuestionStore', 'AnswerStore')
+@inject('QuestionStore', 'AnswerStore', 'UserStore')
+@withRouter
 @observer
 class Question extends Component {
-    handleSlug = () => this.props.QuestionStore.setQuestionSlug(this.props.match.params.slug);
 
-    componentWillMount() {
-        this.handleSlug();
+    componentDidMount() {
+        const slug = this.props.match.params.slug;
+        this.props.QuestionStore.setQuestionSlug(slug);
         this.props.QuestionStore.loadQuestionBySlug();
     }
 
-    render () {
-        const {question, questionSlug, inProgress} = this.props.QuestionStore;
-        const {answers, questionUUID} = this.props.AnswerStore;
-        const myQuestion = toJS(question);
 
+    render () {
+        const {question, inProgress} = this.props.QuestionStore;
+        const {answers, inProgressAnswer} = this.props.AnswerStore;
+        const myQuestion = toJS(question);
         return (
             inProgress ? <Loader active size='large'>Завантаження</Loader>: <div>
                 <div>
@@ -28,7 +30,7 @@ class Question extends Component {
                                 <Grid.Row key={myQuestion.get_tags} floated = 'left'>
                                     <Grid.Column width={16}>
                                         <List horizontal >
-                                            {myQuestion.get_tags.map(tag => (
+                                            {myQuestion && myQuestion.get_tags.map(tag => (
                                                 <List.Item key={tag}>
                                                     <Label>
                                                         {tag}
@@ -69,6 +71,7 @@ class Question extends Component {
                                     <Grid.Column width={16}>
                                         <p className={styles.content}>Відповіді</p>
                                         <Divider fitted/>
+                                        {inProgressAnswer ? <Loader active inline='centered'></Loader> : null}
                                     </Grid.Column>
                                 </Grid.Row>
                                 {answers.map(answer => (
@@ -91,7 +94,6 @@ class Question extends Component {
                                             <Divider fitted/>
                                         </Grid.Column>
                                     </Grid.Row>
-
                                     )
                                 ))}
                             </Grid>
