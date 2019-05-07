@@ -10,6 +10,7 @@ class AnswerStore {
     @observable isCreatingAnswer = false;
     @observable answers=[];
     @observable answer = '';
+    @observable answerUUID = '';
     @observable answerErrors = undefined;
     @observable inProgressAnswer = false;
     @observable isCreatingAnswer = false;
@@ -21,6 +22,10 @@ class AnswerStore {
 
     @action setAnswer = (answer) => {
         this.answer = answer
+    };
+
+    @action setAnswerUUID = (uuid) => {
+        this.answerUUID = uuid
     };
 
     @action loadAnswersByUUID() {
@@ -45,6 +50,17 @@ class AnswerStore {
             .catch(err=> console.log(err))
             .finally(action(() => {this.isCreatingAnswer = false;}))
     }
+
+    @action deleteAnswer(uuid) {
+        const idx = this.answers.map(item =>
+        item.results.findIndex(c => c.uuid === uuid))
+        if (idx > -1) this.answers.splice(idx, 1);
+        return answerService.deleteAnswer({
+            headers: {
+                "Authorization": 'JWT ' + CommonStore.token
+            }
+        }, uuid)
+    };
 }
 const store = new AnswerStore();
 export default store;

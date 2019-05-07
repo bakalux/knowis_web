@@ -23,6 +23,10 @@ class QuestionStore {
         this.questionSlug = slug
     };
 
+    @action setNextPageUrl = (url) => {
+        this.nextPageURL = url
+    };
+
     @action setQuestionUUID = (uuid) => {
         this.questionUUID = uuid
     };
@@ -51,7 +55,7 @@ class QuestionStore {
     @action nextPage() {
         this.inProgress = true;
         this.questions.map(question => (
-            this.nextPageURL = question.next
+            this.setNextPageUrl(question.next)
         ));
         return questionService.getQuestionsByURL(this.nextPageURL, {
             headers: {

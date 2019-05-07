@@ -4,7 +4,6 @@ import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import {Container, Header, Loader, Segment, Button, Icon, Grid, Image, Divider, Label, List, Message} from 'semantic-ui-react'
 import styles from './styles.module.scss';
-import AnswerSegment from '../../components/common/Answer/AnswerSegment'
 
 @inject('QuestionStore', 'AnswerStore', 'UserStore')
 @withRouter
@@ -12,7 +11,10 @@ import AnswerSegment from '../../components/common/Answer/AnswerSegment'
 class Question extends Component {
 
     handlePostAnswer = () => this.props.AnswerStore.createAnswer();
-    handleDeleteAnswer = (uuid) => this.props.AnswerStore.deleteAnswer(uuid)
+
+    handleDeleteAnswer = (uuid) => {
+        this.props.AnswerStore.deleteAnswer(uuid);
+    };
 
     componentDidMount() {
         const slug = this.props.match.params.slug;
@@ -25,6 +27,7 @@ class Question extends Component {
         const {currentUser} = this.props.UserStore;
         const {answers, inProgressAnswer, isCreatingAnswer, answer} = this.props.AnswerStore;
         const myQuestion = toJS(question);
+
         return (
             inProgress ? <Loader active size='large'>Завантаження</Loader>: <div>
                 <div>
@@ -81,10 +84,31 @@ class Question extends Component {
                                     <Grid.Row>
                                         <Loader active inline='centered'></Loader>
                                     </Grid.Row> : null}
-                                    <AnswerSegment
-                                    answers={answers}
-                                    currentUser={currentUser}
-                                    onDelete={this.handleDeleteAnswer}/>
+                                {answers.map(answer => (
+                                    answer.results.map(item=>
+                                    <Grid.Row key={item.comment}>
+                                        <Grid.Column>
+                                            <List >
+                                                <List.Item><Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png' />
+                                                <List.Content>
+                                                    <List.Header as='a' key={myQuestion.username}>{myQuestion.username}</List.Header>
+                                                    <List.Description key={myQuestion.create_date}>
+                                                        {new Date(myQuestion.create_date).toLocaleString('uk-UA')}
+                                                    </List.Description>
+                                                </List.Content>
+                                                    <List.Content floated='right'>
+                                                        <Icon name='delete' link color='grey'/>
+                                                    </List.Content>
+                                                </List.Item>
+                                                <p>
+                                                    {item.comment}
+                                                </p>
+                                            </List>
+                                            <Divider fitted/>
+                                        </Grid.Column>
+                                    </Grid.Row>
+                                    )
+                                ))}
                             </Grid>
                         </Segment>
                     </Container>}
