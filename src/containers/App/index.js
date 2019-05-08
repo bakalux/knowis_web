@@ -12,36 +12,36 @@ import Header from "../Header"
 @observer
 class App extends React.Component{
 
-    componentWillMount() {
-        if (!this.props.CommonStore.token) {
-            this.props.CommonStore.setAppLoaded();
-        }
+  componentWillMount() {
+    if (!this.props.CommonStore.token) {
+      this.props.CommonStore.setAppLoaded();
     }
+  }
 
-    componentDidMount() {
-        if (this.props.CommonStore.token){
-            this.props.UserStore.pullUser()
-                .finally(() => this.props.CommonStore.setAppLoaded());
-        }
+  componentDidMount() {
+    if (this.props.CommonStore.token){
+      this.props.UserStore.pullUser()
+        .finally(() => this.props.CommonStore.setAppLoaded());
     }
+  }
 
-    render() {
-        if (this.props.CommonStore.appLoaded) {
-            return (
-                <div>
-                    {(this.props.AuthStore.navBar) ? false : <Header/>}
-                    <Switch>
-                        <Route path='/login' component={LoginPage}/>
-                        <Route path='/:slug' component={Question}/>
-                        <Route path='/' component={QuestionPage}/>
-                    </Switch>
-                </div>
-            );
-        }
-        return (
-            <Header/>
-        );
+  render() {
+    if (this.props.CommonStore.appLoaded) {
+      return (
+        <div>
+          {(this.props.AuthStore.navBar) ? false : <Header/>}
+          <Switch>
+            <Route path='/login' component={LoginPage}/>
+            <Route path='/:slug' component={Question}/>
+            <Route path='/' component={QuestionPage}/>
+          </Switch>
+        </div>
+      );
     }
+    return (
+      <Header/>
+    );
+  }
 }
 
 export default App;

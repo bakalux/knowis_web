@@ -65,7 +65,11 @@ const LoggedInView = props => {
                     <Dropdown.Menu>
                       <Dropdown.Item icon='address card outline' text='Профіль'/>
                       <Dropdown.Divider />
-                      <Dropdown.Item icon='address card outline' text='Вийти' onClick={() => props.AuthStore.logout().then(props.history.replace('/login'))}/>
+                      <Dropdown.Item
+                        icon='address card outline'
+                        text='Вийти'
+                        onClick={() => props.AuthStore.logout()
+                          .then(props.history.replace('/login'))}/>
                     </Dropdown.Menu>
                   </Dropdown>
                 </Menu.Item>
@@ -84,21 +88,17 @@ const LoggedInView = props => {
 @inject('UserStore', 'AuthStore')
 @withRouter
 class Header extends Component {
-
-  shouldComponentUpdate(nextProps, nextState, nextContext) {
-    return this.props.UserStore.currentUser;
-  }
-
   render() {
     return (
-        <nav>
+      <nav>
         <div className="container">
-          <LoggedInView currentUser={this.props.UserStore.currentUser} AuthStore={this.props.AuthStore}
-          history={this.props.history}/>
+          <LoggedInView
+            currentUser={this.props.UserStore.currentUser}
+            AuthStore={this.props.AuthStore}
+            history={this.props.history}/>
           <LoggedOutView currentUser={this.props.UserStore.currentUser}/>
         </div>
-      </nav>
-        )
+      </nav>)
   }
 }
 

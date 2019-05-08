@@ -1,9 +1,0 @@
-{
-  "extends": ["airbnb-base", "plugin:prettier/recommended"],
-  "parser": "babel-eslint",
-  "env": {
-    "browser": true,
-    "node": true,
-    "jasmine": true
-  }
-}
