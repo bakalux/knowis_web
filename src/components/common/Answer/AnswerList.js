@@ -4,7 +4,7 @@ import {observer} from 'mobx-react'
 
 const AnswerList = (props => {
     return(
-        <div>
+        <React.Fragment>
             {
                 props.answers.map(
                     result => result.results.map(
@@ -22,7 +22,7 @@ const AnswerList = (props => {
                     )
                 )
             }
-        </div>
+        </React.Fragment>
     )
 });
 

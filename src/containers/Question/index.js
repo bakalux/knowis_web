@@ -12,7 +12,7 @@ import AnswerSegment from '../../components/common/Answer/AnswerSegment'
 class Question extends Component {
 
     handlePostAnswer = () => this.props.AnswerStore.createAnswer();
-    handleDeleteAnswer = (uuid) => this.props.AnswerStore.deleteAnswer(uuid)
+    handleDeleteAnswer = (uuid) => this.props.AnswerStore.deleteAnswer(uuid);
 
     componentDidMount() {
         const slug = this.props.match.params.slug;
