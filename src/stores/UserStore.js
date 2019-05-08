@@ -25,7 +25,8 @@ class UserStore {
 
   @action forgetUser() {
     this.currentUser = undefined;
-  }
+  };
+
 }
 
 const store = new UserStore();

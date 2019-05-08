@@ -8,17 +8,17 @@ export default class AnswerService {
 
     getAnswers = (token, uuid) => {
         const url = `${API_URL}/api/comments/q/${uuid}`;
-        return axios.get(url, token).then(response => response.data)
+        return axios.get(url, token).then(response => response.data);
     };
 
     postAnswer = (creds) => {
         const url = `${API_URL}/api/comments`;
-        return axios.post(url, creds)
+        return axios.post(url, creds);
     };
 
     deleteAnswer = (token, uuid) => {
         const url = `${API_URL}/api/comments/d/${uuid}`;
         return axios.delete(url, token)
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
     }
 }

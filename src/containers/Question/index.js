@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import {Container, Header, Loader, Segment, Button, Icon, Grid, Image, Divider, Label, List, Message} from 'semantic-ui-react'
 import styles from './styles.module.scss';
-import AnswerSegment from '../../components/common/Answer/AnswerSegment'
+import AnswerSegment from '../../components/common/Answer/AnswerSegment';
 
 @inject('QuestionStore', 'AnswerStore', 'UserStore')
 @withRouter
