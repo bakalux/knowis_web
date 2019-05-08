@@ -6,6 +6,7 @@ const AnswerSegment = props => {
     return (
       <AnswerList
         answers={props.answers}
+        username={props.username}
         currentUser={props.currentUser}
         onDelete={props.onDelete}/>
     );

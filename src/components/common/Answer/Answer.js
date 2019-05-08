@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
-import {toJS} from 'mobx'
 import {Grid} from "semantic-ui-react";
 import {List} from "semantic-ui-react";
 import {Image} from "semantic-ui-react";
@@ -9,17 +8,11 @@ import DeleteButton from './DeleteButton';
 
 const Answer = props => {
   const answer = props.answer;
-  const show = props.currentUser &&  props.currentUser.username  === answer.username;
+  const show = props.currentUser &&
+    props.username  === answer.username;
   return (
     <Grid.Row key={answer.comment}>
       <Grid.Column>
-        <div>{
-          console.log('User: ', toJS(props.currentUser))
-        }</div><div>{
-          console.log('User username: ', user)
-        }</div><div>{
-          console.log('answer: ', answer.username)
-        }</div>
         <List>
           <List.Item>
             <Image

@@ -12,6 +12,7 @@ const AnswerList = (props => {
               return (
                 <Answer
                   answer={answer}
+                  username={props.username}
                   currentUser={props.currentUser}
                   uuid={props.uuid}
                   key={answer.uuid}

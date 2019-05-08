@@ -53,13 +53,15 @@ class AnswerStore {
 
   @action deleteAnswer(uuid) {
     const idx = this.answers.map(item =>
-      item.results.findIndex(c => c.uuid === uuid))
+      item.results.findIndex(c => c.uuid === uuid));
     if (idx > -1) this.answers.splice(idx, 1);
     return answerService.deleteAnswer({
       headers: {
         "Authorization": 'JWT ' + CommonStore.token
       }
     }, uuid)
+      .catch(action(err => { this.loadAnswersByUUID();
+      throw err}))
   };
 }
 const store = new AnswerStore();

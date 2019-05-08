@@ -9,6 +9,7 @@ class UserStore {
   @observable loadingUser;
   @observable updatingUser;
   @observable updatingUserErrors;
+  @observable username;
 
   @action pullUser(){
     this.loadingUser = true;
@@ -19,14 +20,18 @@ class UserStore {
     })
       .then(result => {
         this.currentUser = result;
+        this.currentUser.map(user=>this.setUserName(user.username))
       })
       .finally(action(() => {this.loadingUser = false;}))
   }
 
   @action forgetUser() {
     this.currentUser = undefined;
-  };
+  }
 
+  @action setUserName = (username) => {
+    this.username = username
+}
 }
 
 const store = new UserStore();
