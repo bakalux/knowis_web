@@ -22,7 +22,7 @@ class Question extends Component {
 
   render () {
     const {question, inProgress} = this.props.QuestionStore;
-    const {currentUser} = this.props.UserStore;
+    const {currentUser, username} = this.props.UserStore;
     const {answers, inProgressAnswer, isCreatingAnswer, answer} = this.props.AnswerStore;
     const myQuestion = toJS(question);
     return (
@@ -92,6 +92,7 @@ class Question extends Component {
                   </Grid.Row> : null}
                 <AnswerSegment
                   answers={answers}
+                  username={username}
                   currentUser={currentUser}
                   onDelete={this.handleDeleteAnswer}/>
               </Grid>

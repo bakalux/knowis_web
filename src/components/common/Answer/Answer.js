@@ -9,7 +9,7 @@ import DeleteButton from './DeleteButton';
 const Answer = props => {
   const answer = props.answer;
   const show = props.currentUser &&
-    props.currentUser.username  === answer.username;
+    props.username  === answer.username;
   return (
     <Grid.Row key={answer.comment}>
       <Grid.Column>
