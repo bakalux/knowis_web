@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6111336c-1236-45e1-af08-eb37921471b2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Answer/Answer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Answer/Answer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Answer/AnswerList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Answer/AnswerList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Answer/AnswerSegment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Answer/AnswerSegment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Question/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Question/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stores/AnswerStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/AnswerStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stores/UserStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/UserStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Header/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Header/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +21,7 @@
             <entry file="file://$PROJECT_DIR$/src/components/common/Answer/DeleteButton.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="238">
-                  <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+                  <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -72,7 +69,7 @@
             <entry file="file://$PROJECT_DIR$/src/containers/AnswerInput/index.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state>
-                  <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
+                  <caret column="25" selection-start-column="25" selection-end-column="25" />
                 </state>
               </provider>
             </entry>
@@ -109,7 +106,7 @@
             <entry file="file://$PROJECT_DIR$/src/stores/UserStore.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="323">
-                  <caret line="21" column="34" lean-forward="true" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+                  <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
                   <folding>
                     <element signature="e#0#42#0" expanded="true" />
                   </folding>
@@ -117,14 +114,23 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/stores/AnswerStore.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="643">
+                <state relative-caret-position="439">
                   <caret line="59" column="22" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="22" />
                   <folding>
                     <element signature="e#0#40#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.gitignore">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="340">
+                  <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
                 </state>
               </provider>
             </entry>
@@ -185,7 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/services/UserAccountSerivce.js" />
         <option value="$PROJECT_DIR$/src/components/ui/dropdown.js" />
         <option value="$PROJECT_DIR$/src/containers/Header/check.js" />
         <option value="$PROJECT_DIR$/src/containers/Header/styles.module.scss" />
@@ -236,6 +241,7 @@
         <option value="$PROJECT_DIR$/src/stores/AnswerStore.js" />
         <option value="$PROJECT_DIR$/src/containers/Question/index.js" />
         <option value="$PROJECT_DIR$/src/components/common/Answer/AnswerSegment.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -259,6 +265,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -382,7 +389,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -390,7 +396,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.buildTools.grunt.grunt-cli.package" value="" />
     <property name="js.buildTools.gulp.gulp_package_dir" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../knowis" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.jscs" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -500,11 +506,14 @@
       <workItem from="1557325379020" duration="8000" />
       <workItem from="1557326432187" duration="12000" />
       <workItem from="1557326738735" duration="4000" />
+      <workItem from="1557397539191" duration="4000" />
+      <workItem from="1557397667662" duration="597000" />
+      <workItem from="1557485057064" duration="257000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="318339000" />
+    <option name="totallyTimeSpent" value="319197000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -517,8 +526,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13578275" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13897763" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -533,7 +543,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5026624" side_tool="true" weight="0.22079314" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" sideWeight="0.49733758" visible="true" weight="0.22079314" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49733758" visible="true" weight="0.22079314" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32840723" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -610,7 +620,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/containers/Header/check.js" />
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3">
@@ -863,16 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/common/Answer/DeleteButton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/common/Answer/AnswerSegment.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -906,7 +905,7 @@
     <entry file="file://$PROJECT_DIR$/src/containers/AnswerInput/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
+          <caret column="25" selection-start-column="25" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -933,7 +932,7 @@
     <entry file="file://$PROJECT_DIR$/src/stores/UserStore.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="21" column="34" lean-forward="true" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
           </folding>
@@ -942,11 +941,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/stores/AnswerStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
+        <state relative-caret-position="439">
           <caret line="59" column="22" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="22" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/common/Answer/DeleteButton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>

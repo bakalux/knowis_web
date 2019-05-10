@@ -40,7 +40,7 @@ const LoggedOutView = props => {
 const LoggedInView = props => {
   if (props.currentUser) {
     return (
-            <Menu className={styles.navBar}
+            <Menu borderless className={styles.navBar}
             fixed='top'
             size='small'>
             <Container >
