@@ -35,6 +35,10 @@ class AuthStore {
     this.values.password1 = password2
   }
 
+  @action showSignup(){
+    this.signUp = !this.signUp
+  }
+
   @action reset() {
     this.values.username = '';
     this.values.email = '';

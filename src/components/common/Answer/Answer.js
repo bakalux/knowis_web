@@ -35,7 +35,7 @@ const Answer = props => {
                 onDelete={props.onDelete}/>
             </List.Content>
           </List.Item>
-          <p>{answer.comment}</p>
+          <p>{answer.answer}</p>
         </List>
         <Divider fitted />
       </Grid.Column>

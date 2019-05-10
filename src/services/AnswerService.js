@@ -7,17 +7,17 @@ export default class AnswerService {
     constructor() {}
 
     getAnswers = (token, uuid) => {
-        const url = `${API_URL}/api/comments/q/${uuid}`;
+        const url = `${API_URL}/api/answers/q/${uuid}`;
         return axios.get(url, token).then(response => response.data);
     };
 
-    postAnswer = (creds) => {
-        const url = `${API_URL}/api/comments`;
-        return axios.post(url, creds);
+    postAnswer = (token, data, uuid) => {
+        const url = `${API_URL}/api/answers/u/${uuid}`;
+        return axios.post(url, token, data);
     };
 
     deleteAnswer = (token, uuid) => {
-        const url = `${API_URL}/api/comments/d/${uuid}`;
+        const url = `${API_URL}/api/answers/d/${uuid}`;
         return axios.delete(url, token)
             .catch(err => console.log(err));
     }

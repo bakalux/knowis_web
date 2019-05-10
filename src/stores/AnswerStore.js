@@ -13,8 +13,11 @@ class AnswerStore {
   @observable answerUUID = '';
   @observable answerErrors = undefined;
   @observable inProgressAnswer = false;
-  @observable isCreatingAnswer = false;
+  @observable showWindow = false;
 
+  @action showInputWindow() {
+    this.showWindow = !this.showWindow
+  }
 
   @action pushAnswer = (answer) => {
     this.answers.push(answer)
@@ -40,12 +43,15 @@ class AnswerStore {
       .finally(action(()=> {this.inProgressAnswer = false;}))
   }
 
-  @action createAnswer() {
+  @action createAnswer(uuid) {
     this.isCreatingAnswer = true;
     return answerService.postAnswer({
-      question: QuestionStore.question.id,
-      comment: this.answer,
-    })
+      headers: {
+        "Authorization": 'JWT ' + CommonStore.token
+      }
+    }, {
+      answer: this.answer
+    }, uuid)
       .then(() => this.loadAnswersByUUID())
       .catch(err=> console.log(err))
       .finally(action(() => {this.isCreatingAnswer = false;}))

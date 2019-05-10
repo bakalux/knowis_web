@@ -2231,6 +2231,11 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
+class-autobind@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/class-autobind/-/class-autobind-0.1.4.tgz#34516c49167cf8d3f639ddc186bcfa2268afff34"
+  integrity sha1-NFFsSRZ8+NP2Od3Bhrz6Imiv/zQ=
+
 class-utils@^0.3.5:
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/class-utils/-/class-utils-0.3.6.tgz#f93369ae8b9a7ce02fd41faad0ca83033190c463"
@@ -2240,7 +2245,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.6:
+classnames@^2.2.5, classnames@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
@@ -3181,6 +3186,57 @@ dotenv@6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-6.0.0.tgz#24e37c041741c5f4b25324958ebbc34bca965935"
 
+draft-js-export-html@^0.5.1:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/draft-js-export-html/-/draft-js-export-html-0.5.4.tgz#e24927da3efe6f3df17f1d7606a9dc6141dbf72d"
+  integrity sha1-4kkn2j7+bz3xfx12BqncYUHb9y0=
+  dependencies:
+    draft-js-utils "^0.1.5"
+
+draft-js-export-markdown@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/draft-js-export-markdown/-/draft-js-export-markdown-0.2.2.tgz#5b0a1a10591d8b96199dcb70b04b1ab7deb72a33"
+  integrity sha1-WwoaEFkdi5YZnctwsEsat963KjM=
+  dependencies:
+    draft-js-utils "^0.1.5"
+
+draft-js-import-element@^0.4.0, draft-js-import-element@^0.4.1:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/draft-js-import-element/-/draft-js-import-element-0.4.3.tgz#785381a2e0323a9836cfa856c442e9013bd482a4"
+  integrity sha1-eFOBouAyOpg2z6hWxELpATvUgqQ=
+  dependencies:
+    draft-js-utils "^0.1.5"
+    synthetic-dom "^0.2.0"
+
+draft-js-import-html@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/draft-js-import-html/-/draft-js-import-html-0.3.2.tgz#cc205a6192cac2c6520576688702ee31f5241810"
+  integrity sha1-zCBaYZLKwsZSBXZohwLuMfUkGBA=
+  dependencies:
+    draft-js-import-element "^0.4.1"
+
+draft-js-import-markdown@^0.2.1:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/draft-js-import-markdown/-/draft-js-import-markdown-0.2.3.tgz#f2db157a5209321f57e77763dc31ffd35f1a8b09"
+  integrity sha1-8tsVelIJMh9X53dj3DH/018aiwk=
+  dependencies:
+    draft-js-import-element "^0.4.0"
+    synthetic-dom "^0.2.0"
+
+draft-js-utils@^0.1.5, draft-js-utils@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/draft-js-utils/-/draft-js-utils-0.1.7.tgz#e2b6927ca620edf1855a4bfc1cf1d21080a70f16"
+  integrity sha1-4raSfKYg7fGFWkv8HPHSEICnDxY=
+
+draft-js@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/draft-js/-/draft-js-0.9.1.tgz#940a51a0ad1fede0411676b6404f4050495f54f9"
+  integrity sha1-lApRoK0f7eBBFna2QE9AUElfVPk=
+  dependencies:
+    fbjs "^0.8.3"
+    immutable "~3.7.4"
+    object-assign "^4.1.0"
+
 duplexer@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.1.tgz#ace6ff808c1ce66b57d1ebf97977acb02334cfc1"
@@ -3809,7 +3865,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fbjs@^0.8.0:
+fbjs@^0.8.0, fbjs@^0.8.3:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -4629,6 +4685,16 @@ ignore@^4.0.6:
 immer@1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/immer/-/immer-1.10.0.tgz#bad67605ba9c810275d91e1c2a47d4582e98286d"
+
+immutable@^3.8.1:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
+  integrity sha1-wkOZUUVbs5kT2vKBN28VMOEErfM=
+
+immutable@~3.7.4:
+  version "3.7.6"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.7.6.tgz#13b4d3cb12befa15482a26fe1b2ebae640071e4b"
+  integrity sha1-E7TTyxK++hVIKib+Gy665kAHHks=
 
 import-cwd@^2.0.0:
   version "2.1.0"
@@ -8514,6 +8580,21 @@ selfsigned@^1.9.1:
   dependencies:
     node-forge "0.7.5"
 
+semantic-ui-react-rte@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/semantic-ui-react-rte/-/semantic-ui-react-rte-0.1.5.tgz#954a352fd4d8955e47869cb51a19d480f8409e9d"
+  integrity sha1-lUo1L9TYlV5Hhpy1GhnUgPhAnp0=
+  dependencies:
+    class-autobind "^0.1.4"
+    classnames "^2.2.5"
+    draft-js "^0.9.1"
+    draft-js-export-html "^0.5.1"
+    draft-js-export-markdown "^0.2.2"
+    draft-js-import-html "^0.3.2"
+    draft-js-import-markdown "^0.2.1"
+    draft-js-utils "^0.1.7"
+    immutable "^3.8.1"
+
 semantic-ui-react@^0.86.0:
   version "0.86.0"
   resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-0.86.0.tgz#f3c6a27250f2e9e07a975d0a3399ffd3a48861b5"
@@ -9148,6 +9229,11 @@ svgo@^1.1.1:
 symbol-tree@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
+
+synthetic-dom@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/synthetic-dom/-/synthetic-dom-0.2.1.tgz#6c76fcf91ea9a5231318f8f415e27883d534df86"
+  integrity sha1-bHb8+R6ppSMTGPj0FeJ4g9U034Y=
 
 table@^5.2.3:
   version "5.2.3"

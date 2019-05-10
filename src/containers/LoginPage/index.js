@@ -17,7 +17,7 @@ class LoginPage extends Component {
       .then(() => window.location.reload());
   };
 
-  handleSignUp = e => this.props.AuthStore.signUp = !this.props.AuthStore.signUp;
+  handleSignUp = () => this.props.AuthStore.showSignup();
 
   componentWillUnmount() {
     this.props.AuthStore.reset();

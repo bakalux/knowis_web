@@ -23,8 +23,7 @@ class AuthLayout extends Component {
     await this.props.AuthStore.signup()
   };
 
-  handleSignUp = e => this.props.AuthStore.signUp =
-    !this.props.AuthStore.signUp;
+  handleSignUp = () => this.props.AuthStore.showSignup();
 
   render() {
     const {values, errors, inProgress} = this.props.AuthStore;
@@ -81,11 +80,11 @@ class AuthLayout extends Component {
             Зареєструватися
           </Button>
           <a href='#'>
-            <React.Fragment
+            <p
               onClick={this.handleSignUp}
               className={styles.info}>
               Відмінити
-            </React.Fragment>
+            </p>
           </a>
         </Form>
       </Grid.Column>

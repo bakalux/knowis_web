@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import {Container, Header, Loader, Segment, Button, Icon, Grid, Image, Divider, Label, List, Message} from 'semantic-ui-react'
 import styles from './styles.module.scss';
 import AnswerSegment from '../../components/common/Answer/AnswerSegment';
+import AnswerInput from '../../components/common/Answer/AnswerInput'
 
 @inject('QuestionStore', 'AnswerStore', 'UserStore')
 @withRouter
@@ -13,6 +14,8 @@ class Question extends Component {
   handlePostAnswer = () => this.props.AnswerStore.createAnswer();
 
   handleDeleteAnswer = (uuid) => this.props.AnswerStore.deleteAnswer(uuid);
+  handleShowWindow = () => this.props.AnswerStore.showInputWindow();
+
 
   componentDidMount() {
     const slug = this.props.match.params.slug;
@@ -23,13 +26,14 @@ class Question extends Component {
   render () {
     const {question, inProgress} = this.props.QuestionStore;
     const {currentUser, username} = this.props.UserStore;
-    const {answers, inProgressAnswer, isCreatingAnswer, answer} = this.props.AnswerStore;
+    const {answers, inProgressAnswer, isCreatingAnswer,
+      answer, showWindow} = this.props.AnswerStore;
     const myQuestion = toJS(question);
     return (
       inProgress ? <Loader active size='large'>Завантаження</Loader>: <div>
         <div>
-          {<Container text>
-            <Segment>
+          {<Container text style={{ marginTop: '4em'}}>
+            <div>
               <Grid relaxed>
                 <Grid.Row key={myQuestion.get_tags} floated = 'left'>
                   <Grid.Column width={16}>
@@ -70,16 +74,22 @@ class Question extends Component {
                     </p>
                     <List horizontal>
                       <List.Item>
-                        <Button disabled={isCreatingAnswer}
+                        <Button disabled={showWindow}
                                 basic circular icon='write'
                                 size='mini'
                                 content='Відповісти'
-                                onClick={''}
+                                onClick={this.handleShowWindow}
                         />
                       </List.Item>
                     </List>
                   </Grid.Column>
                 </Grid.Row>
+                {showWindow ?
+                    <AnswerInput
+                  username={myQuestion.username}
+                  create_date={myQuestion.create_date}
+                  uuid={myQuestion.uuid}
+                  />: null}
                 <Grid.Row>
                   <Grid.Column width={16}>
                     <p className={styles.content}>Відповіді</p>
@@ -96,7 +106,7 @@ class Question extends Component {
                   currentUser={currentUser}
                   onDelete={this.handleDeleteAnswer}/>
               </Grid>
-            </Segment>
+            </div>
           </Container>}
         </div>
         <div className={styles.segment}></div>
