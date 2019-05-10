@@ -1,5 +1,5 @@
-import AnswerList from './AnswerList'
-import React from 'react'
+import AnswerList from './AnswerList';
+import React from 'react';
 
 const AnswerSegment = props => {
   if (props.currentUser) {
@@ -13,7 +13,7 @@ const AnswerSegment = props => {
   } else {
     return (
       <p>Login</p>
-    )
+    );
   }
 };
 export default AnswerSegment;

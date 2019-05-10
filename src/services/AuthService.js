@@ -17,7 +17,7 @@ export default class AuthService {
 
     postSignup = (creds) => {
         const url = `${API_URL}/auth/registration/`;
-        return axios.post(url, creds)
+        return axios.post(url, creds);
     }
 
 }
