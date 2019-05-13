@@ -22,28 +22,16 @@ import styles from './styles.module.scss';
 class AnswerInput extends React.Component {
 
   state = {
-    value: RichTextEditor.createEmptyValue()
+    answer: RichTextEditor.createEmptyValue()
   };
 
-  onChange = (value) => {
-    this.setState({value});
-    if (this.props.onChange) {
-      // Send the changes up to the parent component as an HTML string.
-      // This is here to demonstrate using `.toString()` but in a real app it
-      // would be better to avoid generating a string on each change.
-      this.props.onChange(
-        value.toString('html')
-      );
-    }
-  };
-
-  handleAnswerInput = ev => {
-    this.props.AnswerStore.setAnswer(ev.target.value)
+  onChange = (answer) => {
+    this.setState({answer});
   };
 
   handleCreateAnswer = (e) => {
     e.preventDefault();
-    this.props.AnswerStore.createAnswer(this.props.uuid, this.state.answer)
+    this.props.AnswerStore.createAnswer(this.props.uuid, 'hello')
   };
 
   render () {
@@ -66,7 +54,7 @@ class AnswerInput extends React.Component {
               </List.Item>
               </List>
             <RichTextEditor
-              value={this.state.value}
+              value={this.state.answer}
               onChange={this.onChange}
               className={styles.textEditor}
             />
