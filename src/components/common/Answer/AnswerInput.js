@@ -43,7 +43,7 @@ class AnswerInput extends React.Component {
 
   handleCreateAnswer = (e) => {
     e.preventDefault();
-    this.props.AnswerStore.createAnswer(uuid)
+    this.props.AnswerStore.createAnswer(this.props.uuid, this.state.answer)
   };
 
   render () {

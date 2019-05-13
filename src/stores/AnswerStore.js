@@ -43,14 +43,14 @@ class AnswerStore {
       .finally(action(()=> {this.inProgressAnswer = false;}))
   }
 
-  @action createAnswer(uuid) {
+  @action createAnswer(uuid, answer) {
     this.isCreatingAnswer = true;
     return answerService.postAnswer({
       headers: {
         "Authorization": 'JWT ' + CommonStore.token
       }
     }, {
-      answer: this.answer
+      answer: answer
     }, uuid)
       .then(() => this.loadAnswersByUUID())
       .catch(err=> console.log(err))
