@@ -85,7 +85,7 @@ class QuestionPage extends Component {
                           </Button>&nbsp;&nbsp;&nbsp;&nbsp;
                             <Button as='div' labelPosition='left' size='mini' >
                               <Label as='a' basic color='blue' >
-                                {item.get_num_comments}
+                                {item.get_num_answers}
                               </Label>
                               <Button icon size='mini' color='blue'>
                                 <Icon name='comment' />

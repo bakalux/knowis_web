@@ -12,8 +12,13 @@ export default class AnswerService {
     };
 
     postAnswer = (token, data, uuid) => {
-        const url = `${API_URL}/api/answers/u/${uuid}`;
-        return axios.post(url, token, data);
+        const url = `${API_URL}/api/answers/c/${uuid}/`;
+        return axios({
+            method: 'post',
+            url: url,
+            data: data,
+            headers: token
+        })
     };
 
     deleteAnswer = (token, uuid) => {

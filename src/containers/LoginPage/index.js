@@ -8,8 +8,8 @@ import AuthLayout from '../AuthLayout'
 @observer
 class LoginPage extends Component {
 
-  handleEmailChange = e => this.props.AuthStore.setEmail(e.target.value);
-  handlePasswordChange = e => this.props.AuthStore.setPassword1(e.target.value);
+  handleEmailChange = (e) => this.props.AuthStore.setEmail(e.target.value);
+  handlePasswordChange = (e) => this.props.AuthStore.setPassword1(e.target.value);
   handleSubmitLogin = (e) => {
     e.preventDefault();
     this.props.AuthStore.login()

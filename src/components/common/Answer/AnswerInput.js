@@ -22,28 +22,18 @@ import styles from './styles.module.scss';
 class AnswerInput extends React.Component {
 
   state = {
-    value: RichTextEditor.createEmptyValue()
+    answer: RichTextEditor.createEmptyValue()
   };
 
-  onChange = (value) => {
-    this.setState({value});
-    if (this.props.onChange) {
-      // Send the changes up to the parent component as an HTML string.
-      // This is here to demonstrate using `.toString()` but in a real app it
-      // would be better to avoid generating a string on each change.
-      this.props.onChange(
-        value.toString('html')
-      );
-    }
+  onChange = (answer) => {
+    this.setState({answer});
   };
 
-  handleAnswerInput = ev => {
-    this.props.AnswerStore.setAnswer(ev.target.value)
-  };
-
-  handleCreateAnswer = (e) => {
+  handlePostAnswer = (e) => {
     e.preventDefault();
-    this.props.AnswerStore.createAnswer(uuid)
+    this.props.AnswerStore.createAnswer(this.props.uuid, this.state.answer)
+      .then(() => this.setState(
+        { answer: RichTextEditor.createEmptyValue()}))
   };
 
   render () {
@@ -66,13 +56,14 @@ class AnswerInput extends React.Component {
               </List.Item>
               </List>
             <RichTextEditor
-              value={this.state.value}
+              value={this.state.answer}
               onChange={this.onChange}
               className={styles.textEditor}
             />
             <List>
               <List.Item>
-                <Button size='mini' color='yellow' onClick={this.handleCreateAnswer}>
+                <Button size='mini' color='yellow' onClick={this.handlePostAnswer}
+                >
                   Готово
                 </Button>
               </List.Item>

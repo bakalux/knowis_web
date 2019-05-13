@@ -86,7 +86,7 @@ class Question extends Component {
                 </Grid.Row>
                 {showWindow ?
                     <AnswerInput
-                  username={myQuestion.username}
+                  username={username}
                   create_date={myQuestion.create_date}
                   uuid={myQuestion.uuid}
                   />: null}

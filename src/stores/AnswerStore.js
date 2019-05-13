@@ -2,6 +2,7 @@ import {observable, action} from "mobx";
 import AnswerService from '../services/AnswerService'
 import CommonStore from "./CommonStore";
 import QuestionStore from "./QuestionStore";
+import RichTextEditor from 'semantic-ui-react-rte'
 
 const answerService = new AnswerService();
 
@@ -10,6 +11,7 @@ class AnswerStore {
   @observable isCreatingAnswer = false;
   @observable answers=[];
   @observable answer = '';
+  @observable answerText = RichTextEditor.createEmptyValue();
   @observable answerUUID = '';
   @observable answerErrors = undefined;
   @observable inProgressAnswer = false;
@@ -23,8 +25,8 @@ class AnswerStore {
     this.answers.push(answer)
   };
 
-  @action setAnswer = (answer) => {
-    this.answer = answer
+  @action setAnswerText = (answer) => {
+    this.answerText = answer
   };
 
   @action setAnswerUUID = (uuid) => {
@@ -35,7 +37,9 @@ class AnswerStore {
     this.inProgressAnswer = true;
     return answerService.getAnswers({
       headers: {
-        "Authorization": 'JWT ' + CommonStore.token
+        "Authorization": 'JWT ' + CommonStore.token,
+        "Access-Control-Allow-Origin": "*",
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
       }
     }, QuestionStore.questionUUID)
       .then(result=> this.pushAnswer(result))
@@ -43,17 +47,23 @@ class AnswerStore {
       .finally(action(()=> {this.inProgressAnswer = false;}))
   }
 
-  @action createAnswer(uuid) {
+  @action createAnswer(uuid, userAnswer) {
     this.isCreatingAnswer = true;
     return answerService.postAnswer({
+      answer: userAnswer
+    }, {
       headers: {
         "Authorization": 'JWT ' + CommonStore.token
       }
-    }, {
-      answer: this.answer
     }, uuid)
       .then(() => this.loadAnswersByUUID())
-      .catch(err=> console.log(err))
+      .catch(err=> {
+        if (err.response) {
+          console.log(err.response.data);
+          console.log(err.response.status);
+          console.log(err.response.headers)
+        }
+      })
       .finally(action(() => {this.isCreatingAnswer = false;}))
   }
 
