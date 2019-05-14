@@ -31,7 +31,7 @@ class AnswerInput extends React.Component {
 
   handlePostAnswer = (e) => {
     e.preventDefault();
-    this.props.AnswerStore.createAnswer(uuid, this.state.value)
+    this.props.AnswerStore.createAnswer(this.props.uuid, this.state.value)
       .then(() => this.setState(
         { value: RichTextEditor.createEmptyValue()}))
   };
@@ -58,7 +58,7 @@ class AnswerInput extends React.Component {
             <RichTextEditor
               value={this.state.value}
               onChange={this.onChange}
-              className={styles.textEditor}
+              className={styles.editor}
             />
             <List>
               <List.Item>

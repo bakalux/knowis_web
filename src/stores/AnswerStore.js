@@ -45,14 +45,12 @@ class AnswerStore {
       .finally(action(()=> {this.inProgressAnswer = false;}))
   }
 
-  @action createAnswer(uuid, userAnswer) {
+  @action createAnswer(uuid, answer) {
     this.isCreatingAnswer = true;
     return answerService.postAnswer({
-      answer: userAnswer
+        "Authorization": 'JWT ' + CommonStore.token,
     }, {
-      headers: {
-        "Authorization": 'JWT ' + CommonStore.token
-      }
+      answer: answer
     }, uuid)
       .catch(err=> {
         if (err.response) {
