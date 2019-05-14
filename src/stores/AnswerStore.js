@@ -38,8 +38,6 @@ class AnswerStore {
     return answerService.getAnswers({
       headers: {
         "Authorization": 'JWT ' + CommonStore.token,
-        "Access-Control-Allow-Origin": "*",
-        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
       }
     }, QuestionStore.questionUUID)
       .then(result=> this.pushAnswer(result))
@@ -56,7 +54,6 @@ class AnswerStore {
         "Authorization": 'JWT ' + CommonStore.token
       }
     }, uuid)
-      .then(() => this.loadAnswersByUUID())
       .catch(err=> {
         if (err.response) {
           console.log(err.response.data);

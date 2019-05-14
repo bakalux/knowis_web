@@ -22,18 +22,18 @@ import styles from './styles.module.scss';
 class AnswerInput extends React.Component {
 
   state = {
-    answer: RichTextEditor.createEmptyValue()
+    value: RichTextEditor.createEmptyValue()
   };
 
-  onChange = (answer) => {
-    this.setState({answer});
+  onChange = (value) => {
+    this.setState({value});
   };
 
   handlePostAnswer = (e) => {
     e.preventDefault();
-    this.props.AnswerStore.createAnswer(this.props.uuid, this.state.answer)
+    this.props.AnswerStore.createAnswer(uuid, this.state.value)
       .then(() => this.setState(
-        { answer: RichTextEditor.createEmptyValue()}))
+        { value: RichTextEditor.createEmptyValue()}))
   };
 
   render () {
@@ -56,7 +56,7 @@ class AnswerInput extends React.Component {
               </List.Item>
               </List>
             <RichTextEditor
-              value={this.state.answer}
+              value={this.state.value}
               onChange={this.onChange}
               className={styles.textEditor}
             />
