@@ -14,7 +14,8 @@ import {
   List,
   TextArea
 } from 'semantic-ui-react';
-import RichTextEditor from 'semantic-ui-react-rte'
+import Editor  from 'draft-js-plugins-editor';
+import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import styles from './styles.module.scss';
 
 
@@ -22,23 +23,26 @@ import styles from './styles.module.scss';
 class AnswerInput extends React.Component {
 
   state = {
-    value: RichTextEditor.createEmptyValue()
+    editorState: EditorState.createEmpty(),
   };
 
-  onChange = (value) => {
-    this.setState({value});
+  onChange = (editorState) => {
+    this.setState({editorState});
   };
 
   handlePostAnswer = (e) => {
+    const editorState = this.state.editorState;
+    const content = JSON.stringify(convertToRaw(
+      editorState.getCurrentContent()));
     e.preventDefault();
-    this.props.AnswerStore.createAnswer(this.props.uuid, this.state.value)
-      .then(() => this.setState(
-        { value: RichTextEditor.createEmptyValue()}))
+    this.props.AnswerStore.createAnswer(this.props.uuid, content)
   };
 
   render () {
     const { isCreatingAnswer } = this.props.AnswerStore;
+
     return (
+
       <React.Fragment>
         <Grid.Row>
         <Grid.Column width={16}>
@@ -55,17 +59,18 @@ class AnswerInput extends React.Component {
               </List.Content>
               </List.Item>
               </List>
-            <RichTextEditor
-              value={this.state.value}
-              onChange={this.onChange}
-              className={styles.editor}
-            />
+            <div className={styles.editor}>
+              <Editor
+                editorState={this.state.editorState}
+                onChange={this.onChange}
+              />
+            </div>
             <List>
               <List.Item>
-                <Button size='mini' color='yellow' onClick={this.handlePostAnswer}
-                >
-                  Готово
-                </Button>
+                <Button size='mini' color='yellow'
+                        onClick={this.handlePostAnswer}
+                        content='Готово'
+                />
               </List.Item>
             </List>
           </Container>

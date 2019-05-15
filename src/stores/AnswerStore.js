@@ -2,7 +2,6 @@ import {observable, action} from "mobx";
 import AnswerService from '../services/AnswerService'
 import CommonStore from "./CommonStore";
 import QuestionStore from "./QuestionStore";
-import RichTextEditor from 'semantic-ui-react-rte'
 
 const answerService = new AnswerService();
 
@@ -11,7 +10,6 @@ class AnswerStore {
   @observable isCreatingAnswer = false;
   @observable answers=[];
   @observable answer = '';
-  @observable answerText = RichTextEditor.createEmptyValue();
   @observable answerUUID = '';
   @observable answerErrors = undefined;
   @observable inProgressAnswer = false;

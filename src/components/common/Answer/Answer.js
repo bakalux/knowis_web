@@ -4,12 +4,19 @@ import {Grid} from "semantic-ui-react";
 import {List} from "semantic-ui-react";
 import {Image} from "semantic-ui-react";
 import {Divider} from "semantic-ui-react";
+import { convertFromRaw } from 'draft-js';
+import Editor from 'draft-js-plugins-editor';
+import {EditorState} from 'draft-js'
+
+
 import DeleteButton from './DeleteButton';
 
 const Answer = props => {
   const answer = props.answer;
   const show = props.currentUser &&
     props.username  === answer.username;
+  const answerContent = convertFromRaw(JSON.parse(answer.answer));
+  const answerState = EditorState.createWithContent(answerContent);
   return (
     <Grid.Row key={answer.comment}>
       <Grid.Column>
@@ -35,7 +42,10 @@ const Answer = props => {
                 onDelete={props.onDelete}/>
             </List.Content>
           </List.Item>
-          <p>{answer.answer}</p>
+          <Editor
+            editorState={answerState}
+            readOnly={true}
+          />
         </List>
         <Divider fitted />
       </Grid.Column>

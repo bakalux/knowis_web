@@ -1,6 +1,5 @@
 import axios from 'axios/index';
 import CommonStore from "../stores/CommonStore";
-import qs from 'qs'
 
 const API_URL = 'https://peaceful-ocean-66963.herokuapp.com';
 
