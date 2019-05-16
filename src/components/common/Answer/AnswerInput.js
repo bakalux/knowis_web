@@ -14,11 +14,29 @@ import {
   List,
   TextArea
 } from 'semantic-ui-react';
+import {
+  ItalicButton,
+  BoldButton,
+  UnderlineButton,
+  CodeButton,
+  HeadlineOneButton,
+  HeadlineTwoButton,
+  HeadlineThreeButton,
+  UnorderedListButton,
+  OrderedListButton,
+  BlockquoteButton,
+  CodeBlockButton,
+} from 'draft-js-buttons';
 import Editor  from 'draft-js-plugins-editor';
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import styles from './styles.module.scss';
+import createToolbarPlugin, { Separator } from 'draft-js-static-toolbar-plugin';
+import '!style-loader!css-loader!draft-js-static-toolbar-plugin/lib/plugin.css';
 
 
+const staticToolbarPlugin = createToolbarPlugin();
+const { Toolbar } = staticToolbarPlugin;
+const plugins = [staticToolbarPlugin];
 @inject('AnswerStore')
 class AnswerInput extends React.Component {
 
@@ -39,10 +57,7 @@ class AnswerInput extends React.Component {
   };
 
   render () {
-    const { isCreatingAnswer } = this.props.AnswerStore;
-
     return (
-
       <React.Fragment>
         <Grid.Row>
         <Grid.Column width={16}>
@@ -63,7 +78,29 @@ class AnswerInput extends React.Component {
               <Editor
                 editorState={this.state.editorState}
                 onChange={this.onChange}
+                plugins={plugins}
               />
+              <Toolbar>
+                {
+              // may be use React.Fragment instead of div to improve perfomance after React 16
+              (externalProps) => (
+                <div>
+                  <BoldButton {...externalProps} />
+                  <ItalicButton {...externalProps} />
+                  <UnderlineButton {...externalProps} />
+                  <CodeButton {...externalProps} />
+                  <Separator {...externalProps} />
+                  <HeadlineOneButton {...externalProps} />
+                  <HeadlineTwoButton {...externalProps} />
+                  <HeadlineThreeButton {...externalProps} />
+                  <UnorderedListButton {...externalProps} />
+                  <OrderedListButton {...externalProps} />
+                  <BlockquoteButton {...externalProps} />
+                  <CodeBlockButton {...externalProps} />
+                </div>
+              )
+            }
+              </Toolbar>
             </div>
             <List>
               <List.Item>

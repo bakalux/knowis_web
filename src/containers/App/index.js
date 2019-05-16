@@ -6,7 +6,6 @@ import  Question from "../Question"
 import QuestionPage from "../QuestionPage"
 import Header from "../Header"
 
-
 @inject('CommonStore', 'AuthStore', 'UserStore')
 @withRouter
 @observer
