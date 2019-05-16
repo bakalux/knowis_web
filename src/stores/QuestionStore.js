@@ -11,9 +11,16 @@ class QuestionStore {
   @observable questionSlug = '';
   @observable questionUUID = '';
   @observable question = '';
+  @observable questionTitle = '';
+  @observable questionContent = '';
   @observable isLoading = false;
   @observable inProgress = false;
+  @observable isCreatingQuestion = false;
+  @observable createQuestion = false;
 
+  @action showDimmer = () => {
+    this.createQuestion = !this.createQuestion
+  };
 
   @action addQuestion = (question) => {
     this.questions.push(question);
@@ -33,6 +40,14 @@ class QuestionStore {
 
   @action setQuestion = (question) => {
     this.question = question
+  };
+
+  @action setQuestionTitle = (title) => {
+    this.questionTitle = title
+  };
+
+  @action setQuestionContent = (content) =>{
+    this.questionContent = content
   };
 
   @computed get questionCount() {
@@ -90,6 +105,17 @@ class QuestionStore {
           this.inProgress = false;
         }))
   };
+
+  @action postQuestion() {
+    this.isCreatingQuestion = true;
+    return questionService.postQuestion(
+      {
+        "Authorization": 'JWT ' + CommonStore.token
+      }, {
+
+      }
+    )
+  }
 
 }
 

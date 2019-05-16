@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Menu, Button, Container, Image, Icon, Dropdown, Responsive } from 'semantic-ui-react'
+import { Menu, Button, Container, Image, Icon, Dropdown } from 'semantic-ui-react'
 import { inject} from 'mobx-react';
 import styles from './styles.module.scss';
 import KnowisSearch from '../../components/common/search'
@@ -40,6 +40,7 @@ const LoggedOutView = props => {
 const LoggedInView = props => {
   if (props.currentUser) {
     return (
+      <div>
             <Menu borderless className={styles.navBar}
             fixed='top'
             size='small'>
@@ -74,18 +75,22 @@ const LoggedInView = props => {
                   </Dropdown>
                 </Menu.Item>
                 <Menu.Item>
-                <Button size='mini' color='yellow'>Запитати</Button>
+                <Button size='mini' color='yellow'
+                        onClick={() => props.QuestionStore.showDimmer()}
+                        content='Запитати'
+                />
                 </Menu.Item>
               </Menu.Menu>
             </Container>
           </Menu>
+      </div>
         )
   }
   return null;
 };
 
 
-@inject('UserStore', 'AuthStore')
+@inject('UserStore', 'AuthStore', 'QuestionStore')
 @withRouter
 class Header extends Component {
   render() {
@@ -95,6 +100,7 @@ class Header extends Component {
           <LoggedInView
             currentUser={this.props.UserStore.currentUser}
             AuthStore={this.props.AuthStore}
+            QuestionStore={this.props.QuestionStore}
             history={this.props.history}/>
           <LoggedOutView currentUser={this.props.UserStore.currentUser}/>
         </div>

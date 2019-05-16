@@ -1,12 +1,13 @@
 import React from 'react';
 import {Route, Switch, withRouter} from "react-router-dom";
 import { inject, observer } from 'mobx-react';
+import { Dimmer } from 'semantic-ui-react'
 import  LoginPage from "../LoginPage"
 import  Question from "../Question"
 import QuestionPage from "../QuestionPage"
 import Header from "../Header"
 
-@inject('CommonStore', 'AuthStore', 'UserStore')
+@inject('CommonStore', 'AuthStore', 'UserStore', 'QuestionStore')
 @withRouter
 @observer
 class App extends React.Component{
@@ -28,12 +29,14 @@ class App extends React.Component{
     if (this.props.CommonStore.appLoaded) {
       return (
         <div>
+          <div>
           {(this.props.AuthStore.navBar) ? false : <Header/>}
           <Switch>
             <Route path='/login' component={LoginPage}/>
             <Route path='/:slug' component={Question}/>
             <Route path='/' component={QuestionPage}/>
           </Switch>
+          </div>
         </div>
       );
     }
