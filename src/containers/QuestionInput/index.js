@@ -39,9 +39,14 @@ class QuestionInput extends React.Component {
       <Modal size='tiny' open={createQuestion}
              onClose={this.handleCreateQuestion}
       >
-        <Modal.Header>
-          Запитати
-        </Modal.Header>
+          <Menu secondary pointing>
+            <Menu.Item active='1' color='yellow'>
+              <Header size='tiny'
+                      content='Запитати'
+                      color='grey'
+              />
+            </Menu.Item>
+          </Menu>
         <Modal.Content>
           <List>
               <List.Item><Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png' />
