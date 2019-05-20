@@ -36,7 +36,7 @@ class QuestionInput extends React.Component {
     const { createQuestion, values } = this.props.QuestionStore;
     const { username } = this.props.UserStore;
     return (
-      <Modal size='tiny' open='1'
+      <Modal size='tiny' open={createQuestion}
              onClose={this.handleCreateQuestion}
       >
         <Modal.Header>
