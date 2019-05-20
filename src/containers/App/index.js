@@ -1,11 +1,12 @@
 import React from 'react';
 import {Route, Switch, withRouter} from "react-router-dom";
 import { inject, observer } from 'mobx-react';
-import { Dimmer } from 'semantic-ui-react'
+import { Button, Modal, Icon } from 'semantic-ui-react'
 import  LoginPage from "../LoginPage"
 import  Question from "../Question"
 import QuestionPage from "../QuestionPage"
 import Header from "../Header"
+import QuestionInput from "../QuestionInput"
 
 @inject('CommonStore', 'AuthStore', 'UserStore', 'QuestionStore')
 @withRouter
@@ -25,10 +26,15 @@ class App extends React.Component{
     }
   }
 
+  handleHideDimmer = () => {
+    this.props.QuestionStore.showDimmer()
+  };
+
   render() {
     if (this.props.CommonStore.appLoaded) {
       return (
         <div>
+          <QuestionInput/>
           <div>
           {(this.props.AuthStore.navBar) ? false : <Header/>}
           <Switch>

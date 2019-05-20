@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Menu, Button, Container, Image, Icon, Dropdown } from 'semantic-ui-react'
+import { Menu, Button, Container, Image, Icon, Dropdown, Dimmer } from 'semantic-ui-react'
 import { inject} from 'mobx-react';
 import styles from './styles.module.scss';
 import KnowisSearch from '../../components/common/search'
@@ -41,7 +41,7 @@ const LoggedInView = props => {
   if (props.currentUser) {
     return (
       <div>
-            <Menu borderless className={styles.navBar}
+            <Menu pointing borderless className={styles.navBar}
             fixed='top'
             size='small'>
             <Container >
@@ -101,7 +101,8 @@ class Header extends Component {
             currentUser={this.props.UserStore.currentUser}
             AuthStore={this.props.AuthStore}
             QuestionStore={this.props.QuestionStore}
-            history={this.props.history}/>
+            history={this.props.history}
+          />
           <LoggedOutView currentUser={this.props.UserStore.currentUser}/>
         </div>
       </nav>)

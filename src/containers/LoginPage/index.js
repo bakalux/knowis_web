@@ -31,7 +31,7 @@ class LoginPage extends Component {
     const {values, errors, inProgress, signUp} = this.props.AuthStore;
     return (
       <div className='login-form'>
-        <Container text>
+        <Container text style={{ marginTop: '4em'}}>
           <Segment>
             <Grid relaxed>
               <Grid.Row>

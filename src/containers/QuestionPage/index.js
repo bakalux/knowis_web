@@ -19,7 +19,8 @@ class QuestionPage extends Component {
     const {questions, isLoading, inProgress} = this.props.QuestionStore;
     return (
       isLoading ? <Loader active size='large'>Завантаження</Loader>: <div>
-        <div >
+        <div>
+          <div className={styles.skip}></div>
           {questions.map(question => (
             question.results.map(item => (
               <div className={styles.box} >
