@@ -76,7 +76,7 @@ const LoggedInView = props => {
                 </Menu.Item>
                 <Menu.Item>
                 <Button size='mini' color='yellow'
-                        onClick={() => props.QuestionStore.showDimmer()}
+                        onClick={() => props.QuestionStore.showModal()}
                         content='Запитати'
                 />
                 </Menu.Item>

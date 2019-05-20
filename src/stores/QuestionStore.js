@@ -2,6 +2,8 @@ import {observable, action, computed, toJS} from "mobx";
 import QuestionService from '../services/QuestionService'
 import CommonStore from './CommonStore'
 import AnswerStore from './AnswerStore'
+import { EditorState} from 'draft-js';
+
 
 const questionService = new QuestionService();
 
@@ -11,6 +13,7 @@ class QuestionStore {
   @observable questionSlug = '';
   @observable questionUUID = '';
   @observable question = '';
+  @observable status='P';
   @observable questionTitle = '';
   @observable questionContent = '';
   @observable isLoading = false;
@@ -18,7 +21,20 @@ class QuestionStore {
   @observable isCreatingQuestion = false;
   @observable createQuestion = false;
 
-  @action showDimmer = () => {
+  @observable values = {
+    title: EditorState.createEmpty(),
+    content: EditorState.createEmpty(),
+  };
+
+  @action setTitle(title) {
+    this.values.title = title
+  };
+
+  @action setContent(content) {
+    this.values.content = content
+  }
+
+  @action showModal = () => {
     this.createQuestion = !this.createQuestion
   };
 
@@ -112,7 +128,9 @@ class QuestionStore {
       {
         "Authorization": 'JWT ' + CommonStore.token
       }, {
-
+        title: this.values.title,
+        content: this.values.content,
+        status: this.status
       }
     )
   }

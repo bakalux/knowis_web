@@ -11,7 +11,7 @@ class UserStore {
   @observable updatingUserErrors;
   @observable username;
 
-  @action pullUser(){
+  @action pullUser() {
     this.loadingUser = true;
     return userAccountService.current({
       headers: {
