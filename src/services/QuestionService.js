@@ -23,7 +23,7 @@ export default class QuestionService {
   };
 
   postQuestion = (token, data) => {
-    const url = `${API_URL}/api/questions/`;
+    const url = `${API_URL}/api/question/`;
     return axios({
       method: 'post',
       url: url,

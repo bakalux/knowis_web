@@ -4,6 +4,8 @@ import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import {Container, Header, Loader, Segment, Button, Icon, Grid, Image, Divider, Label, List, Message} from 'semantic-ui-react'
 import styles from './styles.module.scss';
+import Editor from 'draft-js-plugins-editor';
+import {convertFromRaw, EditorState} from 'draft-js';
 import AnswerSegment from '../../components/common/Answer/AnswerSegment';
 import AnswerInput from '../../components/common/Answer/AnswerInput'
 
@@ -12,7 +14,6 @@ import AnswerInput from '../../components/common/Answer/AnswerInput'
 @observer
 class Question extends Component {
   handlePostAnswer = () => this.props.AnswerStore.createAnswer();
-
   handleDeleteAnswer = (uuid) => this.props.AnswerStore.deleteAnswer(uuid);
   handleShowWindow = () => this.props.AnswerStore.showInputWindow();
 

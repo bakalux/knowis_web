@@ -25,7 +25,8 @@ class QuestionInput extends React.Component {
     const title = JSON.stringify(convertToRaw(
       values.title.getCurrentContent()));
     e.preventDefault();
-    this.props.QuestionStore.postQuestion()
+    this.props.QuestionStore.postQuestion(title, content);
+    this.handleCreateQuestion();
   };
 
   handleCreateQuestion = () => {
@@ -40,7 +41,7 @@ class QuestionInput extends React.Component {
              onClose={this.handleCreateQuestion}
       >
           <Menu secondary pointing>
-            <Menu.Item active='1' color='yellow'>
+            <Menu.Item active={true} color='yellow'>
               <Header size='tiny'
                       content='Запитати'
                       color='grey'

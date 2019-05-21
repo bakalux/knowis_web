@@ -122,17 +122,23 @@ class QuestionStore {
         }))
   };
 
-  @action postQuestion() {
+  @action postQuestion(title, content) {
     this.isCreatingQuestion = true;
     return questionService.postQuestion(
       {
         "Authorization": 'JWT ' + CommonStore.token
       }, {
-        title: this.values.title,
-        content: this.values.content,
+        title: title,
+        content: content,
         status: this.status
       }
-    )
+    ).catch(err=> {
+        if (err.response) {
+          console.log(err.response.data);
+          console.log(err.response.status);
+          console.log(err.response.headers)
+        }
+      })
   }
 
 }
