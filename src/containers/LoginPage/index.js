@@ -37,7 +37,7 @@ class LoginPage extends Component {
               <Grid.Row>
                 <Grid.Column width={4}></Grid.Column>
                 <Grid.Column textAlign='center' width={8}>
-                  <Header as='h2' color='orange'>
+                  <Header as='h2' color='blue'>
                     <Image src='https://i1.wp.com/frenky.id/wp-content/uploads/2018/02/doge-icon.png?ssl=1'/>
                     KNOWIS
                   </Header>
@@ -77,7 +77,7 @@ class LoginPage extends Component {
                     />
                     <Button
                       disabled={!values.email || inProgress}
-                      color='orange'
+                      color='blue'
                       fluid size='large' >
                       Увійти
                     </Button>

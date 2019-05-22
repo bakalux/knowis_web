@@ -41,21 +41,13 @@ const LoggedInView = props => {
   if (props.currentUser) {
     return (
       <div>
-            <Menu pointing borderless className={styles.navBar}
+            <Menu borderless className={styles.navBar}
             fixed='top'
             size='small'>
             <Container >
-              <Menu.Item header as='a'>
+              <Menu.Item header as={Link} to='/'>
                 <Image avatar src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwpQWxE15D-8dwBtVXemg_UPsThPSV9voiM3jWXmtXUN0PjC2Vag' />
                 KNOWIS
-              </Menu.Item>
-              <Menu.Item as='a'>
-                <Icon name='home'/>
-                Головна
-              </Menu.Item>
-              <Menu.Item as='a'>
-                <Icon name='write square'/>
-                Відповісти
               </Menu.Item>
               <Menu.Menu position='right'>
                 <Menu.Item>
@@ -65,9 +57,9 @@ const LoggedInView = props => {
                   <Dropdown trigger={<Image size='mini' src={props.currentUser.map(item => (item.avatar))}/>}>
                     <Dropdown.Menu>
                       <Dropdown.Item icon='address card outline' text='Профіль'/>
-                      <Dropdown.Divider />
+
                       <Dropdown.Item
-                        icon='address card outline'
+                        icon='sign-out'
                         text='Вийти'
                         onClick={() => props.AuthStore.logout()
                           .then(props.history.replace('/login'))}/>
@@ -99,6 +91,7 @@ class Header extends Component {
         <div className="container">
           <LoggedInView
             currentUser={this.props.UserStore.currentUser}
+            activeItem={this.props.QuestionStore.headerActiveItem}
             AuthStore={this.props.AuthStore}
             QuestionStore={this.props.QuestionStore}
             history={this.props.history}

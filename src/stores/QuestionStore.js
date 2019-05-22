@@ -20,6 +20,7 @@ class QuestionStore {
   @observable inProgress = false;
   @observable isCreatingQuestion = false;
   @observable createQuestion = false;
+  @observable headerActiveItem;
   @observable values = {
     title: EditorState.createEmpty(),
     content: EditorState.createEmpty(),
@@ -27,6 +28,10 @@ class QuestionStore {
 
   @action setTitle(title) {
     this.values.title = title
+  };
+
+  @action setHeaderActiveItem(item) {
+    this.headerActiveItem = item
   };
 
   @action setContent(content) {

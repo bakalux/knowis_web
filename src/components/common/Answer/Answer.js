@@ -4,9 +4,8 @@ import {Grid} from "semantic-ui-react";
 import {List} from "semantic-ui-react";
 import {Image} from "semantic-ui-react";
 import {Divider} from "semantic-ui-react";
-import { convertFromRaw } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
-import {EditorState} from 'draft-js'
+import { EditorState, convertFromRaw } from 'draft-js'
 import DeleteButton from './DeleteButton';
 
 const Answer = props => {

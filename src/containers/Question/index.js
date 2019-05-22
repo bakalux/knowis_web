@@ -18,7 +18,7 @@ class Question extends Component {
   handleShowWindow = () => this.props.AnswerStore.showInputWindow();
 
 
-  componentDidMount() {
+  componentWillMount() {
     const slug = this.props.match.params.slug;
     this.props.QuestionStore.setQuestionSlug(slug);
     this.props.QuestionStore.loadQuestionBySlug();
@@ -66,13 +66,15 @@ class Question extends Component {
                       </List.Item>
                     </List>
                     <Header as='h1'>
-                      <p className={styles.questionTitle} key={jsQuestion.title}>
-                      {jsQuestion.title}
-                    </p>
+                      <Editor
+                        editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(jsQuestion.title)))}
+                        readOnly={true}
+                      />
                     </Header>
-                    <p className={styles.content} key={jsQuestion.content}>
-                      {jsQuestion.content}
-                    </p>
+                    <Editor
+                      editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(jsQuestion.content)))}
+                      readOnly={true}
+                    />
                     <List horizontal>
                       <List.Item>
                         <Button disabled={showWindow}

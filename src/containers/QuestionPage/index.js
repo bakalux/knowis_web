@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import {Link} from "react-router-dom";
+import Editor from 'draft-js-plugins-editor';
+import { EditorState, convertFromRaw } from 'draft-js'
 import {Container, Header, Loader, Segment, Button, Icon, Grid, Image, Label, List, Message} from 'semantic-ui-react'
 import styles from './styles.module.scss';
 
@@ -61,13 +63,18 @@ class QuestionPage extends Component {
                               </List.Item>
                             </List>
                             <Link
-                              onClick={this.handleSlug}
                               to={`/${item.slug}`}>
                               <Header as='h3' className={styles.headerTitle}>
-                                {item.title}
+                                <Editor
+                              editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(item.title)))}
+                              readOnly={true}
+                                />
                               </Header>
                             </Link>
-                            <p className={styles.content} key={item.content}>{item.content}</p>
+                            <Editor
+                              editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(item.content)))}
+                              readOnly={true}
+                            />
                           </Grid.Column>
                         </Grid.Row>
                       </Grid>
