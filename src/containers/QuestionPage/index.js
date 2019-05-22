@@ -75,30 +75,29 @@ class QuestionPage extends Component {
                     <Segment attached>
                       <Grid>
                         <Grid.Row>
-                          <Grid.Column width={8}>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<Button as='div' labelPosition='left' size='mini'>
-                            <Label as='a' basic color='red'>
-                              2048
-                            </Label>
-                            <Button icon size='mini' color='red'>
-                              <Icon name='like' />
-                            </Button>
-                          </Button>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <Button as='div' labelPosition='left' size='mini' >
-                              <Label as='a' basic color='blue' >
-                                {item.get_num_answers}
-                              </Label>
-                              <Button icon size='mini' color='blue'>
-                                <Icon name='comment' />
-                              </Button>
-                            </Button>&nbsp;&nbsp;&nbsp;&nbsp;
-                          </Grid.Column>
-                          <Grid.Column width={5}>
-                            <p>
-                            </p>
-                          </Grid.Column>
-                          <Grid.Column width={3}>
-                            <Button size='mini' color='green' content='green'>Відповісти</Button>
+                          <Grid.Column width={16}>
+                            <List horizontal >
+                              <List.Item>
+                                <Button as='div' labelPosition='left' size='mini'>
+                                  <Label as='a' basic color='yellow'>
+                                    2048
+                                  </Label>
+                                  <Button icon size='mini' color='yellow'>
+                                    <Icon name='like' />
+                                  </Button>
+                                </Button>
+                              </List.Item>
+                              <List.Item>
+                                <Button as='div' labelPosition='left' size='mini' >
+                                  <Label as='a' basic color='blue' >
+                                    {item.get_num_answers}
+                                  </Label>
+                                  <Button icon size='mini' color='blue'>
+                                    <Icon name='comment' />
+                                  </Button>
+                                </Button>
+                              </List.Item>
+                            </List>
                           </Grid.Column>
                         </Grid.Row>
                       </Grid>
@@ -111,7 +110,7 @@ class QuestionPage extends Component {
           }
         </div>
         <Container textAlign='center' className={styles.loadButton}>
-          <Button loading={inProgress} color='olive' size='mini' onClick={this.handleNextPage}>Завантажити наступні питання...</Button>
+          <Button loading={inProgress} color='blue' size='mini' onClick={this.handleNextPage}>Завантажити наступні питання...</Button>
         </Container>
       </div>
     );

@@ -20,7 +20,6 @@ class QuestionStore {
   @observable inProgress = false;
   @observable isCreatingQuestion = false;
   @observable createQuestion = false;
-
   @observable values = {
     title: EditorState.createEmpty(),
     content: EditorState.createEmpty(),

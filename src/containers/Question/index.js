@@ -29,17 +29,17 @@ class Question extends Component {
     const {currentUser, username} = this.props.UserStore;
     const {answers, inProgressAnswer, isCreatingAnswer,
       answer, showWindow} = this.props.AnswerStore;
-    const myQuestion = toJS(question);
+    const jsQuestion = toJS(question);
     return (
       inProgress ? <Loader active size='large'>Завантаження</Loader>: <div>
         <div>
           {<Container text style={{ marginTop: '4em'}}>
             <div>
               <Grid relaxed>
-                <Grid.Row key={myQuestion.get_tags} floated = 'left'>
+                <Grid.Row key={jsQuestion.get_tags} floated = 'left'>
                   <Grid.Column width={16}>
                     <List horizontal >
-                      {myQuestion && myQuestion.get_tags.map(tag => (
+                      {jsQuestion && jsQuestion.get_tags.map(tag => (
                         <List.Item key={tag}>
                           <Label>
                             {tag}
@@ -56,22 +56,22 @@ class Question extends Component {
                         <List.Content>
                           <List.Header
                             as='a'
-                            key={myQuestion.username}>{myQuestion.username}
+                            key={jsQuestion.username}>{jsQuestion.username}
                           </List.Header>
-                          <List.Description key={myQuestion.create_date}>
-                            {new Date(myQuestion.create_date)
+                          <List.Description key={jsQuestion.create_date}>
+                            {new Date(jsQuestion.create_date)
                               .toLocaleString('uk-UA')}
                           </List.Description>
                         </List.Content>
                       </List.Item>
                     </List>
                     <Header as='h1'>
-                      <p className={styles.questionTitle} key={myQuestion.title}>
-                      {myQuestion.title}
+                      <p className={styles.questionTitle} key={jsQuestion.title}>
+                      {jsQuestion.title}
                     </p>
                     </Header>
-                    <p className={styles.content} key={myQuestion.content}>
-                      {myQuestion.content}
+                    <p className={styles.content} key={jsQuestion.content}>
+                      {jsQuestion.content}
                     </p>
                     <List horizontal>
                       <List.Item>
@@ -88,8 +88,8 @@ class Question extends Component {
                 {showWindow ?
                     <AnswerInput
                   username={username}
-                  create_date={myQuestion.create_date}
-                  uuid={myQuestion.uuid}
+                  create_date={jsQuestion.create_date}
+                  uuid={jsQuestion.uuid}
                   />: null}
                 <Grid.Row>
                   <Grid.Column width={16}>
