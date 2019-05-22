@@ -5,20 +5,25 @@ import Editor from 'draft-js-plugins-editor';
 import { EditorState, convertFromRaw } from 'draft-js'
 import {Container, Header, Loader, Segment, Button, Icon, Grid, Image, Label, List, Message} from 'semantic-ui-react'
 import styles from './styles.module.scss';
+import AnswerInput from '../../components/common/Answer/AnswerInput'
 
 
-@inject('QuestionStore')
+@inject('QuestionStore', 'UserStore', 'AnswerStore')
 @observer
 class QuestionPage extends Component {
 
   handleNextPage = () => this.props.QuestionStore.nextPage();
+  handleShowWindow = () => this.props.AnswerStore.showInputWindow();
+
 
   componentDidMount() {
     this.props.QuestionStore.loadQuestions();
   };
 
   render() {
-    const {questions, isLoading, inProgress} = this.props.QuestionStore;
+    const {questions, isLoading, inProgress, nextPageURL} = this.props.QuestionStore;
+    const { username } = this.props.UserStore;
+    const { showWindow } = this.props.AnswerStore;
     return (
       isLoading ? <Loader active size='large'>Завантаження</Loader>: <div>
         <div>
@@ -27,23 +32,22 @@ class QuestionPage extends Component {
             question.results.map(item => (
               <div className={styles.box} >
                 <Container text loading key={item}>
-                  <Segment.Group >
-                    <Segment attached>
-                      <Grid celled='internally' columns='equal'>
-                        <Grid.Row>
-                          <Grid.Column width={5} key={item}>
-                            <Image src={item.image}/>
-                            <div className={styles.tags}>
-                              {item.get_tags.map(
-                                tag => (
-                                  <List key={tag}>
-                                    <List.Item icon='github' content={tag}/>
-                                  </List>
-                                )
-                              )}
-                            </div>
-                          </Grid.Column>
-                          <Grid.Column width={10}>
+                    <Segment >
+                      <Grid  columns='equal'>
+                        <Grid.Row >
+                          <Grid.Column width={16}>
+                            <List horizontal >
+                              {item.get_tags.map(tag => (
+                                <List.Item key={tag}>
+                                  <Link to='#' className={styles.info}>
+                                    <p>
+                                      {tag}
+                                    </p>
+                                  </Link>
+
+                                </List.Item>
+                              ))}
+                            </List>
                             <List>
                               <List.Item>
                                 <Image
@@ -75,41 +79,25 @@ class QuestionPage extends Component {
                               editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(item.content)))}
                               readOnly={true}
                             />
-                          </Grid.Column>
-                        </Grid.Row>
-                      </Grid>
-                    </Segment>
-                    <Segment attached>
-                      <Grid>
-                        <Grid.Row>
-                          <Grid.Column width={16}>
-                            <List horizontal >
+                            <List horizontal>
                               <List.Item>
-                                <Button as='div' labelPosition='left' size='mini'>
-                                  <Label as='a' basic color='yellow'>
-                                    2048
-                                  </Label>
-                                  <Button icon size='mini' color='yellow'>
-                                    <Icon name='like' />
-                                  </Button>
-                                </Button>
-                              </List.Item>
-                              <List.Item>
-                                <Button as='div' labelPosition='left' size='mini' >
-                                  <Label as='a' basic color='blue' >
-                                    {item.get_num_answers}
-                                  </Label>
-                                  <Button icon size='mini' color='blue'>
-                                    <Icon name='comment' />
-                                  </Button>
-                                </Button>
+                                <Button disabled={showWindow}
+                                        basic circular icon='write'
+                                        size='mini'
+                                        content='Відповісти'
+                                        onClick={this.handleShowWindow}
+                                />
                               </List.Item>
                             </List>
                           </Grid.Column>
                         </Grid.Row>
+                        {showWindow ? <AnswerInput
+                          username={username}
+                          create_date={item.create_date}
+                          uuid={item.uuid}
+                        /> : null}
                       </Grid>
                     </Segment>
-                  </Segment.Group>
                 </Container>
               </div>
             ))
@@ -117,7 +105,12 @@ class QuestionPage extends Component {
           }
         </div>
         <Container textAlign='center' className={styles.loadButton}>
-          <Button loading={inProgress} color='blue' size='mini' onClick={this.handleNextPage}>Завантажити наступні питання...</Button>
+          {<Button
+            loading={inProgress}
+            color='blue'
+            size='mini'
+            content='Завантажити наступні питання...'
+            onClick={this.handleNextPage}/>}
         </Container>
       </div>
     );

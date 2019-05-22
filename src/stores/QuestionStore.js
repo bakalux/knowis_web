@@ -9,7 +9,7 @@ const questionService = new QuestionService();
 
 class QuestionStore {
   @observable questions = [];
-  @observable nextPageURL = '';
+  @observable nextPageURL;
   @observable questionSlug = '';
   @observable questionUUID = '';
   @observable question = '';

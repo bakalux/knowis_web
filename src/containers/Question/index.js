@@ -33,12 +33,12 @@ class Question extends Component {
     return (
       inProgress ? <Loader active size='large'>Завантаження</Loader>: <div>
         <div>
-          {<Container text style={{ marginTop: '4em'}}>
+          {<Container text style={{ marginTop: '5em'}}>
             <div>
               <Grid relaxed>
                 <Grid.Row key={jsQuestion.get_tags} floated = 'left'>
                   <Grid.Column width={16}>
-                    <List horizontal >
+                    <List horizontal>
                       {jsQuestion && jsQuestion.get_tags.map(tag => (
                         <List.Item key={tag}>
                           <Label>
