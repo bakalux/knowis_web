@@ -15,7 +15,7 @@ import AnswerInput from '../../components/common/Answer/AnswerInput'
 class Question extends Component {
   handlePostAnswer = () => this.props.AnswerStore.createAnswer();
   handleDeleteAnswer = (uuid) => this.props.AnswerStore.deleteAnswer(uuid);
-  handleShowWindow = () => this.props.AnswerStore.showInputWindow();
+  handleShowWindow = (key) => this.props.AnswerStore.showInputWindow(key);
 
 
   componentWillMount() {
@@ -28,7 +28,7 @@ class Question extends Component {
     const {question, inProgress} = this.props.QuestionStore;
     const {currentUser, username} = this.props.UserStore;
     const {answers, inProgressAnswer, isCreatingAnswer,
-      answer, showWindow} = this.props.AnswerStore;
+      answer, showWindow, selected} = this.props.AnswerStore;
     const jsQuestion = toJS(question);
     return (
       inProgress ? <Loader active size='large'>Завантаження</Loader>: <div>
@@ -77,22 +77,22 @@ class Question extends Component {
                     />
                     <List horizontal>
                       <List.Item>
-                        <Button disabled={showWindow}
+                        <Button disabled={showWindow && selected === jsQuestion.uuid}
                                 basic circular icon='write'
                                 size='mini'
                                 content='Відповісти'
-                                onClick={this.handleShowWindow}
+                                onClick={() => this.handleShowWindow(jsQuestion.uuid)}
                         />
                       </List.Item>
                     </List>
                   </Grid.Column>
                 </Grid.Row>
-                {showWindow ?
-                    <AnswerInput
+                {showWindow && selected === jsQuestion.uuid  &&
+                <AnswerInput
                   username={username}
                   create_date={jsQuestion.create_date}
                   uuid={jsQuestion.uuid}
-                  />: null}
+                  />}
                 <Grid.Row>
                   <Grid.Column width={16}>
                     <p className={styles.content}>Відповіді</p>
@@ -101,7 +101,7 @@ class Question extends Component {
                 </Grid.Row>
                 {inProgressAnswer ?
                   <Grid.Row>
-                    <Loader active inline='centered'></Loader>
+                    <Loader active inline='centered'/>
                   </Grid.Row> : null}
                 <AnswerSegment
                   answers={answers}

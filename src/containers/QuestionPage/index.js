@@ -13,7 +13,7 @@ import AnswerInput from '../../components/common/Answer/AnswerInput'
 class QuestionPage extends Component {
 
   handleNextPage = () => this.props.QuestionStore.nextPage();
-  handleShowWindow = () => this.props.AnswerStore.showInputWindow();
+  handleShowWindow = (key) => this.props.AnswerStore.showInputWindow(key);
 
 
   componentDidMount() {
@@ -23,7 +23,7 @@ class QuestionPage extends Component {
   render() {
     const {questions, isLoading, inProgress, nextPageURL} = this.props.QuestionStore;
     const { username } = this.props.UserStore;
-    const { showWindow } = this.props.AnswerStore;
+    const { showWindow, selected } = this.props.AnswerStore;
     return (
       isLoading ? <Loader active size='large'>Завантаження</Loader>: <div>
         <div>
@@ -81,21 +81,21 @@ class QuestionPage extends Component {
                             />
                             <List horizontal>
                               <List.Item>
-                                <Button disabled={showWindow}
+                                <Button disabled={showWindow && selected === item.uuid}
                                         basic circular icon='write'
                                         size='mini'
                                         content='Відповісти'
-                                        onClick={this.handleShowWindow}
+                                        onClick={() => this.handleShowWindow(item.uuid)}
                                 />
                               </List.Item>
                             </List>
                           </Grid.Column>
                         </Grid.Row>
-                        {showWindow ? <AnswerInput
+                        {showWindow && selected === item.uuid && <AnswerInput
                           username={username}
                           create_date={item.create_date}
                           uuid={item.uuid}
-                        /> : null}
+                        /> }
                       </Grid>
                     </Segment>
                 </Container>

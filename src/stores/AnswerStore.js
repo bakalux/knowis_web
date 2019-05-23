@@ -14,9 +14,11 @@ class AnswerStore {
   @observable answerErrors = undefined;
   @observable inProgressAnswer = false;
   @observable showWindow = false;
+  @observable selected;
 
-  @action showInputWindow() {
-    this.showWindow = !this.showWindow
+  @action showInputWindow(key) {
+    this.showWindow = !this.showWindow;
+    this.selected = key
   }
 
   @action pushAnswer = (answer) => {

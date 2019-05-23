@@ -81,7 +81,7 @@ class QuestionStore {
         "Authorization": 'JWT ' + CommonStore.token
       }
     })
-      .then(result => this.addQuestion(result))
+      .then(result => this.questions = result)
       .catch(err => console.log(err))
       .finally(action(() => {
         this.isLoading = false;
