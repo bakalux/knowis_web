@@ -12,5 +12,10 @@ export default class UserAccountService {
     current = (token) => {
         const url = `${API_URL}/api/profile/`;
         return axios.get(url, token).then(response => response.data);
+    };
+
+    getUserProfile = (token, slug) => {
+        const url = `${API_URL}/api/profile/${slug}`
+        return axios.get(url, token).then(response => response.data);
     }
 }

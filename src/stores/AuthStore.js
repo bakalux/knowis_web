@@ -8,6 +8,7 @@ const authService = new AuthService();
 class AuthStore {
   @observable inProgress = false;
   @observable errors = undefined;
+  @observable regErrors = undefined;
   @observable navBar = false;
   @observable signUp = false;
   @observable values = {
@@ -101,13 +102,16 @@ class AuthStore {
     this.inProgress = true;
     this.errors = undefined;
     return authService.postSignup({
-      username: this.values.username,
-      email: this.values.email,
-      password1: this.values.password1,
-      password2: this.values.password2
+      username: this.regValues.username,
+      email: this.regValues.email,
+      password1: this.regValues.password1,
+      password2: this.regValues.password2,
+      first_name: this.regValues.firstName,
+      last_name: this.regValues.lastName,
     })
       .then(result => CommonStore.setToken(result.data.token))
-      .catch(action((err) => {this.errors = err}))
+      .catch(action((err) => {this.regErrors = err;
+      console.log(err.response.data)}))
       .finally(action(() => {this.inProgress = false;}))
 
   }

@@ -6,7 +6,7 @@ const userAccountService = new UserAccountService();
 
 class UserStore {
   @observable currentUser;
-  @observable loadingUser;
+  @observable loadingUser = false;
   @observable updatingUser;
   @observable updatingUserErrors;
   @observable username;

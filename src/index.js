@@ -8,6 +8,7 @@ import QuestionStore from './stores/QuestionStore';
 import CommonStore from './stores/CommonStore';
 import UserStore from './stores/UserStore';
 import AnswerStore from './stores/AnswerStore';
+import ProfileStore from './stores/ProfileStore';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -16,11 +17,12 @@ import App from './containers/App';
 // ReactDOM.render(StoreCheck, document.getElementById('store-check'))
 // ReactDOM.render(Auth, document.getElementById('root'));
 const stores = {
-    AuthStore,
-    QuestionStore,
-    CommonStore,
-    UserStore,
-    AnswerStore
+  AuthStore,
+  QuestionStore,
+  CommonStore,
+  UserStore,
+  AnswerStore,
+  ProfileStore,
 };
 promiseFinally.shim();
 

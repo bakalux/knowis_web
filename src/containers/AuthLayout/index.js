@@ -32,10 +32,10 @@ class AuthLayout extends Component {
   handleSignUp = () => this.props.AuthStore.showSignup();
 
   render() {
-    const {regValues, errors, inProgress} = this.props.AuthStore;
+    const {regValues, regErrors, inProgress} = this.props.AuthStore;
     return (
       <Grid.Column textAlign='center'>
-        <Form error={errors} onSubmit={this.handleSubmitSignUp}>
+        <Form error={regErrors} onSubmit={this.handleSubmitSignUp}>
           <Form.Group>
           <Form.Input width={8}
             name='firstName'

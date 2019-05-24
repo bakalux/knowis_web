@@ -33,6 +33,10 @@ class AnswerStore {
     this.answerUUID = uuid
   };
 
+  @action clearAnswers = () => {
+    this.answers = [];
+  };
+
   @action loadAnswersByUUID() {
     this.inProgressAnswer = true;
     return answerService.getAnswers({

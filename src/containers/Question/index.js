@@ -20,8 +20,11 @@ class Question extends Component {
 
   componentWillMount() {
     const slug = this.props.match.params.slug;
-    this.props.QuestionStore.setQuestionSlug(slug);
-    this.props.QuestionStore.loadQuestionBySlug();
+    this.props.QuestionStore.loadQuestionBySlug(slug);
+  }
+
+  componentWillUnmount() {
+    this.props.AnswerStore.clearAnswers();
   }
 
   render () {

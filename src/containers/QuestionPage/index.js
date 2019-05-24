@@ -20,6 +20,10 @@ class QuestionPage extends Component {
     this.props.QuestionStore.loadQuestions();
   };
 
+  componentWillMount() {
+    this.props.QuestionStore.clearQuestion();
+  }
+
   render() {
     const {questions, isLoading, inProgress, nextPageURL} = this.props.QuestionStore;
     const { username } = this.props.UserStore;

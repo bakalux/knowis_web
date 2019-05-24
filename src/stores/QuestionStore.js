@@ -10,7 +10,6 @@ const questionService = new QuestionService();
 class QuestionStore {
   @observable questions = [];
   @observable nextPageURL;
-  @observable questionSlug = '';
   @observable questionUUID = '';
   @observable question = '';
   @observable status='P';
@@ -46,10 +45,6 @@ class QuestionStore {
     this.questions.push(question);
   };
 
-  @action setQuestionSlug = (slug) => {
-    this.questionSlug = slug
-  };
-
   @action setNextPageUrl = (url) => {
     this.nextPageURL = url
   };
@@ -70,6 +65,10 @@ class QuestionStore {
     this.questionContent = content
   };
 
+  @action clearQuestion = () => {
+    this.questions = []
+  }
+
   @computed get questionCount() {
     return this.questions.length;
   };
@@ -81,7 +80,7 @@ class QuestionStore {
         "Authorization": 'JWT ' + CommonStore.token
       }
     })
-      .then(result => this.questions = result)
+      .then(result => this.addQuestion(result))
       .catch(err => console.log(err))
       .finally(action(() => {
         this.isLoading = false;
@@ -104,13 +103,13 @@ class QuestionStore {
       }))
   };
 
-  @action loadQuestionBySlug() {
+  @action loadQuestionBySlug(slug) {
     this.inProgress = true;
     return questionService.getQuestionBySlug({
       headers: {
         "Authorization": 'JWT ' + CommonStore.token
       }
-    }, this.questionSlug)
+    }, slug)
       .then(result => {
         this.setQuestion(result);
         this.setQuestionUUID(result.uuid);
