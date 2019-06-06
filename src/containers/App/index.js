@@ -32,20 +32,20 @@ class App extends React.Component{
         <div>
           <QuestionInput/>
           <div>
-          {(this.props.AuthStore.navBar) ? false : <Header/>}
-          <Switch>
-            <Route path='/login' component={LoginPage}/>
-            <Route path='/profile/:slug' component={ProfilePage}/>
-            <Route path='/:slug' component={Question}/>
-            <Route path='/' component={QuestionPage}/>
-          </Switch>
+            {(this.props.AuthStore.navBar) ? false : <Header/>}
+            <Switch>
+              <Route path='/login' component={LoginPage}/>
+              <Route path='/profile/:slug' component={ProfilePage}/>
+              <Route path='/:slug' component={Question}/>
+              <Route path='/' component={QuestionPage}/>
+            </Switch>
           </div>
         </div>
       );
     }
     return (
       <Header/>
-    );
+    )
   }
 }
 

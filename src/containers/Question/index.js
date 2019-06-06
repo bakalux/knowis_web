@@ -80,11 +80,12 @@ class Question extends Component {
                     />
                     <List horizontal>
                       <List.Item>
-                        <Button disabled={showWindow && selected === jsQuestion.uuid}
-                                basic circular icon='write'
-                                size='mini'
-                                content='Відповісти'
-                                onClick={() => this.handleShowWindow(jsQuestion.uuid)}
+                        <Button
+                          disabled={showWindow && selected === jsQuestion.uuid}
+                          basic circular icon='write'
+                          size='mini'
+                          content='Відповісти'
+                          onClick={() => this.handleShowWindow(jsQuestion.uuid)}
                         />
                       </List.Item>
                     </List>

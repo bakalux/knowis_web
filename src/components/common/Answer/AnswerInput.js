@@ -56,7 +56,8 @@ class AnswerInput extends React.Component {
     const content = JSON.stringify(convertToRaw(
       editorState.getCurrentContent()));
     e.preventDefault();
-    this.props.AnswerStore.createAnswer(this.props.uuid, content)
+    this.props.AnswerStore.createAnswer(this.props.uuid, content);
+    this.props.AnswerStore.showInputWindow()
   };
 
   render () {

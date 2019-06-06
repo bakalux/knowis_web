@@ -8,7 +8,7 @@ const answerService = new AnswerService();
 
 class AnswerStore {
   @observable isCreatingAnswer = false;
-  @observable answers=[];
+  @observable answers = [];
   @observable answer = '';
   @observable answerUUID = '';
   @observable answerErrors = undefined;
@@ -37,6 +37,10 @@ class AnswerStore {
     this.answers = [];
   };
 
+  @action answerList = (answers) => {
+    this.answers.push(answers)
+  };
+
   @action loadAnswersByUUID() {
     this.inProgressAnswer = true;
     return answerService.getAnswers({
@@ -44,7 +48,7 @@ class AnswerStore {
         "Authorization": 'JWT ' + CommonStore.token,
       }
     }, QuestionStore.questionUUID)
-      .then(result=> this.pushAnswer(result))
+      .then(result => this.answerList(result))
       .catch(action((err) => console.log('Error: ', err)))
       .finally(action(()=> {this.inProgressAnswer = false;}))
   }
@@ -56,6 +60,10 @@ class AnswerStore {
     }, {
       answer: answer
     }, uuid)
+      .then(()=> {
+        this.clearAnswers();
+        this.loadAnswersByUUID();
+      })
       .catch(err=> {
         if (err.response) {
           console.log(err.response.data);
@@ -67,8 +75,8 @@ class AnswerStore {
   }
 
   @action deleteAnswer(uuid) {
-    const idx = this.answers.map(item =>
-      item.results.findIndex(a => a.uuid === uuid));
+    const idx = this.answers.map(object =>
+      object.results.findIndex(answer => answer.uuid === uuid));
     if (idx > -1) this.answers.splice(idx, 1);
     return answerService.deleteAnswer({
       headers: {

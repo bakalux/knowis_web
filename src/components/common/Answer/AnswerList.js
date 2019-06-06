@@ -1,8 +1,10 @@
 import Answer from './Answer';
 import React from 'react'
 import {observer} from 'mobx-react'
+import {toJS} from 'mobx'
 
-const AnswerList = (props => {
+
+const AnswerList = observer(props => {
   return(
     <React.Fragment>
       {

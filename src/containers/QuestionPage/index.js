@@ -20,14 +20,15 @@ class QuestionPage extends Component {
     this.props.QuestionStore.loadQuestions();
   };
 
-  componentWillMount() {
+  componentWillUnmount() {
     this.props.QuestionStore.clearQuestion();
-  }
+  };
 
   render() {
     const {questions, isLoading, inProgress, nextPageURL} = this.props.QuestionStore;
     const { username } = this.props.UserStore;
     const { showWindow, selected } = this.props.AnswerStore;
+    console.log(nextPageURL)
     return (
       isLoading ? <Loader active size='large'>Завантаження</Loader>: <div>
         <div>

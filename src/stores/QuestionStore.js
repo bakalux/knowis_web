@@ -67,7 +67,12 @@ class QuestionStore {
 
   @action clearQuestion = () => {
     this.questions = []
-  }
+  };
+
+  @action clearEditor = () => {
+    this.values.title = EditorState.createEmpty();
+    this.values.content = EditorState.createEmpty();
+  };
 
   @computed get questionCount() {
     return this.questions.length;
@@ -135,7 +140,13 @@ class QuestionStore {
         content: content,
         status: this.status
       }
-    ).catch(err=> {
+    )
+      .then(() => {
+        this.clearQuestion();
+        this.loadQuestions();
+        this.clearEditor();
+      })
+      .catch(err=> {
         if (err.response) {
           console.log(err.response.data);
           console.log(err.response.status);
