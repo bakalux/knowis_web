@@ -56,7 +56,7 @@ const LoggedInView = props => {
               <Menu.Menu position='right'>
                 <Menu.Item>
                 <KnowisSearch/>
-              </Menu.Item>
+                </Menu.Item>
                 <Menu.Item>
                   <Dropdown trigger={<Image size='mini' src={props.currentUser.map(item => (item.avatar))}/>}>
                     <Dropdown.Menu>
@@ -88,6 +88,7 @@ const LoggedInView = props => {
   }
   return null;
 };
+
 const LoggedInViewMobile = props => {
   if (props.currentUser) {
     return (
@@ -106,10 +107,23 @@ const LoggedInViewMobile = props => {
               src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwpQWxE15D-8dwBtVXemg_UPsThPSV9voiM3jWXmtXUN0PjC2Vag' />
             KNOWIS
           </Menu.Item>
+          <Menu.Item
+            as={Link}
+            to={`/profile/${props.slug}`}
+          >
+            <Icon name='address card outline'/>
+            Профіль
+          </Menu.Item>
+          <Menu.Item
+            as={Link}
+            onClick={() => props.AuthStore.logout()
+                          .then(props.history.replace('/login'))}
+          >
+            <Icon name='sign-out'/>
+            Вийти
+          </Menu.Item>
         </Sidebar>
-        <Sidebar.Pusher dimmed={props.sidebarOpened}
-                        onClick={props.handleSidebarHide}>
-            <Menu borderless
+        <Menu borderless
             fixed='top'
             size='small'>
               <Menu.Item>
@@ -127,7 +141,38 @@ const LoggedInViewMobile = props => {
                 </Menu.Item>
               </Menu.Menu>
           </Menu>
+        <Sidebar.Pusher dimmed={props.sidebarOpened}
+                        onClick={props.handleSidebarHide}>
         </Sidebar.Pusher>
+      </div>
+        )
+  }
+  return null;
+};
+
+const LoggedOutViewMobile = props => {
+  if (!props.currentUser) {
+    return (
+      <div>
+        <Menu borderless
+            fixed='top'
+            size='small'>
+              <Link to='/'>
+              <Menu.Item header as='a'>
+                <Image size='mini' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwpQWxE15D-8dwBtVXemg_UPsThPSV9voiM3jWXmtXUN0PjC2Vag' />
+                KNOWIS
+              </Menu.Item>
+              </Link>
+              <Menu.Menu position='right'>
+                <Menu.Item>
+                </Menu.Item>
+                <Menu.Item>
+                   <Link to='/login' className={styles.navLink}>
+                  <Button size='mini' color='yellow'>
+                    Увійти</Button></Link>
+                </Menu.Item>
+              </Menu.Menu>
+          </Menu>
       </div>
         )
   }
@@ -180,6 +225,9 @@ class Header extends Component {
           handleSideBarHide={this.handleSidebarHide}
           handleToggle={this.handleToggle}
           sidebarOpened={this.state.sidebarOpened}
+          />
+          <LoggedOutViewMobile
+            currentUser={this.props.UserStore.currentUser}
           />
           </Responsive>
       </nav>
