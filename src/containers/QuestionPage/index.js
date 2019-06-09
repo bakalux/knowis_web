@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 import {Link} from "react-router-dom";
 import Editor from 'draft-js-plugins-editor';
 import { EditorState, convertFromRaw } from 'draft-js'
-import {Container, Header, Loader, Segment, Button, Icon, Grid, Image, Label, List, Message} from 'semantic-ui-react'
+import {Container, Header, Loader, Segment, Button, Icon, Grid, Image, Label, List} from 'semantic-ui-react'
 import styles from './styles.module.scss';
 import AnswerInput from '../../components/common/Answer/AnswerInput'
 
@@ -28,7 +28,6 @@ class QuestionPage extends Component {
     const {questions, isLoading, inProgress, nextPageURL} = this.props.QuestionStore;
     const { username } = this.props.UserStore;
     const { showWindow, selected } = this.props.AnswerStore;
-    console.log(nextPageURL)
     return (
       isLoading ? <Loader active size='large'>Завантаження</Loader>: <div>
         <div>
@@ -84,14 +83,20 @@ class QuestionPage extends Component {
                               editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(item.content)))}
                               readOnly={true}
                             />
-                            <List horizontal>
+                            <List horizontal
+                            >
                               <List.Item>
-                                <Button disabled={showWindow && selected === item.uuid}
-                                        basic circular icon='write'
-                                        size='mini'
-                                        content='Відповісти'
-                                        onClick={() => this.handleShowWindow(item.uuid)}
+                                <Button
+                                  style={{ marginTop: '3em'}}
+                                  disabled={showWindow && selected === item.uuid}
+                                  basic circular icon='write'
+                                  size='mini'
+                                  content='Відповісти'
+                                  onClick={() => this.handleShowWindow(item.uuid)}
                                 />
+                              </List.Item>
+                              <List.Item>
+
                               </List.Item>
                             </List>
                           </Grid.Column>

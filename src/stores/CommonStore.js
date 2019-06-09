@@ -5,7 +5,6 @@ class CommonStore {
   @observable appName = 'knowis';
   @observable token = window.localStorage.getItem('jwt');
   @observable appLoaded = false;
-  @observable showSidebar = false;
 
 
   constructor() {
@@ -27,14 +26,6 @@ class CommonStore {
 
   @action setAppLoaded() {
     this.appLoaded = true;
-  }
-
-  @action handleSidebarHide() {
-    this.showSidebar = false;
-  }
-
-  @action handleToggle() {
-    this.showSidebar = true;
   }
 
 

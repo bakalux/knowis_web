@@ -8085,6 +8085,11 @@ react-router@5.0.0:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
+react-tagging-input@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-tagging-input/-/react-tagging-input-2.1.2.tgz#46c583b68504848951a625a6d81c0b5bb30a3244"
+  integrity sha1-RsWDtoUEhIlRpiWm2BwLW7MKMkQ=
+
 react@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"

@@ -9,6 +9,7 @@ const questionService = new QuestionService();
 
 class QuestionStore {
   @observable questions = [];
+  @observable tags = [];
   @observable nextPageURL;
   @observable questionUUID = '';
   @observable question = '';
@@ -28,6 +29,10 @@ class QuestionStore {
   @action setTitle(title) {
     this.values.title = title
   };
+
+  @action addTags(tags) {
+    this.tags = tags
+  }
 
   @action setHeaderActiveItem(item) {
     this.headerActiveItem = item

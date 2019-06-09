@@ -1,6 +1,5 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-
 import Editor  from 'draft-js-plugins-editor';
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import {Menu, Header, Segment, Button, List, Image, Modal, Divider} from 'semantic-ui-react';
@@ -33,8 +32,12 @@ class QuestionInput extends React.Component {
     this.props.QuestionStore.showModal();
   };
 
+  handleAddTags = (tags) => {
+    this.props.QuestionStore.addTags(tags)
+  };
+
   render () {
-    const { createQuestion, values } = this.props.QuestionStore;
+    const { createQuestion, values, tags } = this.props.QuestionStore;
     const { username } = this.props.UserStore;
     return (
       <Modal size='tiny' open={createQuestion}
@@ -81,6 +84,7 @@ class QuestionInput extends React.Component {
             content='Готово'
           />
         </Modal.Content>
+        <div></div>
       </Modal>
     )
   }

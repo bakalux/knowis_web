@@ -30,14 +30,12 @@ import Editor  from 'draft-js-plugins-editor';
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import styles from './styles.module.scss';
 import createToolbarPlugin, { Separator } from 'draft-js-static-toolbar-plugin';
-import createUndoPlugin from 'draft-js-undo-plugin';
 import '!style-loader!css-loader!draft-js-static-toolbar-plugin/lib/plugin.css';
 
 
 const staticToolbarPlugin = createToolbarPlugin();
 const { Toolbar } = staticToolbarPlugin;
-const undoPlugin = createUndoPlugin();
-const plugins = [staticToolbarPlugin, undoPlugin];
+const plugins = [staticToolbarPlugin];
 
 
 @inject('AnswerStore')

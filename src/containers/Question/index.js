@@ -8,11 +8,14 @@ import Editor from 'draft-js-plugins-editor';
 import {convertFromRaw, EditorState} from 'draft-js';
 import AnswerSegment from '../../components/common/Answer/AnswerSegment';
 import AnswerInput from '../../components/common/Answer/AnswerInput'
+import EditButton from '../../components/ui/EditButton'
 
 @inject('QuestionStore', 'AnswerStore', 'UserStore')
 @withRouter
 @observer
 class Question extends Component {
+
+  handleContentChange = (editorState) => this.props.QuestionStore.setContent(editorState);
   handlePostAnswer = () => this.props.AnswerStore.createAnswer();
   handleDeleteAnswer = (uuid) => this.props.AnswerStore.deleteAnswer(uuid);
   handleShowWindow = (key) => this.props.AnswerStore.showInputWindow(key);
@@ -33,6 +36,7 @@ class Question extends Component {
     const {answers, inProgressAnswer, isCreatingAnswer,
       answer, showWindow, selected} = this.props.AnswerStore;
     const jsQuestion = toJS(question);
+    const show = currentUser && username === jsQuestion.username;
     return (
       inProgress ? <Loader active size='large'>Завантаження</Loader>: <div>
         <div>
@@ -76,16 +80,27 @@ class Question extends Component {
                     </Header>
                     <Editor
                       editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(jsQuestion.content)))}
+                      onChange={this.handleContentChange}
                       readOnly={true}
                     />
                     <List horizontal>
                       <List.Item>
                         <Button
+                          style={{ marginTop: '3em'}}
                           disabled={showWindow && selected === jsQuestion.uuid}
                           basic circular icon='write'
                           size='mini'
                           content='Відповісти'
+                          color='blue'
                           onClick={() => this.handleShowWindow(jsQuestion.uuid)}
+                        />
+                      </List.Item>
+                      <List.Item>
+                        <EditButton
+                          show={show}
+                          showWindow={showWindow}
+                          selected={selected}
+                          uuid={jsQuestion.uuid}
                         />
                       </List.Item>
                     </List>
