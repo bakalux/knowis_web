@@ -96,7 +96,24 @@ class QuestionPage extends Component {
                                 />
                               </List.Item>
                               <List.Item>
-
+                                <Button
+                                  style={{ marginTop: '3em'}}
+                                  disabled={showWindow && selected === item.uuid}
+                                  basic circular icon='spy'
+                                  size='mini'
+                                  content='Відстежувати'
+                                  onClick={() => this.handleShowWindow(item.uuid)}
+                                />
+                              </List.Item>
+                              <List.Item>
+                                <Button
+                                  style={{ marginTop: '3em'}}
+                                  disabled={showWindow && selected === item.uuid}
+                                  basic circular icon='like'
+                                  size='mini'
+                                  content='Вподобати'
+                                  onClick={() => this.handleShowWindow(item.uuid)}
+                                />
                               </List.Item>
                             </List>
                           </Grid.Column>

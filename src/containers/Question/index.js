@@ -9,6 +9,7 @@ import {convertFromRaw, EditorState} from 'draft-js';
 import AnswerSegment from '../../components/common/Answer/AnswerSegment';
 import AnswerInput from '../../components/common/Answer/AnswerInput'
 import EditButton from '../../components/ui/EditButton'
+import DeleteButton from '../../components/ui/DeleteButton'
 
 @inject('QuestionStore', 'AnswerStore', 'UserStore')
 @withRouter
@@ -97,6 +98,14 @@ class Question extends Component {
                       </List.Item>
                       <List.Item>
                         <EditButton
+                          show={show}
+                          showWindow={showWindow}
+                          selected={selected}
+                          uuid={jsQuestion.uuid}
+                        />
+                      </List.Item>
+                      <List.Item>
+                        <DeleteButton
                           show={show}
                           showWindow={showWindow}
                           selected={selected}

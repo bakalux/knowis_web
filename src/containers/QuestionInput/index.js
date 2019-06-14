@@ -4,6 +4,8 @@ import Editor  from 'draft-js-plugins-editor';
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import {Menu, Header, Segment, Button, List, Image, Modal, Divider} from 'semantic-ui-react';
 import styles from './styles.module.scss';
+import TagsInput from 'react-tagsinput'
+import 'react-tagsinput/react-tagsinput.css'
 import '!style-loader!css-loader!draft-js-static-toolbar-plugin/lib/plugin.css';
 import 'draft-js/dist/Draft.css';
 
@@ -20,9 +22,9 @@ class QuestionInput extends React.Component {
   handlePostQuestion = (e) => {
     const { values, status } = this.props.QuestionStore;
     const content = JSON.stringify(convertToRaw(
-      values.content.getCurrentContent()));
+      values.contentInput.getCurrentContent()));
     const title = JSON.stringify(convertToRaw(
-      values.title.getCurrentContent()));
+      values.titleInput.getCurrentContent()));
     e.preventDefault();
     this.props.QuestionStore.postQuestion(title, content);
     this.handleCreateQuestion();
@@ -34,6 +36,7 @@ class QuestionInput extends React.Component {
 
   handleAddTags = (tags) => {
     this.props.QuestionStore.addTags(tags)
+    console.log(this.props.QuestionStore.tags)
   };
 
   render () {
@@ -66,16 +69,21 @@ class QuestionInput extends React.Component {
               </List>
             <div className={styles.editor}>
               <Editor
-                editorState={values.title}
+                editorState={values.titleInput}
                 onChange={this.handleTitleChange}
                 placeholder='Почніть своє питання з "Як?", "Де?", "Коли?", тощо...'
               />
               <Divider></Divider>
               <Editor
-                editorState={values.content}
+                editorState={values.contentInput}
                 onChange={this.handleContentChange}
                 placeholder={'Можливо ви хочете щось додати'}
               />
+              <TagsInput
+                className={styles.taginput}
+                value={tags}
+                onChange={this.handleAddTags}
+                inputProps={{placeholder: 'Теги'}}/>
             </div>
           <Button
             size='mini'
@@ -84,7 +92,6 @@ class QuestionInput extends React.Component {
             content='Готово'
           />
         </Modal.Content>
-        <div></div>
       </Modal>
     )
   }

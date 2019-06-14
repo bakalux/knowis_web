@@ -5,6 +5,7 @@ import { Menu, Button, Container,
 import { inject} from 'mobx-react';
 import styles from './styles.module.scss';
 import KnowisSearch from '../../components/common/search'
+import logo from '../../components/ui/img/logo_notxt.png'
 
 const getWidth = () => {
   const isSSR = typeof window === 'undefined';
@@ -17,11 +18,13 @@ const LoggedOutView = props => {
     return (
         <Menu borderless className={styles.navBar}
             fixed='top'
-            size='small'>
+            size='mini'>
             <Container >
               <Link to='/'>
               <Menu.Item header as='a'>
-                <Image size='mini' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwpQWxE15D-8dwBtVXemg_UPsThPSV9voiM3jWXmtXUN0PjC2Vag' />
+                <Image
+                  size='mini'
+                  src={logo} />
                 KNOWIS
               </Menu.Item>
               </Link>
@@ -50,7 +53,9 @@ const LoggedInView = props => {
             size='small'>
             <Container >
               <Menu.Item header as={Link} to='/'>
-                <Image avatar src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwpQWxE15D-8dwBtVXemg_UPsThPSV9voiM3jWXmtXUN0PjC2Vag' />
+                <Image
+                  size='mini'
+                  src={logo} />
                 KNOWIS
               </Menu.Item>
               <Menu.Menu position='right'>
@@ -58,7 +63,8 @@ const LoggedInView = props => {
                 <KnowisSearch/>
                 </Menu.Item>
                 <Menu.Item>
-                  <Dropdown trigger={<Image size='mini' src={props.currentUser.map(item => (item.avatar))}/>}>
+                  {/*<Dropdown trigger={<Image size='mini' src={props.currentUser.map(item => (item.avatar))}/>}>*/}
+                  <Dropdown trigger={<Image size='mini' src='https://media.alienwarearena.com/media/photo.jpg.png'/>}>
                     <Dropdown.Menu>
                       <Dropdown.Item
                         icon='address card outline'

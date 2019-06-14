@@ -9,3 +9,9 @@
 .editor :global(.public-DraftEditor-content) {
   min-height: 20px;
 }
+
+.taginput {
+  border-radius: 2px;
+  padding-top: 20px;
+  font-family: 'Dialog';
+}

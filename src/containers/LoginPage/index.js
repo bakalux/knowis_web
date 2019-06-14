@@ -3,6 +3,8 @@ import styles from './styles.module.scss';
 import {inject, observer} from 'mobx-react';
 import {Button, Icon, Container, Divider, Form, Grid, Header, Image, Segment, Message} from 'semantic-ui-react'
 import AuthLayout from '../AuthLayout'
+import logo from '../../components/ui/img/logo_notxt.png'
+
 
 @inject('AuthStore')
 @observer
@@ -29,6 +31,7 @@ class LoginPage extends Component {
 
   render (){
     const {values, errors, inProgress, signUp} = this.props.AuthStore;
+    console.log(errors)
     return (
       <div className='login-form'>
         <Container text style={{ marginTop: '4em'}}>
@@ -37,9 +40,10 @@ class LoginPage extends Component {
               <Grid.Row>
                 <Grid.Column width={4}></Grid.Column>
                 <Grid.Column textAlign='center' width={8}>
-                  <Header as='h2' color='blue'>
-                    <Image src='https://i1.wp.com/frenky.id/wp-content/uploads/2018/02/doge-icon.png?ssl=1'/>
-                    KNOWIS
+                  <Header as='h2' color='yellow'>
+                    <Image
+                      src={logo}/>
+                      KNOWIS
                   </Header>
                   <p className={styles.description}>
                     Місце де знаходять відповіді

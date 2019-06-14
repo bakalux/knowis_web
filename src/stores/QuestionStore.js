@@ -10,6 +10,7 @@ const questionService = new QuestionService();
 class QuestionStore {
   @observable questions = [];
   @observable tags = [];
+  @observable errors = undefined;
   @observable nextPageURL;
   @observable questionUUID = '';
   @observable question = '';
@@ -22,28 +23,33 @@ class QuestionStore {
   @observable createQuestion = false;
   @observable headerActiveItem;
   @observable values = {
-    title: EditorState.createEmpty(),
-    content: EditorState.createEmpty(),
-  };
-
-  @action setTitle(title) {
-    this.values.title = title
+    titleInput: EditorState.createEmpty(),
+    contentInput: EditorState.createEmpty(),
   };
 
   @action addTags(tags) {
     this.tags = tags
   }
 
+  @action emptyOnCreate() {
+    this.values.contentInput = EditorState.createEmpty()
+  };
+
   @action setHeaderActiveItem(item) {
     this.headerActiveItem = item
   };
 
+  @action setTitle(title) {
+    this.values.titleInput = title
+  };
+
   @action setContent(content) {
-    this.values.content = content
+    this.values.contentInput = content
   }
 
   @action showModal = () => {
-    this.createQuestion = !this.createQuestion
+    this.createQuestion = !this.createQuestion;
+    this.emptyOnCreate();
   };
 
   @action addQuestion = (question) => {
@@ -75,8 +81,8 @@ class QuestionStore {
   };
 
   @action clearEditor = () => {
-    this.values.title = EditorState.createEmpty();
-    this.values.content = EditorState.createEmpty();
+    this.values.titleInput = EditorState.createEmpty();
+    this.values.contentInput = EditorState.createEmpty();
   };
 
   @computed get questionCount() {
@@ -128,7 +134,11 @@ class QuestionStore {
         action(() => {
           AnswerStore.loadAnswersByUUID();
         }))
-      .catch(err => console.log('Error: ', err))
+      .catch(err => {
+        this.errors = err.response && err.response.body
+          && err.response.body.errors;
+        throw err;
+      })
       .finally(
         action(() => {
           this.inProgress = false;

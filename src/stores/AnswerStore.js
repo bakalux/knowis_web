@@ -8,6 +8,7 @@ const answerService = new AnswerService();
 
 class AnswerStore {
   @observable isCreatingAnswer = false;
+  @observable errors = undefined;
   @observable answers = [];
   @observable answer = '';
   @observable answerUUID = '';
@@ -49,7 +50,11 @@ class AnswerStore {
       }
     }, QuestionStore.questionUUID)
       .then(result => this.answerList(result))
-      .catch(action((err) => console.log('Error: ', err)))
+      .catch(action((err) => {
+        this.errors = err.response && err.response.body
+          && err.response.body.errors;
+        throw err;
+      }))
       .finally(action(()=> {this.inProgressAnswer = false;}))
   }
 

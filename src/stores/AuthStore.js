@@ -86,8 +86,11 @@ class AuthStore {
       password: this.values.password1
     })
       .then(result => CommonStore.setToken(result.data.token))
+      .then(() => UserStore.pullUser())
       .catch(action((err) => {
-        this.errors = err
+        this.errors = err.response && err.response.body
+          && err.response.body.errors;
+        throw err;
       }))
       .finally(action(() => {this.inProgress = false;}))
   }
