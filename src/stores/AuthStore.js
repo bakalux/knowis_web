@@ -67,10 +67,8 @@ class AuthStore {
   }
 
   @action reset() {
-    this.values.username = '';
     this.values.email = '';
     this.values.password1 = '';
-    this.values.password2 = '';
 
     this.regValues.username = '';
     this.regValues.email = '';

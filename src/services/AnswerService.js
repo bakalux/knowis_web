@@ -1,7 +1,7 @@
 import axios from 'axios/index';
 import CommonStore from "../stores/CommonStore";
 
-const API_URL = 'https://peaceful-ocean-66963.herokuapp.com';
+const API_URL = 'http://167.71.32.162/back';
 
 
 export default class AnswerService {

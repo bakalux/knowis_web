@@ -32,8 +32,8 @@ class QuestionPage extends Component {
       isLoading ? <Loader active size='large'>Завантаження</Loader>: <div>
         <div>
           <div className={styles.skip}></div>
-          {questions.map(question => (
-            question.results.map(item => (
+          {questions && questions.map(question => (
+            question && question.results.map(item => (
               <div className={styles.box} >
                 <Container text loading key={item}>
                     <Segment >
@@ -107,13 +107,15 @@ class QuestionPage extends Component {
                               </List.Item>
                               <List.Item>
                                 <Button
-                                  style={{ marginTop: '3em'}}
-                                  disabled={showWindow && selected === item.uuid}
-                                  basic circular icon='like'
-                                  size='mini'
-                                  content='Вподобати'
-                                  onClick={() => this.handleShowWindow(item.uuid)}
-                                />
+                                    basic
+                                    size='mini'
+                                    as='div'>
+                                  <Icon
+                                      link
+                                      name='heart'
+                                  />
+                                  10
+                                </Button>
                               </List.Item>
                             </List>
                           </Grid.Column>

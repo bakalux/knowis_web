@@ -21,25 +21,23 @@ class UserStore {
     })
       .then(result => {
         this.currentUser = result;
-        this.currentUser.map(user=>{
-          this.setUserName(user.username);
-          this.setUserSlug(user.slug)
+          this.setUserName(this.currentUser.username);
+          this.setUserSlug(this.currentUser.slug);
         })
-      })
       .finally(action(() => {this.loadingUser = false;}))
-  }
+  };
 
   @action forgetUser() {
     this.currentUser = undefined;
-  }
+  };
 
   @action setUserName = (username) => {
     this.username = username
-  }
+  };
 
   @action setUserSlug = (slug) => {
     this.slug = slug
-  }
+  };
 }
 
 const store = new UserStore();

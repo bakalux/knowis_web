@@ -103,13 +103,13 @@ class AuthLayout extends Component {
             fluid size='large'>
             Зареєструватися
           </Button>
-          <a href='#'>
-            <p
-              onClick={this.handleSignUp}
-              className={styles.info}>
-              Відмінити
-            </p>
-          </a>
+          {/*<a href='#'>*/}
+          {/*  <p*/}
+          {/*    onClick={this.handleSignUp}*/}
+          {/*    className={styles.info}>*/}
+          {/*    Відмінити*/}
+          {/*  </p>*/}
+          {/*</a>*/}
         </Form>
       </Grid.Column>
     );

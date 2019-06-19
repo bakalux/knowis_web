@@ -31,7 +31,6 @@ class LoginPage extends Component {
 
   render (){
     const {values, errors, inProgress, signUp} = this.props.AuthStore;
-    console.log(errors)
     return (
       <div className='login-form'>
         <Container text style={{ marginTop: '4em'}}>
@@ -88,27 +87,28 @@ class LoginPage extends Component {
                   </Form>
                 </Grid.Column>
                 <Grid.Column columns={2} textAlign='left'>
-                  {signUp ? <AuthLayout/> :
-                    <div>
-                      <div className={styles.googleButton}>
-                        <Button color='google plus'>
-                          <Icon name='google plus' /> Увійти за допомогою Google &nbsp; &nbsp; &nbsp;
-                        </Button>
-                      </div>
-                      <div className={styles.facebookButton}>
-                        <Button color='facebook'>
-                          <Icon name='facebook' /> Увійти за допомогою Facebook
-                        </Button>
-                      </div>
-                      <div>
-                        <a href='#'>
-                          <p onClick={this.handleSignUp}
-                             className={styles.info}
-                          >Або Зареєструватися
-                          </p>
-                        </a>
-                      </div>
-                    </div>}
+                  <AuthLayout/>
+                  {/*{signUp ? <AuthLayout/> :*/}
+                  {/*  <div>*/}
+                  {/*    <div className={styles.googleButton}>*/}
+                  {/*      <Button color='google plus'>*/}
+                  {/*        <Icon name='google plus' /> Увійти за допомогою Google &nbsp; &nbsp; &nbsp;*/}
+                  {/*      </Button>*/}
+                  {/*    </div>*/}
+                  {/*    <div className={styles.facebookButton}>*/}
+                  {/*      <Button color='facebook'>*/}
+                  {/*        <Icon name='facebook' /> Увійти за допомогою Facebook*/}
+                  {/*      </Button>*/}
+                  {/*    </div>*/}
+                  {/*    <div>*/}
+                  {/*      <a href='#'>*/}
+                  {/*        <p onClick={this.handleSignUp}*/}
+                  {/*           className={styles.info}*/}
+                  {/*        >Або Зареєструватися*/}
+                  {/*        </p>*/}
+                  {/*      </a>*/}
+                  {/*    </div>*/}
+                  {/*  </div>}*/}
                 </Grid.Column>
               </Grid.Row>
             </Grid>
